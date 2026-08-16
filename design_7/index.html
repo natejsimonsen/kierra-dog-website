@@ -1,0 +1,821 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kierra's K9 Training — Positive, Science-Based Dog Training</title>
+<meta name="description" content="Personalized, science-based dog training in California since 2003. Positive reinforcement, clicker training, no fear or force. Kierra's K9 Training." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600;1,700&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --teal: #0F5F5F;
+    --coral: #F26A57;
+    --dusk: #F7EEDC;
+    --ink: #14213D;
+    --teal-rgb: 15,95,95;
+    --coral-rgb: 242,106,87;
+    --dusk-rgb: 247,238,220;
+    --ink-rgb: 20,33,61;
+
+    /* scroll-driven hue variables — animated by JS */
+    --flow: 0; /* 0 = teal, 0.5 = coral, 1 = dusk */
+    --g1: var(--teal);
+    --g2: var(--coral);
+    --g3: var(--dusk);
+
+    --serif: "Playfair Display", "Iowan Old Style", Georgia, serif;
+    --sans: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+
+  body{
+    margin:0;
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--dusk);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  a{ color:inherit; }
+  img{ max-width:100%; display:block; }
+
+  :focus-visible{
+    outline:3px solid var(--coral);
+    outline-offset:3px;
+    border-radius:4px;
+  }
+
+  /* ============ CURSOR BLOB ============ */
+  #blob{
+    position:fixed;
+    top:0; left:0;
+    width:520px; height:520px;
+    margin-left:-260px; margin-top:-260px;
+    border-radius:50%;
+    background:radial-gradient(circle at 40% 40%, rgba(242,106,87,0.42), rgba(15,95,95,0.28) 55%, transparent 75%);
+    filter:blur(40px);
+    pointer-events:none;
+    z-index:2;
+    will-change:transform;
+    transform:translate(-1000px,-1000px);
+    mix-blend-mode:multiply;
+  }
+  @media (hover:none), (pointer:coarse){ #blob{ display:none; } }
+  @media (prefers-reduced-motion: reduce){ #blob{ display:none; } }
+
+  /* ============ NAV ============ */
+  .nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:1.35rem clamp(1.25rem, 4vw, 3rem);
+    mix-blend-mode:normal;
+  }
+  .nav-mark{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:600;
+    font-size:1.3rem;
+    color:var(--dusk);
+    text-decoration:none;
+    letter-spacing:0.01em;
+    background:rgba(20,33,61,0.42);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    padding:0.5rem 1rem;
+    border-radius:100px;
+    box-shadow:0 4px 16px rgba(20,33,61,0.14);
+  }
+  .nav-cta{
+    font-family:var(--sans);
+    font-weight:600;
+    font-size:0.86rem;
+    letter-spacing:0.02em;
+    text-decoration:none;
+    color:var(--ink);
+    background:var(--dusk);
+    padding:0.65rem 1.3rem;
+    border-radius:100px;
+    box-shadow:0 4px 18px rgba(20,33,61,0.18);
+    transition:transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .nav-cta:hover{ transform:translateY(-2px); box-shadow:0 8px 24px rgba(20,33,61,0.24); }
+
+  /* ============ HERO / MESH GRADIENT ============ */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    isolation:isolate;
+  }
+
+  .mesh{
+    position:absolute; inset:-10%;
+    z-index:0;
+    background:
+      radial-gradient(46% 58% at 18% 22%, rgba(var(--teal-rgb), 0.95), transparent 60%),
+      radial-gradient(52% 62% at 82% 30%, rgba(var(--coral-rgb), 0.9), transparent 62%),
+      radial-gradient(60% 70% at 50% 85%, rgba(var(--dusk-rgb), 0.85), transparent 65%),
+      linear-gradient(160deg, var(--ink), var(--teal) 55%, var(--coral) 130%);
+    background-size:180% 180%, 200% 200%, 220% 220%, 140% 140%;
+    animation: meshDrift 26s ease-in-out infinite;
+    filter:saturate(1.05) hue-rotate(calc(var(--flow, 0) * -34deg));
+    transition:filter 0.3s linear;
+  }
+  /* end-of-journey variant: leans warmer, closer to coral/dusk */
+  .mesh--end{
+    background:
+      radial-gradient(50% 60% at 20% 18%, rgba(var(--teal-rgb), 0.55), transparent 58%),
+      radial-gradient(58% 66% at 80% 26%, rgba(var(--coral-rgb), 1), transparent 64%),
+      radial-gradient(66% 76% at 50% 88%, rgba(var(--dusk-rgb), 0.95), transparent 62%),
+      linear-gradient(160deg, var(--ink), var(--coral) 60%, var(--dusk) 140%);
+  }
+  @keyframes meshDrift{
+    0%   { background-position: 0% 20%, 100% 10%, 40% 100%, 0% 0%; }
+    25%  { background-position: 15% 35%, 80% 30%, 60% 80%, 20% 15%; }
+    50%  { background-position: 30% 15%, 60% 55%, 30% 60%, 40% 5%; }
+    75%  { background-position: 10% 45%, 90% 15%, 55% 90%, 15% 20%; }
+    100% { background-position: 0% 20%, 100% 10%, 40% 100%, 0% 0%; }
+  }
+  .mesh::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(20,33,61,0) 0%, rgba(20,33,61,0.35) 100%);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .mesh{ animation:none; background-position:0% 20%, 100% 10%, 40% 100%, 0% 0%; filter:saturate(1.05); }
+  }
+
+  .hero-inner{
+    position:relative; z-index:2;
+    max-width:1000px;
+    margin:0 auto;
+    padding:7rem 1.5rem 4rem;
+    text-align:center;
+  }
+  .eyebrow{
+    display:inline-block;
+    font-family:var(--sans);
+    font-weight:600;
+    font-size:0.78rem;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--dusk);
+    opacity:0.85;
+    margin-bottom:1.6rem;
+  }
+  .hero h1{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:600;
+    color:var(--dusk);
+    font-size:clamp(3rem, 9vw, 7rem);
+    line-height:0.98;
+    letter-spacing:-0.01em;
+    margin:0 0 1.6rem;
+    text-shadow:0 6px 40px rgba(20,33,61,0.4);
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--coral);
+  }
+  .hero p.lede{
+    font-family:var(--sans);
+    font-size:clamp(1.05rem, 2vw, 1.3rem);
+    line-height:1.6;
+    color:var(--dusk);
+    max-width:640px;
+    margin:0 auto 2.6rem;
+    opacity:0.94;
+  }
+  .hero-ctas{
+    display:flex;
+    gap:1rem;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  .btn{
+    font-family:var(--sans);
+    font-weight:600;
+    font-size:0.95rem;
+    text-decoration:none;
+    padding:0.95rem 2.1rem;
+    border-radius:100px;
+    transition:transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    display:inline-block;
+  }
+  .btn-primary{
+    background:var(--coral);
+    color:var(--dusk);
+    box-shadow:0 10px 30px rgba(242,106,87,0.4);
+  }
+  .btn-primary:hover{ transform:translateY(-3px); box-shadow:0 14px 36px rgba(242,106,87,0.5); }
+  .btn-ghost{
+    background:rgba(247,238,220,0.12);
+    color:var(--dusk);
+    border:1.5px solid rgba(247,238,220,0.55);
+    backdrop-filter:blur(6px);
+  }
+  .btn-ghost:hover{ background:rgba(247,238,220,0.22); transform:translateY(-3px); }
+
+  .scroll-cue{
+    position:absolute;
+    bottom:2.2rem; left:50%;
+    transform:translateX(-50%);
+    z-index:2;
+    color:var(--dusk);
+    opacity:0.75;
+    font-size:0.7rem;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:0.5rem;
+  }
+  .scroll-cue::after{
+    content:"";
+    width:1px; height:34px;
+    background:linear-gradient(var(--dusk), transparent);
+    animation:cueFlow 2.2s ease-in-out infinite;
+  }
+  @keyframes cueFlow{
+    0%{ transform:scaleY(0.3); transform-origin:top; opacity:0.4; }
+    50%{ transform:scaleY(1); transform-origin:top; opacity:1; }
+    100%{ transform:scaleY(0.3); transform-origin:bottom; opacity:0.4; }
+  }
+  @media (prefers-reduced-motion: reduce){ .scroll-cue::after{ animation:none; } }
+
+  /* ============ SCROLL PROGRESS RAIL — visualizes teal -> coral -> dusk journey ============ */
+  .flow-rail{
+    position:fixed;
+    top:0; right:0;
+    width:5px; height:100%;
+    z-index:40;
+    background:linear-gradient(180deg, var(--teal) 0%, var(--coral) 50%, var(--dusk) 100%);
+    opacity:0.9;
+  }
+  .flow-rail-dot{
+    position:absolute;
+    right:-4.5px;
+    top:0;
+    width:14px; height:14px;
+    border-radius:50%;
+    background:var(--dusk);
+    box-shadow:0 0 0 3px rgba(var(--coral-rgb),0.35), 0 2px 10px rgba(20,33,61,0.4);
+    transform:translateY(-50%);
+    transition:top 0.05s linear;
+  }
+  @media (max-width:600px){ .flow-rail{ width:3px; } .flow-rail-dot{ width:11px; height:11px; right:-4px; } }
+  @media (prefers-reduced-motion: reduce){ .flow-rail-dot{ display:none; } }
+
+  /* ============ SECTIONS ============ */
+  section{
+    position:relative;
+    z-index:1;
+  }
+  .panel{
+    background:var(--dusk);
+    position:relative;
+  }
+  .panel-ink{
+    background:var(--ink);
+    color:var(--dusk);
+  }
+
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:6.5rem 1.5rem;
+  }
+  .wrap.narrow{ max-width:820px; }
+
+  .kicker{
+    font-family:var(--sans);
+    font-weight:700;
+    font-size:0.78rem;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--coral);
+    margin-bottom:1rem;
+    display:block;
+  }
+  .panel-ink .kicker{ color:var(--coral); }
+
+  h2{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:600;
+    font-size:clamp(2.2rem, 4.6vw, 3.6rem);
+    line-height:1.05;
+    margin:0 0 1.6rem;
+    letter-spacing:-0.01em;
+  }
+  .panel-ink h2{ color:var(--dusk); }
+
+  .body-text{
+    font-size:1.08rem;
+    line-height:1.75;
+    color:rgba(20,33,61,0.86);
+    max-width:640px;
+  }
+  .panel-ink .body-text{ color:rgba(247,238,220,0.86); }
+  .body-text + .body-text{ margin-top:1.2rem; }
+
+  /* ---- Origin section with floating photo ---- */
+  .origin-grid{
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap:4rem;
+    align-items:center;
+  }
+  .float-photo{
+    position:relative;
+    border-radius:38% 62% 60% 40% / 44% 40% 60% 56%;
+    overflow:hidden;
+    box-shadow:0 30px 60px -20px rgba(15,95,95,0.35), 0 10px 24px -8px rgba(242,106,87,0.2);
+    aspect-ratio:3/4;
+    animation:floatShape 9s ease-in-out infinite;
+  }
+  .float-photo img{ width:100%; height:100%; object-fit:cover; }
+  @keyframes floatShape{
+    0%,100%{ border-radius:38% 62% 60% 40% / 44% 40% 60% 56%; transform:translateY(0); }
+    50%{ border-radius:58% 42% 40% 60% / 56% 60% 40% 44%; transform:translateY(-14px); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .float-photo{ animation:none; border-radius:32px; }
+  }
+  .year-badge{
+    position:absolute;
+    bottom:-1.2rem; left:-1.2rem;
+    background:var(--coral);
+    color:var(--dusk);
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:600;
+    font-size:1.6rem;
+    width:100px; height:100px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    text-align:center;
+    box-shadow:0 12px 28px rgba(242,106,87,0.4);
+    z-index:2;
+  }
+  .origin-photo-wrap{ position:relative; padding-bottom:1.2rem; padding-left:1.2rem; }
+
+  /* ---- Method section ---- */
+  .method-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:2rem;
+    margin-top:3rem;
+  }
+  .method-card{
+    background:rgba(247,238,220,0.06);
+    border:1px solid rgba(247,238,220,0.16);
+    border-radius:24px;
+    padding:2.2rem 1.8rem;
+    backdrop-filter:blur(4px);
+  }
+  .method-card .num{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:2.6rem;
+    color:var(--coral);
+    display:block;
+    margin-bottom:0.8rem;
+    line-height:1;
+  }
+  .method-card h3{
+    font-family:var(--sans);
+    font-weight:700;
+    font-size:1.1rem;
+    margin:0 0 0.6rem;
+    color:var(--dusk);
+  }
+  .method-card p{
+    font-size:0.98rem;
+    line-height:1.65;
+    color:rgba(247,238,220,0.78);
+    margin:0;
+  }
+
+  .not-block{
+    margin-top:3.5rem;
+    padding:2.4rem clamp(1.5rem, 4vw, 3rem);
+    border-radius:28px;
+    background:rgba(20,33,61,0.35);
+    border:1px solid rgba(247,238,220,0.14);
+  }
+  .not-block h4{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:500;
+    font-size:1.4rem;
+    color:var(--dusk);
+    margin:0 0 1.2rem;
+  }
+  .not-list{
+    list-style:none;
+    margin:0; padding:0;
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.7rem 1rem;
+  }
+  .not-list li{
+    font-size:0.94rem;
+    color:rgba(247,238,220,0.7);
+    display:flex;
+    align-items:center;
+    gap:0.55rem;
+  }
+  .not-list li::before{
+    content:"";
+    width:7px; height:7px;
+    border-radius:50%;
+    background:var(--coral);
+    opacity:0.7;
+    flex-shrink:0;
+  }
+
+  /* ---- Services: flowing chips ---- */
+  .chip-flow{
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.8rem;
+    margin-top:2.8rem;
+  }
+  .chip{
+    font-family:var(--sans);
+    font-weight:600;
+    font-size:0.94rem;
+    color:var(--ink);
+    background:var(--dusk);
+    border:1.5px solid rgba(15,95,95,0.18);
+    padding:0.75rem 1.4rem;
+    border-radius:100px;
+    transition:transform 0.3s ease, background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    cursor:default;
+  }
+  .chip:hover{
+    background:var(--teal);
+    color:var(--dusk);
+    border-color:var(--teal);
+    transform:translateY(-3px) scale(1.03);
+    box-shadow:0 10px 22px rgba(15,95,95,0.28);
+  }
+  .chip:nth-child(3n+1):hover{ background:var(--coral); border-color:var(--coral); box-shadow:0 10px 22px rgba(242,106,87,0.32); }
+
+  /* ---- Gallery strip: calm rounded-rect photos, generous margin ---- */
+  .gallery-strip{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:1.6rem;
+    margin-top:1rem;
+  }
+  .gallery-photo{
+    border-radius:26px;
+    overflow:hidden;
+    aspect-ratio:3/4;
+    box-shadow:0 20px 40px -18px rgba(15,95,95,0.3);
+    transition:transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .gallery-photo img{ width:100%; height:100%; object-fit:cover; }
+  .gallery-photo:hover{ transform:translateY(-6px); box-shadow:0 26px 46px -16px rgba(242,106,87,0.32); }
+  .gallery-strip .gallery-photo:nth-child(2),
+  .gallery-strip .gallery-photo:nth-child(4){ margin-top:2.2rem; }
+
+  /* ---- Format section ---- */
+  .format-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:2.5rem;
+    margin-top:3rem;
+  }
+  .format-card{
+    padding:2.6rem;
+    border-radius:28px;
+    background:linear-gradient(150deg, rgba(15,95,95,0.35), rgba(242,106,87,0.22));
+    border:1px solid rgba(247,238,220,0.18);
+  }
+  .format-card h3{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:600;
+    font-size:1.7rem;
+    margin:0 0 0.9rem;
+    color:var(--dusk);
+  }
+  .format-card p{
+    font-size:1rem;
+    line-height:1.7;
+    color:rgba(247,238,220,0.82);
+    margin:0;
+  }
+
+  /* ---- Certifications ---- */
+  .cert-row{
+    display:flex;
+    gap:2.5rem;
+    flex-wrap:wrap;
+    margin-top:3rem;
+    align-items:center;
+  }
+  .cert-badge{
+    display:flex;
+    align-items:center;
+    gap:0.9rem;
+    padding:1rem 1.5rem;
+    border-radius:16px;
+    background:var(--dusk);
+    border:1px solid rgba(15,95,95,0.18);
+  }
+  .cert-badge svg{ flex-shrink:0; }
+  .cert-badge .cert-text{ line-height:1.3; }
+  .cert-badge .cert-text strong{ display:block; font-size:0.92rem; color:var(--ink); }
+  .cert-badge .cert-text span{ font-size:0.78rem; color:rgba(20,33,61,0.6); }
+
+  /* ---- Contact / footer ---- */
+  .contact-wrap{
+    text-align:center;
+    padding:7rem 1.5rem 5rem;
+  }
+  .contact-wrap h2{ margin-bottom:1rem; }
+  .contact-email{
+    display:inline-block;
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:600;
+    font-size:clamp(1.6rem, 4vw, 2.4rem);
+    color:var(--dusk);
+    text-decoration:none;
+    margin:2rem 0 2.8rem;
+    border-bottom:2px solid rgba(247,238,220,0.4);
+    padding-bottom:0.3rem;
+    transition:border-color 0.3s ease, color 0.3s ease;
+  }
+  .contact-email:hover{ border-color:var(--coral); color:var(--coral); }
+  footer{
+    text-align:center;
+    padding:2.5rem 1.5rem 3rem;
+    font-size:0.82rem;
+    color:rgba(20,33,61,0.55);
+    background:var(--dusk);
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 900px){
+    .origin-grid{ grid-template-columns:1fr; gap:3rem; }
+    .origin-photo-wrap{ max-width:340px; margin:0 auto; }
+    .method-grid{ grid-template-columns:1fr; }
+    .gallery-strip{ grid-template-columns:repeat(2, 1fr); }
+    .format-grid{ grid-template-columns:1fr; }
+    .gallery-strip .gallery-photo:nth-child(2), .gallery-strip .gallery-photo:nth-child(4){ margin-top:0; }
+  }
+  @media (max-width: 600px){
+    .wrap{ padding:4.5rem 1.25rem; }
+    .hero-inner{ padding:6.5rem 1.25rem 3.5rem; }
+    .hero h1{ font-size:clamp(2.6rem, 12vw, 3.6rem); }
+    .cert-row{ gap:1.2rem; }
+    .nav-cta{ padding:0.55rem 1.1rem; font-size:0.8rem; }
+    #blob{ display:none; }
+    .contact-wrap{ padding:5rem 1.25rem 4rem; }
+  }
+</style>
+</head>
+<body>
+
+<div id="blob" aria-hidden="true"></div>
+<div class="flow-rail" aria-hidden="true"><div class="flow-rail-dot" id="flowDot"></div></div>
+
+<nav class="nav">
+  <a class="nav-mark" href="#top">Kierra's K9</a>
+  <a class="nav-cta" href="#contact">Get in touch</a>
+</nav>
+
+<header class="hero" id="top">
+  <div class="mesh" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <span class="eyebrow">California &middot; Est. 2003</span>
+    <h1>Training that <em>flows</em><br>with your dog</h1>
+    <p class="lede">Personalized, science-based dog training built on positive reinforcement — helping dogs and their people find calm, confidence, and connection, one session at a time.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="#contact">Start training</a>
+      <a class="btn btn-ghost" href="#method">Our approach</a>
+    </div>
+  </div>
+  <div class="scroll-cue">Scroll</div>
+</header>
+
+<section class="panel" id="origin">
+  <div class="wrap">
+    <div class="origin-grid">
+      <div>
+        <span class="kicker">Since 2003</span>
+        <h2>A journey that began with one dog, one leash, and a lot of curiosity.</h2>
+        <p class="body-text">My journey began in 2003 when I started my business under the name Kierra's K9 Care. As my experience and services continued to grow, the business developed into what is now Kierra's K9 Training — providing personalized, science-based dog training designed to strengthen the relationship between dogs and their families.</p>
+        <p class="body-text">I'm Kierra, a science-based dog trainer specializing in behavior. I don't just teach commands — I work to understand <em>why</em> a behavior is happening, reading dog psychology, emotions, body language, environment, and learning history to build a plan for each dog and family.</p>
+      </div>
+      <div class="origin-photo-wrap">
+        <div class="float-photo">
+          <img src="../assets/IMG_5205.png" alt="Kierra working with a dog outdoors during a training session" />
+        </div>
+        <div class="year-badge">Est.<br>2003</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="panel panel-ink" id="method">
+  <div class="wrap">
+    <span class="kicker">Positive, science-based</span>
+    <h2>We teach with clarity, not correction.</h2>
+    <p class="body-text">My methods are based on modern learning science, positive reinforcement, clear communication, and trust. I use food rewards, toys, praise, clicker training, and whatever motivates each individual dog — because training should feel like a fun, rewarding game, not a chore.</p>
+
+    <div class="method-grid">
+      <div class="method-card">
+        <span class="num">01</span>
+        <h3>Understand why</h3>
+        <p>Every behavior has a reason. We read body language, environment, and learning history before we ever ask for a new one.</p>
+      </div>
+      <div class="method-card">
+        <span class="num">02</span>
+        <h3>Mark and reward</h3>
+        <p>Clicker training gives dogs clear, precise feedback — marking the exact moment they get it right, so learning feels obvious and fun.</p>
+      </div>
+      <div class="method-card">
+        <span class="num">03</span>
+        <h3>Train both ends</h3>
+        <p>Successful training involves both ends of the leash. Humans learn to communicate, read signals, and keep practicing at home.</p>
+      </div>
+    </div>
+
+    <div class="not-block">
+      <h4>What you won't find here</h4>
+      <ul class="not-list">
+        <li>Shock or electronic collars</li>
+        <li>Choke collars</li>
+        <li>Prong collars</li>
+        <li>Fear, pain, force, or intimidation</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="panel" id="services">
+  <div class="wrap">
+    <span class="kicker">Beyond obedience</span>
+    <h2>Help for the behaviors that matter most.</h2>
+    <p class="body-text">Many trainers focus mainly on sit, stay, come, and heel. My training goes much further — into the everyday behaviors that shape life with a dog.</p>
+    <div class="chip-flow">
+      <span class="chip">Anxiety &amp; fear</span>
+      <span class="chip">Reactivity</span>
+      <span class="chip">Leash pulling</span>
+      <span class="chip">Jumping &amp; overexcitement</span>
+      <span class="chip">Impulse control</span>
+      <span class="chip">Socialization</span>
+      <span class="chip">Resource guarding</span>
+      <span class="chip">Destructive behavior</span>
+      <span class="chip">Potty training</span>
+      <span class="chip">Puppy behaviors</span>
+      <span class="chip">Adolescent dogs</span>
+      <span class="chip">Manners</span>
+      <span class="chip">Focus &amp; distraction</span>
+      <span class="chip">Service-dog training</span>
+      <span class="chip">Basic &amp; advanced obedience</span>
+    </div>
+
+    <div class="gallery-strip">
+      <div class="gallery-photo"><img src="../assets/IMG_5206.png" alt="Dog practicing focus during an outdoor training session" /></div>
+      <div class="gallery-photo"><img src="../assets/IMG_5207.png" alt="Kierra and a dog working together on leash skills" /></div>
+      <div class="gallery-photo"><img src="../assets/IMG_5337.png" alt="A relaxed dog in a real-world training environment" /></div>
+      <div class="gallery-photo"><img src="../assets/IMG_4683.png" alt="Dog and owner during a positive reinforcement session" /></div>
+    </div>
+  </div>
+</section>
+
+<section class="panel panel-ink" id="format">
+  <div class="wrap">
+    <span class="kicker">How training happens</span>
+    <h2>In your home, or wherever life happens.</h2>
+    <p class="body-text">Every dog and family receives personalized, hands-on support. Training can take place in your home or in real-world environments where your dog needs help the most.</p>
+    <div class="format-grid">
+      <div class="format-card">
+        <h3>In-home training</h3>
+        <p>One-on-one sessions in the environment your dog knows best, where habits form and where lasting change begins.</p>
+      </div>
+      <div class="format-card">
+        <h3>Real-world settings</h3>
+        <p>Sidewalks, parks, and public spaces — practicing where distractions live, so skills hold up outside the front door.</p>
+      </div>
+    </div>
+    <p class="body-text" style="margin-top:2.4rem;">Owners are welcome to participate, or training may be completed while they're at work. Either way, my goal is to help you understand your dog and build a lasting relationship of trust, communication, and teamwork.</p>
+
+    <div class="cert-row" aria-label="Certifications">
+      <div class="cert-badge">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <circle cx="20" cy="20" r="19" stroke="#F26A57" stroke-width="1.5"/>
+          <path d="M13 20.5l4.5 4.5L27 15" stroke="#F26A57" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="cert-text"><strong>CCPDT Certified</strong><span>Certified Professional Dog Trainer</span></span>
+      </div>
+      <div class="cert-badge">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <circle cx="20" cy="20" r="19" stroke="#0F5F5F" stroke-width="1.5"/>
+          <path d="M20 10l2.5 6.2 6.6.5-5 4.4 1.6 6.5-5.7-3.6-5.7 3.6 1.6-6.5-5-4.4 6.6-.5z" stroke="#0F5F5F" stroke-width="1.5" stroke-linejoin="round"/>
+        </svg>
+        <span class="cert-text"><strong>AKC CGC Evaluator</strong><span>Canine Good Citizen Program</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero" id="contact" style="min-height:auto;">
+  <div class="mesh mesh--end" aria-hidden="true" style="animation-delay:-8s;"></div>
+  <div class="contact-wrap" style="position:relative; z-index:2;">
+    <span class="eyebrow">Let's talk</span>
+    <h2 style="color:var(--dusk);">Ready to find your <em style="color:var(--coral);">flow</em>?</h2>
+    <p class="lede" style="margin-left:auto; margin-right:auto;">Reach out and tell us about your dog — where you're stuck, what you've tried, and what a good day together would look like.</p>
+    <a class="contact-email" href="mailto:hello@kierrask9.example">hello@kierrask9.example</a>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="mailto:hello@kierrask9.example">Email Kierra</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 Kierra's K9 Training &middot; California &middot; Serving dogs and families since 2003
+</footer>
+
+<script>
+(function(){
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+
+  /* ---- Cursor-following soft-glow blob ---- */
+  if(!reduceMotion && !isTouch){
+    var blob = document.getElementById('blob');
+    var targetX = window.innerWidth/2, targetY = window.innerHeight/2;
+    var curX = targetX, curY = targetY;
+    var active = false;
+
+    window.addEventListener('pointermove', function(e){
+      targetX = e.clientX; targetY = e.clientY;
+      active = true;
+    }, { passive:true });
+
+    function raf(){
+      curX += (targetX - curX) * 0.09;
+      curY += (targetY - curY) * 0.09;
+      if(active){
+        blob.style.transform = 'translate(' + curX + 'px,' + curY + 'px)';
+      }
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+  }
+
+  /* ---- Scroll-linked ambient color evolution: teal -> coral -> dusk ----
+     --flow (0 -> 1) drives a hue-rotate on the mesh gradients and the
+     position of the flow-rail dot, so the reader sees one continuous
+     color story as they move through the page. */
+  var root = document.documentElement;
+  var flowDot = document.getElementById('flowDot');
+
+  function updateFlow(){
+    var scrollTop = window.scrollY || document.documentElement.scrollTop;
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    var progress = docHeight > 0 ? Math.min(1, Math.max(0, scrollTop / docHeight)) : 0;
+    root.style.setProperty('--flow', progress.toFixed(4));
+    if(flowDot){ flowDot.style.top = (progress * 100).toFixed(2) + '%'; }
+  }
+
+  if(reduceMotion){
+    root.style.setProperty('--flow', '0');
+  } else {
+    var ticking = false;
+    window.addEventListener('scroll', function(){
+      if(!ticking){
+        window.requestAnimationFrame(function(){
+          updateFlow();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive:true });
+    updateFlow();
+  }
+})();
+</script>
+
+</body>
+</html>
