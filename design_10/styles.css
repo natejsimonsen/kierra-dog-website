@@ -1,0 +1,461 @@
+/* ===========================================================
+   KIERRA'S K9 TRAINING — design_10: TERMINAL
+   Science-based training, literally. A phosphor-green shell.
+   =========================================================== */
+
+:root {
+  --console:      #0B0F0B;
+  --surface:      #050705;
+  --phosphor:     #5CFF8F;
+  --phosphor-dim: #2E7A48;
+  --phosphor-dim2:#1C4E2E;
+  --amber:        #FFB13B;
+  --amber-dim:    #7A5A22;
+  --text:         var(--phosphor);
+
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --fs-12: 0.75rem;
+  --fs-14: 0.875rem;
+  --fs-16: 1rem;
+  --fs-22: 1.375rem;
+  --fs-36: 2.25rem;
+  --fs-72: 4.5rem;
+
+  --col-max: 860px;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  background: var(--console);
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  margin: 0;
+  background: var(--console);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: var(--fs-16);
+  line-height: 1.6;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "liga" 1, "calt" 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--phosphor);
+  color: var(--console);
+}
+
+a { color: var(--phosphor); }
+
+/* ---------------------------------------------------------
+   CRT overlay — faint scanlines + vignette, purely decorative
+   --------------------------------------------------------- */
+.crt-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0,0,0,0) 0px,
+      rgba(0,0,0,0) 2px,
+      rgba(0,0,0,0.10) 3px
+    ),
+    radial-gradient(ellipse at center, rgba(0,0,0,0) 55%, rgba(0,0,0,0.35) 100%);
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+}
+
+/* ---------------------------------------------------------
+   Top chrome bar
+   --------------------------------------------------------- */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.6rem 1.25rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--phosphor-dim2);
+  font-size: var(--fs-12);
+}
+
+.chrome-dots { display: flex; gap: 0.4rem; flex: 0 0 auto; }
+.chrome-dots span {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--phosphor-dim2);
+  border: 1px solid var(--phosphor-dim);
+}
+
+.chrome-title {
+  color: var(--phosphor-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 0 1 auto;
+}
+
+.topbar nav {
+  margin-left: auto;
+  display: flex;
+  gap: 1.1rem;
+  flex-wrap: wrap;
+}
+
+.topbar nav a {
+  color: var(--phosphor);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  padding: 0.15rem 0;
+  border-bottom: 1px solid transparent;
+}
+.topbar nav a:hover,
+.topbar nav a:focus-visible {
+  border-bottom-color: var(--phosphor);
+}
+.topbar nav a .key {
+  color: var(--amber);
+}
+
+/* On touch devices the literal keypress doesn't apply — mute the
+   bracket hint so the control reads as a plain tap target instead
+   of an unusable keyboard hint. */
+@media (hover: none) and (pointer: coarse) {
+  .topbar nav a .key { color: var(--phosphor-dim); }
+}
+
+:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 3px;
+}
+
+/* ---------------------------------------------------------
+   Shell / layout
+   --------------------------------------------------------- */
+main {
+  max-width: var(--col-max);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.section {
+  padding: 3.5rem 0;
+  border-bottom: 1px dashed var(--phosphor-dim2);
+}
+.section:last-of-type { border-bottom: none; }
+
+.cmd {
+  font-size: var(--fs-22);
+  font-weight: 700;
+  margin: 0 0 1.25rem;
+  color: var(--phosphor);
+  letter-spacing: -0.005em;
+}
+.cmd .prompt-sym {
+  color: var(--phosphor-dim);
+  font-weight: 400;
+  margin-right: 0.5rem;
+}
+
+.output {
+  color: var(--phosphor);
+  max-width: 68ch;
+}
+.output p { margin: 0 0 1rem; }
+.output p:last-child { margin-bottom: 0; }
+
+.dim { color: var(--phosphor-dim); }
+.amber { color: var(--amber); }
+
+/* ---------------------------------------------------------
+   Hero
+   --------------------------------------------------------- */
+.hero {
+  min-height: calc(100vh - 49px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+  border-bottom: 1px dashed var(--phosphor-dim2);
+  position: relative;
+  padding-top: 3rem;
+  padding-bottom: 2.5rem;
+}
+
+.hero-photo-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+.hero-photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 20%;
+  opacity: 0.16;
+}
+.hero-photo-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--console) 0%, rgba(11,15,11,0.55) 40%, var(--console) 100%);
+}
+
+.ascii-dog {
+  margin: 0 0 0.5rem;
+  color: var(--phosphor-dim);
+  font-size: 0.62rem;
+  line-height: 1.05;
+  white-space: pre;
+}
+
+.terminal-block {
+  font-size: var(--fs-16);
+}
+
+.terminal-line {
+  white-space: pre-wrap;
+  word-break: break-word;
+  min-height: 1.6em;
+  margin: 0 0 0.75rem;
+}
+
+.terminal-line .prompt {
+  color: var(--phosphor-dim);
+}
+
+.terminal-line.out {
+  font-size: var(--fs-72);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--phosphor);
+  margin: 0.5rem 0 1.75rem;
+}
+
+.terminal-line.out .tag {
+  display: block;
+  font-size: var(--fs-14);
+  font-weight: 400;
+  color: var(--phosphor-dim);
+  margin-top: 0.5rem;
+  letter-spacing: 0.02em;
+}
+
+.terminal-line.ok {
+  color: var(--amber);
+  font-weight: 600;
+}
+
+.cursor {
+  display: inline-block;
+  width: 0.55em;
+  background: var(--phosphor);
+  color: var(--phosphor);
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.hero-hint {
+  color: var(--phosphor-dim);
+  font-size: var(--fs-12);
+  margin-top: 1rem;
+}
+.hero-hint .key { color: var(--amber); }
+
+/* ---------------------------------------------------------
+   Badges
+   --------------------------------------------------------- */
+.badges {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin: 0.25rem 0 1.5rem;
+}
+.badge {
+  border: 1px solid var(--phosphor-dim);
+  color: var(--phosphor);
+  padding: 0.35rem 0.7rem;
+  font-size: var(--fs-14);
+  letter-spacing: 0.03em;
+  border-radius: 2px;
+}
+
+/* ---------------------------------------------------------
+   Photos — phosphor duotone
+   --------------------------------------------------------- */
+.photo-frame {
+  margin: 1.75rem 0 0;
+  max-width: 360px;
+}
+.photo-frame.wide { max-width: 100%; }
+
+.photo-frame figcaption {
+  font-size: var(--fs-12);
+  color: var(--phosphor-dim);
+  margin-top: 0.5rem;
+  border-left: 2px solid var(--phosphor-dim);
+  padding-left: 0.5rem;
+}
+
+.phosphor {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: grayscale(1) sepia(1) hue-rotate(66deg) saturate(2.1) brightness(1.05) contrast(1.05);
+  border: 1px solid var(--phosphor-dim);
+}
+
+.photo-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-top: 1.75rem;
+}
+@media (max-width: 640px) {
+  .photo-row { grid-template-columns: 1fr; }
+}
+
+/* ---------------------------------------------------------
+   Method section — man page + WARN block
+   --------------------------------------------------------- */
+.man-h {
+  color: var(--amber);
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+.warn-block {
+  margin-top: 1.5rem;
+  border: 1px solid var(--amber-dim);
+  background: rgba(255, 177, 59, 0.06);
+  color: var(--amber);
+  padding: 1rem 1.25rem;
+  font-size: var(--fs-14);
+  line-height: 1.7;
+}
+.warn-block p { margin: 0; }
+
+/* ---------------------------------------------------------
+   ASCII table
+   --------------------------------------------------------- */
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  background: var(--surface);
+  padding: 0.5rem 0 0.75rem;
+}
+
+.ascii-table {
+  margin: 0;
+  padding: 0 1rem;
+  font-size: var(--fs-12);
+  line-height: 1.55;
+  color: var(--phosphor);
+  white-space: pre;
+  width: max-content;
+}
+.ascii-table .hd { color: var(--phosphor); font-weight: 700; }
+.ascii-table .row-code { color: var(--amber); }
+.ascii-table .rule { color: var(--phosphor-dim2); }
+
+.table-note {
+  font-size: var(--fs-12);
+  color: var(--phosphor-dim);
+  margin-top: 0.75rem;
+}
+
+/* ---------------------------------------------------------
+   Format section
+   --------------------------------------------------------- */
+.format-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+@media (max-width: 720px) {
+  .format-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+
+/* ---------------------------------------------------------
+   Contact
+   --------------------------------------------------------- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.4rem 1.5rem;
+  margin-top: 0.5rem;
+}
+.contact-grid dt {
+  color: var(--phosphor-dim);
+}
+.contact-grid dd {
+  margin: 0;
+  color: var(--phosphor);
+}
+.contact-grid a {
+  color: var(--phosphor);
+  text-decoration: underline;
+  text-decoration-color: var(--phosphor-dim);
+  text-underline-offset: 3px;
+}
+.contact-grid a:hover { text-decoration-color: var(--phosphor); }
+
+.prompt-end {
+  margin-top: 2rem;
+  color: var(--phosphor-dim);
+}
+
+footer.section {
+  padding-top: 0;
+  padding-bottom: 3rem;
+  border-bottom: none;
+}
+footer .fine {
+  font-size: var(--fs-12);
+  color: var(--phosphor-dim2);
+  margin-top: 2rem;
+}
+
+/* ---------------------------------------------------------
+   Reduced motion
+   --------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .cursor { animation: none; opacity: 1; }
+}
+
+/* ---------------------------------------------------------
+   Mobile
+   --------------------------------------------------------- */
+@media (max-width: 640px) {
+  :root {
+    --fs-36: 1.7rem;
+    --fs-72: 2.6rem;
+    --fs-22: 1.15rem;
+  }
+  .topbar { flex-wrap: wrap; padding: 0.5rem 0.9rem; }
+  .topbar nav { gap: 0.75rem; margin-left: 0; width: 100%; }
+  .chrome-title { display: none; }
+  main { padding: 0 0.9rem; }
+  .section { padding: 2.5rem 0; }
+  .ascii-dog { font-size: 0.42rem; }
+  .hero { padding-top: 2.5rem; }
+}
