@@ -1,0 +1,644 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kierra's K9 Training — A Portrait</title>
+<meta name="description" content="Science-based, positive dog training in California since 2003. A portrait of Kierra's K9 Training." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bone:#F4EFE6;
+    --bone-dim:#EAE3D5;
+    --ink:#101010;
+    --ink-70: rgba(16,16,16,.7);
+    --ink-50: rgba(16,16,16,.5);
+    --tobacco:#8A5A3B;
+    --smoke:#9A968E;
+    --measure: 32rem;
+    --edge: clamp(1.25rem, 4vw, 4rem);
+  }
+
+  *,*::before,*::after{ box-sizing: border-box; }
+  html{ background:var(--bone); }
+  body{
+    margin:0;
+    background:var(--bone);
+    color:var(--ink);
+    font-family:"Inter", sans-serif;
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+
+  img{ max-width:100%; display:block; }
+
+  a{ color:inherit; }
+
+  ::selection{ background:var(--tobacco); color:var(--bone); }
+
+  :focus-visible{
+    outline: 2px solid var(--tobacco);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important; }
+  }
+
+  .display{
+    font-family:"Fraunces", serif;
+    font-style:italic;
+    font-weight:380;
+    font-optical-sizing:auto;
+    letter-spacing:-0.01em;
+  }
+
+  .eyebrow{
+    font-family:"JetBrains Mono", monospace;
+    font-size:0.72rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--tobacco);
+    display:flex;
+    align-items:center;
+    gap:0.7em;
+  }
+  .eyebrow::before{
+    content:"";
+    width:2.1em;
+    height:1px;
+    background:var(--tobacco);
+    display:inline-block;
+  }
+
+  .mono{ font-family:"JetBrains Mono", monospace; }
+
+  /* ---------- Masthead ---------- */
+  .masthead{
+    position:relative;
+    z-index:5;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding: 1.15rem var(--edge);
+    font-family:"JetBrains Mono", monospace;
+    font-size:0.68rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--ink);
+    background:var(--bone);
+    border-bottom:1px solid rgba(16,16,16,0.1);
+  }
+  .masthead a{ text-decoration:none; }
+  .masthead .mark{ font-weight:500; }
+  .masthead .meta{ color:var(--smoke); }
+  .masthead nav{ display:flex; align-items:center; gap:1.6rem; }
+  .masthead nav a{ color:var(--smoke); transition:color .2s ease; }
+  .masthead nav a:hover{ color:var(--tobacco); }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    height: 92vh;
+    min-height: 560px;
+    overflow:hidden;
+    background:var(--ink);
+  }
+  .hero img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position: 50% 22%;
+  }
+  .hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, rgba(16,16,16,0.05) 0%, rgba(16,16,16,0) 32%, rgba(16,16,16,0.12) 62%, rgba(16,16,16,0.68) 100%);
+  }
+  .hero-content{
+    position:relative;
+    z-index:2;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    padding: var(--edge);
+    padding-bottom: clamp(2rem, 5vw, 3.5rem);
+  }
+  .hero-eyebrow{
+    font-family:"JetBrains Mono", monospace;
+    font-size:0.72rem;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--bone);
+    opacity:0.85;
+    display:flex;
+    align-items:center;
+    gap:0.8em;
+    margin-bottom: clamp(1rem,3vw,1.6rem);
+  }
+  .hero-eyebrow::before{
+    content:"";
+    width:2.4em;
+    height:1px;
+    background:var(--tobacco);
+  }
+  .hero h1{
+    margin:0;
+    color:var(--bone);
+    font-size: clamp(3.4rem, 10vw, 8.4rem);
+    line-height:0.94;
+    font-weight:400;
+    max-width: 18ch;
+  }
+  .hero-foot{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:2rem;
+    margin-top: clamp(1.6rem, 4vw, 2.6rem);
+    flex-wrap:wrap;
+  }
+  .hero-sub{
+    color: var(--bone-dim);
+    font-family:"Inter", sans-serif;
+    font-size:1.02rem;
+    max-width:32ch;
+    line-height:1.55;
+  }
+  .hero-cta{
+    font-family:"JetBrains Mono", monospace;
+    font-size:0.78rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--bone);
+    text-decoration:none;
+    border-bottom:1px solid var(--tobacco);
+    padding-bottom:0.35em;
+    white-space:nowrap;
+    transition:opacity .2s ease;
+  }
+  .hero-cta:hover{ opacity:0.7; }
+
+  /* ---------- Section shell ---------- */
+  section{ position:relative; }
+  .wrap{
+    max-width: 78rem;
+    margin:0 auto;
+    padding: clamp(4rem,9vw,7.5rem) var(--edge);
+  }
+  .section-head{
+    margin-bottom: clamp(2.2rem, 5vw, 3.4rem);
+  }
+  .section-head h2{
+    margin: 0.7rem 0 0;
+    font-size: clamp(2.1rem, 4.6vw, 3.6rem);
+    font-weight:400;
+    line-height:1.05;
+  }
+
+  /* ---------- Article (two column) ---------- */
+  .article-body{
+    columns: 2;
+    column-gap: 4.2rem;
+    max-width: 68rem;
+  }
+  .article-body p{
+    margin: 0 0 1.4em;
+    max-width: var(--measure);
+    break-inside: avoid;
+  }
+  .article-body p:first-of-type::first-letter{
+    font-family:"Fraunces", serif;
+    font-style:italic;
+    font-weight:380;
+    font-size:5.2rem;
+    line-height:0.75;
+    float:left;
+    margin: 0.02em 0.09em 0 0;
+    color:var(--tobacco);
+  }
+
+  /* Pull quote breaking across columns, overlapping photo */
+  .quote-break{
+    break-inside: avoid;
+    column-span: all;
+    position:relative;
+    margin: 3.2rem 0 3.6rem;
+    height: 24rem;
+  }
+  .quote-break .qphoto{
+    position:absolute;
+    inset: 0;
+    width: 62%;
+    height:100%;
+    overflow:hidden;
+  }
+  .quote-break .qphoto img{
+    width:100%; height:100%; object-fit:cover; object-position: 50% 25%;
+  }
+  .quote-break blockquote{
+    position:absolute;
+    z-index:2;
+    top:50%;
+    left: 34%;
+    right: 0;
+    transform: translateY(-50%);
+    margin:0;
+    padding: 0 1.4rem 0 0;
+    font-family:"Fraunces", serif;
+    font-style:italic;
+    font-weight:360;
+    font-size: clamp(1.7rem, 3.3vw, 2.6rem);
+    line-height:1.14;
+    color: var(--bone);
+    mix-blend-mode: difference;
+  }
+  .quote-break .qtext::before{ content:"\201C"; }
+  .quote-break .qtext::after{ content:"\201D"; }
+  .quote-break cite{
+    display:block;
+    margin-top:0.9rem;
+    font-family:"JetBrains Mono", monospace;
+    font-style:normal;
+    font-size:0.68rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color: var(--bone);
+    mix-blend-mode: difference;
+    opacity:0.9;
+  }
+
+  /* ---------- Method ---------- */
+  .method-grid{
+    display:grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: clamp(2.5rem, 6vw, 5rem);
+    align-items:start;
+  }
+  .method-grid .article-body{ columns: 1; max-width: var(--measure); }
+  .exclusions{
+    border-top:1px solid rgba(16,16,16,0.15);
+    padding-top:1.6rem;
+    margin-top:0.4rem;
+  }
+  .exclusions .label{
+    font-family:"JetBrains Mono", monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--ink-70);
+    margin-bottom:1.1rem;
+  }
+  .exclusions ul{
+    list-style:none;
+    margin:0; padding:0;
+    display:flex; flex-direction:column; gap:0.85rem;
+  }
+  .exclusions li{
+    display:flex;
+    gap:0.85em;
+    align-items:baseline;
+    font-family:"JetBrains Mono", monospace;
+    font-size:0.82rem;
+    letter-spacing:0.04em;
+    color:var(--ink);
+  }
+  .exclusions li::before{
+    content:"\00d7";
+    color:var(--tobacco);
+    font-weight:600;
+  }
+
+  /* ---------- Credentials strip ---------- */
+  .creds-strip{
+    background:var(--ink);
+    color:var(--bone);
+  }
+  .creds-strip .wrap{
+    padding-top: clamp(1.6rem, 4vw, 2.2rem);
+    padding-bottom: clamp(1.6rem, 4vw, 2.2rem);
+    text-align:center;
+  }
+  .creds-strip .cred{
+    font-family:"JetBrains Mono", monospace;
+    font-size:0.76rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--bone);
+    margin:0;
+  }
+  .creds-strip .cred b{ color:var(--tobacco); font-weight:500; }
+  .creds-strip .sep{ color:var(--tobacco); padding:0 0.9em; }
+
+  /* ---------- Index / behavior list ---------- */
+  .index-intro{
+    max-width: var(--measure);
+    margin: 0 0 2.4rem;
+    font-size:1.05rem;
+  }
+  .behavior-index{
+    columns: 3;
+    column-gap: 2.6rem;
+  }
+  .behavior-index div{
+    break-inside: avoid;
+    padding: 0.78rem 0;
+    border-top:1px solid rgba(16,16,16,0.14);
+    font-size:0.98rem;
+  }
+  .behavior-index div:nth-last-child(-n+1){ border-bottom:1px solid rgba(16,16,16,0.14); }
+
+  /* ---------- Format + photo essay ---------- */
+  .format-copy{ max-width: var(--measure); margin-bottom: clamp(2.6rem, 6vw, 4rem); }
+  .essay{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.1rem;
+  }
+  .essay figure{ margin:0; }
+  .essay .frame{
+    aspect-ratio: 3 / 4;
+    overflow:hidden;
+    background:var(--ink);
+  }
+  .essay .frame img{ width:100%; height:100%; object-fit:cover; }
+  .essay figcaption{
+    margin-top:0.7rem;
+    font-family:"JetBrains Mono", monospace;
+    font-size:0.7rem;
+    letter-spacing:0.06em;
+    color:var(--smoke);
+  }
+
+  /* ---------- Footer / contact ---------- */
+  .contact{
+    background:var(--ink);
+    color:var(--bone);
+  }
+  .contact .wrap{
+    padding-top: clamp(4.5rem, 10vw, 7rem);
+    padding-bottom: clamp(3rem, 6vw, 4rem);
+  }
+  .contact .eyebrow{ color:var(--tobacco); }
+  .contact h2{
+    margin: 0.8rem 0 2.4rem;
+    font-size: clamp(2.4rem, 6vw, 4.6rem);
+    font-weight:400;
+    line-height:1.02;
+    max-width: 16ch;
+    color:var(--bone);
+  }
+  .contact-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    gap:2rem;
+    border-top:1px solid rgba(244,239,230,0.18);
+    padding-top:2.2rem;
+  }
+  .contact-email{
+    font-family:"Fraunces", serif;
+    font-style:italic;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    color:var(--bone);
+    text-decoration:none;
+    border-bottom:1px solid var(--tobacco);
+    padding-bottom:0.2em;
+  }
+  .contact-meta{
+    font-family:"JetBrains Mono", monospace;
+    font-size:0.76rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--smoke);
+    line-height:1.9;
+    text-align:right;
+  }
+  .colophon{
+    margin-top: clamp(3rem, 7vw, 4.5rem);
+    padding-top:1.4rem;
+    border-top:1px solid rgba(244,239,230,0.12);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:0.6rem;
+    font-family:"JetBrains Mono", monospace;
+    font-size:0.66rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--smoke);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px){
+    .method-grid{ grid-template-columns:1fr; }
+    .behavior-index{ columns:2; }
+    .quote-break{ height: 30rem; }
+    .quote-break .qphoto{ width: 74%; }
+    .quote-break blockquote{ left: 30%; font-size: clamp(1.5rem, 4vw, 2rem); }
+  }
+
+  @media (max-width: 640px){
+    .masthead{ padding: 0.9rem 1.1rem; font-size:0.6rem; }
+    .masthead .meta{ display:none; }
+    .hero{ height:100vh; min-height:640px; }
+    .hero-content{ padding: 1.1rem; padding-bottom:2.2rem; }
+    .hero h1{ font-size: clamp(2.9rem, 13vw, 4.2rem); max-width:11ch; }
+    .hero-foot{ flex-direction:column; align-items:flex-start; gap:1.4rem; }
+    .wrap{ padding-left:1.1rem; padding-right:1.1rem; }
+    .article-body{ columns:1; }
+    .article-body p:first-of-type::first-letter{ font-size:3.6rem; }
+    .quote-break{ margin: 2.2rem 0 2.6rem; height: 22rem; }
+    .quote-break .qphoto{ width: 66%; }
+    .quote-break blockquote{ left: 26%; font-size: 1.32rem; padding-right: 0.4rem; }
+    .behavior-index{ columns:1; }
+    .essay{ grid-template-columns:1fr 1fr; }
+    .essay figure:first-child{ grid-column:1/3; }
+    .essay figure:first-child .frame{ aspect-ratio: 4/3; }
+    .creds-strip .wrap{ gap:1rem 1.6rem; }
+    .creds-strip .cred{ gap:1rem 1.6rem; }
+    .contact-row{ flex-direction:column; align-items:flex-start; }
+    .contact-meta{ text-align:left; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="masthead">
+    <a href="#top" class="mark">Kierra&rsquo;s K9 Training</a>
+    <nav>
+      <span class="meta">California &middot; Est. 2003</span>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero">
+      <img src="../assets/IMG_9926.png" alt="Kierra sitting outdoors beside her golden retriever, hedge in the background, sunlit." />
+      <div class="hero-content">
+        <span class="hero-eyebrow">A Portrait</span>
+        <h1 class="display">She listens<br>first.</h1>
+        <div class="hero-foot">
+          <p class="hero-sub">Science-based, positive-reinforcement dog training for the dog you actually have &mdash; not the one you were told to expect.</p>
+          <a class="hero-cta" href="#story">Read the story &darr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- STORY / ARTICLE -->
+    <section id="story">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">The Story</span>
+          <h2 class="display">From K9 Care to K9 Training</h2>
+        </div>
+
+        <div class="article-body">
+          <p>In 2003, Kierra opened her business under a different name &mdash; Kierra&rsquo;s K9 Care &mdash; with little more than a leash, a pocket of treats, and a conviction that dogs are more legible than most people give them credit for. Two decades of hands-on work, continuing education, and a growing list of certifications later, that small practice has become Kierra&rsquo;s K9 Training: personalized, science-based coaching built to strengthen the whole relationship, not just the sit-stay.</p>
+
+          <p>She doesn&rsquo;t start with commands. She starts with posture, ears, tail carriage, the half-second before a bark &mdash; the vocabulary dogs already speak fluently, whether or not we&rsquo;re listening for it. Behavior has a reason behind it: fear, overstimulation, an unmet need, a skill that was never taught. Find the reason, and the training plan tends to write itself.</p>
+
+          <div class="quote-break">
+            <figure class="qphoto">
+              <img src="../assets/IMG_5206.png" alt="Kierra crouching to work with her golden retriever beside a house." />
+            </figure>
+            <blockquote class="display"><span class="qtext">I don&rsquo;t just teach commands. I work to understand why the behavior is happening at all.</span><cite class="mono">&mdash; Kierra</cite></blockquote>
+          </div>
+
+          <p>That&rsquo;s the difference between a trainer who suppresses a behavior and one who changes it. Training, done this way, looks less like a drill and more like a shared language &mdash; one dogs and their people build together, on both ends of the leash. When a dog enjoys participating, training stops being a chore and starts being quality time.</p>
+
+          <p>Since those early days as Kierra&rsquo;s K9 Care, the practice has kept expanding &mdash; through hands-on experience, professional courses, conferences, and ongoing study in dog behavior. The name changed. The habit of asking <em class="display">why</em> first never did.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- METHOD -->
+    <section id="method">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Method</span>
+          <h2 class="display">Positive, on purpose</h2>
+        </div>
+
+        <div class="method-grid">
+          <div class="article-body">
+            <p>Every session runs on modern learning science: clear markers, real rewards, and a relationship built on trust instead of pressure. Food, toys, praise, and a clicker&rsquo;s precise timing tell a dog exactly which choice just paid off &mdash; which makes the next right choice easier to find.</p>
+            <p>Clicker training works because it&rsquo;s honest. The click means the same thing every time: <em class="display">that&rsquo;s it, that&rsquo;s the one.</em> No guessing, no correction, no confusion about what&rsquo;s being asked &mdash; just information a dog can act on, and a training process that feels more like a game than a test.</p>
+          </div>
+
+          <div class="exclusions">
+            <div class="label">What this practice does not use</div>
+            <ul>
+              <li>Shock or electronic collars</li>
+              <li>Choke collars</li>
+              <li>Prong collars</li>
+              <li>Fear, pain, force, or intimidation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CREDENTIALS STRIP -->
+    <section class="creds-strip">
+      <div class="wrap">
+        <p class="cred"><b>CCPDT</b> Certified<span class="sep">&middot;</span><b>AKC CGC</b> Evaluator<span class="sep">&middot;</span>Practicing Since <b>2003</b></p>
+      </div>
+    </section>
+
+    <!-- BEHAVIOR INDEX -->
+    <section id="practice">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">In Practice</span>
+          <h2 class="display">Further than sit and stay</h2>
+        </div>
+        <p class="index-intro">Most trainers stop at obedience. Basic commands matter, but they&rsquo;re a fraction of what a dog and a family might need. This is the rest of the work:</p>
+
+        <div class="behavior-index">
+          <div>Anxiety &amp; lack of confidence</div>
+          <div>Fear</div>
+          <div>Reactivity &mdash; dogs, people, environment</div>
+          <div>Barking &amp; lunging</div>
+          <div>Leash frustration</div>
+          <div>Pulling on leash</div>
+          <div>Jumping &amp; overexcitement</div>
+          <div>Impulse control</div>
+          <div>Socialization difficulties</div>
+          <div>Resource guarding</div>
+          <div>Destructive behavior</div>
+          <div>Potty training</div>
+          <div>Puppy biting &amp; chewing</div>
+          <div>Adolescent-dog behavior</div>
+          <div>Manners, home &amp; public</div>
+          <div>Focus around distractions</div>
+          <div>Service-dog training</div>
+          <div>Obedience, basic to advanced</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMAT + PHOTO ESSAY -->
+    <section id="format">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">The Sessions</span>
+          <h2 class="display">Wherever the dog needs it</h2>
+        </div>
+
+        <p class="format-copy">Training happens at home, on the sidewalks and trailheads where real life gets loud, or wherever the behavior actually shows up. Owners are welcome at every session &mdash; or the work can happen while they&rsquo;re at the office, whichever the family needs.</p>
+
+        <div class="essay">
+          <figure>
+            <div class="frame"><img src="../assets/IMG_5207.png" alt="Kierra crouching beside her golden retriever, working through a cue outside a house." /></div>
+            <figcaption>Reading the moment before it happens</figcaption>
+          </figure>
+          <figure>
+            <div class="frame"><img src="../assets/IMG_5337.png" alt="Kierra training her golden retriever indoors, in a kitchen." /></div>
+            <figcaption>Training doesn&rsquo;t stop at the front door</figcaption>
+          </figure>
+          <figure>
+            <div class="frame"><img src="../assets/IMG_4683.png" alt="A group walk with three dogs and two handlers on a sidewalk." /></div>
+            <figcaption>Real-world distraction, on purpose</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+      <div class="wrap">
+        <span class="eyebrow">Get in Touch</span>
+        <h2 class="display">Let&rsquo;s start the conversation.</h2>
+
+        <div class="contact-row">
+          <a class="contact-email" href="mailto:hello@kierrask9.example">hello@kierrask9.example</a>
+          <div class="contact-meta">
+            Serving California<br>
+            In-home &amp; on-location<br>
+            Replies within 1&ndash;2 business days
+          </div>
+        </div>
+
+        <div class="colophon">
+          <span>Kierra&rsquo;s K9 Training &mdash; est. 2003</span>
+          <span>CCPDT &middot; AKC CGC</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>
