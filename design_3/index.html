@@ -1,0 +1,988 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kierra's K9 Training — Field Manual</title>
+<meta name="description" content="Science-based dog training. In-home and real-world sessions. Positive reinforcement only. Est. 2003, California.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --concrete:#2B2B2B;
+    --concrete-2:#242424;
+    --concrete-3:#333230;
+    --steel:#D6D3CB;
+    --steel-dim:#bdbaaf;
+    --safety:#F5C518;
+    --ink:#101010;
+    --paper:#EDEBE3;
+    --line: rgba(214,211,203,0.16);
+    --line-strong: rgba(214,211,203,0.34);
+    --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Consolas, monospace;
+    --sans: 'Inter Tight', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  }
+
+  *,*::before,*::after{ box-sizing: border-box; }
+  html{ background: var(--concrete); }
+  body{
+    margin:0;
+    background: var(--concrete);
+    color: var(--steel);
+    font-family: var(--sans);
+    font-variant-numeric: tabular-nums;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+  }
+
+  img{ max-width:100%; display:block; }
+
+  /* ---------- grid overlay (behind everything) ---------- */
+  .grid-overlay{
+    position: fixed;
+    inset:0;
+    pointer-events:none;
+    z-index: 1;
+    background-image:
+      repeating-linear-gradient(to right, rgba(214,211,203,0.05) 0, rgba(214,211,203,0.05) 1px, transparent 1px, transparent 48px),
+      repeating-linear-gradient(to bottom, rgba(214,211,203,0.05) 0, rgba(214,211,203,0.05) 1px, transparent 1px, transparent 48px);
+  }
+
+  /* ---------- corner marks ---------- */
+  .corner-marks{
+    position: fixed;
+    inset: 14px;
+    pointer-events:none;
+    z-index: 40;
+  }
+  .corner-marks span{
+    position:absolute;
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: 0.14em;
+    color: var(--steel-dim);
+    text-transform: uppercase;
+    white-space:nowrap;
+  }
+  .corner-marks span::before{
+    content:"";
+    position:absolute;
+    width:12px; height:12px;
+    border: 1px solid var(--line-strong);
+  }
+  .cm-tl{ top:0; left:0; padding-left:18px; }
+  .cm-tl::before{ top:-4px; left:0; border-right:none; border-bottom:none; }
+  .cm-tr{ top:0; right:0; padding-right:18px; text-align:right; }
+  .cm-tr::before{ top:-4px; right:0; border-left:none; border-bottom:none; }
+  .cm-bl{ bottom:0; left:0; padding-left:18px; }
+  .cm-bl::before{ bottom:-4px; left:0; border-right:none; border-top:none; }
+  .cm-br{ bottom:0; right:0; padding-right:18px; text-align:right; }
+  .cm-br::before{ bottom:-4px; right:0; border-left:none; border-top:none; }
+
+  @media (max-width: 640px){
+    .corner-marks{ inset: 8px; }
+    .corner-marks span{ font-size: 7.5px; letter-spacing: 0.1em; }
+    .cm-tl, .cm-tr{ top: 46px; }
+  }
+
+  /* ---------- layout shell ---------- */
+  .sheet{
+    position: relative;
+    z-index: 2;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+  @media (max-width: 900px){ .sheet{ padding: 0 22px; } }
+
+  /* ---------- eyebrow / labels ---------- */
+  .eyebrow{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--safety);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:700;
+  }
+  .eyebrow::before{
+    content:"";
+    width:7px; height:7px;
+    background: var(--safety);
+    display:inline-block;
+    flex:none;
+  }
+
+  h1,h2,h3{ font-family: var(--mono); margin:0; color: var(--paper); letter-spacing:-0.01em; }
+
+  .sec-tag{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    color: var(--concrete);
+    background: var(--safety);
+    padding: 3px 9px;
+    font-weight:800;
+    display:inline-block;
+  }
+
+  /* ================= HEADER ================= */
+  header.top{
+    position: sticky; top:0; z-index: 30;
+    background: rgba(43,43,43,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+    padding: 14px 0;
+  }
+  .top-row{
+    display:flex; align-items:center; justify-content: space-between;
+    gap: 16px;
+  }
+  .callsign{
+    font-family: var(--mono);
+    font-weight: 800;
+    font-size: 15px;
+    color: var(--paper);
+    letter-spacing: 0.02em;
+    display:flex; align-items:baseline; gap:8px;
+  }
+  .callsign small{
+    font-weight:500; font-size:10px; color: var(--steel-dim); letter-spacing:0.1em;
+  }
+  nav.top-nav{
+    display:flex; gap: 22px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  nav.top-nav a{ color: var(--steel-dim); text-decoration:none; border-bottom:1px solid transparent; padding-bottom:3px; }
+  nav.top-nav a:hover{ color: var(--safety); border-bottom-color: var(--safety); }
+  @media (max-width: 760px){ nav.top-nav{ display:none; } }
+
+  /* ================= HERO ================= */
+  .hero{
+    padding: 56px 0 40px;
+    position: relative;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  @media (max-width: 900px){
+    .hero-grid{ grid-template-columns: 1fr; }
+  }
+
+  .hero-copy .eyebrow{ margin-bottom: 18px; }
+  .hero h1{
+    font-size: clamp(34px, 5vw, 54px);
+    line-height: 1.04;
+    text-transform: uppercase;
+  }
+  .hero h1 em{
+    font-style: normal;
+    color: var(--safety);
+  }
+  .hero-sub{
+    font-family: var(--sans);
+    color: var(--steel);
+    font-size: 16.5px;
+    line-height: 1.6;
+    max-width: 46ch;
+    margin-top: 20px;
+  }
+  .hero-meta{
+    margin-top: 28px;
+    display:flex; flex-wrap:wrap; gap: 10px 26px;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--steel-dim);
+  }
+  .hero-meta b{ color: var(--paper); font-weight:700; }
+  .hero-meta span{ display:flex; align-items:center; gap:7px; }
+  .hero-meta span::before{ content:"//"; color: var(--safety); }
+
+  .hero-ctas{ margin-top: 30px; display:flex; gap: 14px; flex-wrap:wrap; }
+  .btn{
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 13px 22px;
+    text-decoration:none;
+    font-weight:700;
+    border: 1px solid var(--line-strong);
+    display:inline-flex; align-items:center; gap:10px;
+  }
+  .btn-primary{ background: var(--safety); color: var(--ink); border-color: var(--safety); }
+  .btn-primary:hover{ background:#ffd943; }
+  .btn-ghost{ color: var(--paper); }
+  .btn-ghost:hover{ border-color: var(--paper); }
+
+  /* --- annotated photo --- */
+  .annot-frame{
+    position: relative;
+    border: 1px solid var(--line-strong);
+    background: var(--concrete-2);
+    padding: 10px;
+  }
+  .annot-frame .frame-label{
+    position:absolute; top: -1px; left: -1px;
+    background: var(--ink);
+    color: var(--safety);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    padding: 4px 9px;
+    border: 1px solid var(--line-strong);
+    z-index: 5;
+  }
+  .annot-frame .frame-id{
+    position:absolute; bottom:-1px; right:-1px;
+    background: var(--ink);
+    color: var(--steel-dim);
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: 0.08em;
+    padding: 4px 9px;
+    border: 1px solid var(--line-strong);
+    z-index: 5;
+  }
+  .photo-box{
+    position: relative;
+    overflow: hidden;
+    line-height:0;
+  }
+  .photo-box img{
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: grayscale(0.5) saturate(0.86) contrast(1.08) brightness(1) hue-rotate(14deg);
+  }
+  /* blueprint blue-shift wash: cool cast over shadows without turning skin green */
+  .photo-box::after, .subject-photo::after, .method-photo::after, .thumb::after{
+    content:"";
+    position:absolute; inset:0;
+    background: rgba(46,78,110,0.16);
+    mix-blend-mode: overlay;
+    pointer-events:none;
+  }
+  .photo-box svg{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+  }
+  .callout-text{
+    font-family: var(--mono);
+  }
+  .callout-tag{
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+  .callout-sub{
+    font-size: 8.6px;
+    letter-spacing: 0.03em;
+    opacity: 0.82;
+  }
+
+  /* ================= SECTION SCAFFOLD ================= */
+  section{
+    position: relative;
+    padding: 64px 0;
+    border-top: 1px solid var(--line);
+  }
+  .sec-head{
+    display:flex; align-items:baseline; gap: 16px; flex-wrap:wrap;
+    margin-bottom: 34px;
+  }
+  .sec-head h2{
+    font-size: clamp(22px, 3vw, 30px);
+    text-transform: uppercase;
+  }
+  .sec-index{
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--steel-dim);
+    margin-left: auto;
+    letter-spacing: 0.08em;
+  }
+
+  /* ---- SEC-01 SUBJECT ---- */
+  .subject-grid{
+    display:grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 46px;
+    align-items: center;
+  }
+  @media (max-width: 900px){ .subject-grid{ grid-template-columns:1fr; } }
+  .subject-copy p{ line-height: 1.7; font-size: 15.5px; color: var(--steel); }
+  .subject-copy p + p{ margin-top: 14px; }
+
+  .cred-row{
+    display:flex; gap: 12px; margin-top: 26px; flex-wrap: wrap;
+  }
+  .cred-badge{
+    border: 1px solid var(--line-strong);
+    padding: 12px 14px;
+    display:flex; align-items:center; gap: 10px;
+    min-width: 168px;
+  }
+  .cred-badge .badge-icon{ flex:none; }
+  .cred-badge .badge-text{ font-family: var(--mono); line-height:1.35; }
+  .cred-badge .badge-text b{ display:block; font-size: 12.5px; color: var(--paper); letter-spacing:0.03em; }
+  .cred-badge .badge-text small{ font-size: 9.5px; color: var(--steel-dim); letter-spacing:0.05em; }
+
+  .timestamp-block{
+    margin-top: 28px;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--steel-dim);
+    border-left: 2px solid var(--safety);
+    padding-left: 14px;
+    line-height: 1.7;
+  }
+  .timestamp-block b{ color: var(--safety); }
+
+  .subject-photo{
+    position: relative;
+    border: 1px solid var(--line-strong);
+    padding: 8px;
+    background: var(--concrete-2);
+  }
+  .subject-photo img{
+    width:100%; aspect-ratio: 3/4; object-fit: cover;
+    filter: grayscale(0.5) saturate(0.86) contrast(1.08) brightness(1) hue-rotate(14deg);
+  }
+  .subject-photo .frame-id{
+    position:absolute; bottom: -1px; right:-1px;
+    background: var(--ink); color: var(--steel-dim);
+    font-family: var(--mono); font-size: 9.5px; letter-spacing:0.08em;
+    padding: 4px 9px; border:1px solid var(--line-strong);
+  }
+
+  /* ---- SEC-02 METHOD ---- */
+  .method-grid{
+    display:grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 46px;
+  }
+  @media (max-width: 900px){ .method-grid{ grid-template-columns:1fr; } }
+
+  .method-photo{
+    position: relative;
+    border: 1px solid var(--line-strong);
+    padding: 8px;
+    background: var(--concrete-2);
+  }
+  .method-photo img{
+    width:100%; aspect-ratio: 4/3.1; object-fit: cover; object-position: 60% 40%;
+    filter: grayscale(0.5) saturate(0.86) contrast(1.08) brightness(1) hue-rotate(14deg);
+  }
+  .method-photo .frame-label{
+    position:absolute; top: -1px; left: -1px;
+    background: var(--ink); color: var(--safety);
+    font-family: var(--mono); font-size: 10px; letter-spacing:0.12em;
+    padding: 4px 9px; border:1px solid var(--line-strong);
+  }
+  .method-photo svg{ position:absolute; inset:8px; width:calc(100% - 16px); height:calc(100% - 16px); pointer-events:none; }
+
+  .method-list{ list-style:none; margin: 22px 0 0; padding:0; display:grid; gap: 14px; }
+  .method-list li{
+    display:grid; grid-template-columns: 26px 1fr; gap: 12px;
+    font-size: 15px; line-height:1.6; color: var(--steel);
+    padding-bottom: 14px; border-bottom: 1px solid var(--line);
+  }
+  .method-list li b{ color: var(--paper); display:block; font-family: var(--mono); font-size:13px; letter-spacing:0.02em; margin-bottom:2px; }
+  .method-list .num{ font-family: var(--mono); color: var(--safety); font-weight:700; font-size:13px; }
+
+  .warning-block{
+    margin-top: 30px;
+    border: 1px solid var(--safety);
+    background: repeating-linear-gradient(135deg, rgba(245,197,24,0.07) 0 10px, rgba(245,197,24,0.02) 10px 20px);
+  }
+  .warning-head{
+    background: var(--safety);
+    color: var(--ink);
+    font-family: var(--mono);
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    padding: 9px 14px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .warning-head svg{ flex:none; }
+  .warning-body{ padding: 16px 16px 18px; }
+  .warning-body p{
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--steel-dim);
+    letter-spacing: 0.04em;
+    margin: 0 0 10px;
+  }
+  .exclusion-list{
+    list-style:none; margin:0; padding:0;
+    display:grid; grid-template-columns: 1fr 1fr; gap: 8px 16px;
+  }
+  @media (max-width: 480px){ .exclusion-list{ grid-template-columns: 1fr; } }
+  .exclusion-list li{
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--paper);
+    display:flex; align-items:center; gap:9px;
+    letter-spacing: 0.02em;
+  }
+  .exclusion-list li::before{
+    content:"×";
+    color: var(--safety);
+    font-weight:800;
+    font-size: 15px;
+    line-height:1;
+  }
+
+  /* ---- SEC-03 SERVICES / index table ---- */
+  .table-wrap{
+    border: 1px solid var(--line-strong);
+    overflow-x: auto;
+  }
+  table.index-table{
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--mono);
+    min-width: 640px;
+  }
+  .index-table thead th{
+    text-align:left;
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: var(--steel);
+    padding: 11px 16px;
+    font-weight: 700;
+    position: sticky; top:0;
+  }
+  .index-table tbody td{
+    padding: 11px 16px;
+    font-size: 12.6px;
+    color: var(--steel);
+    border-top: 1px solid var(--line);
+    vertical-align: top;
+  }
+  .index-table tbody tr:nth-child(even){ background: rgba(214,211,203,0.03); }
+  .index-table tbody tr:hover{ background: rgba(245,197,24,0.06); }
+  .index-table td.code{ color: var(--safety); font-weight:700; white-space:nowrap; }
+  .index-table td.behavior{ color: var(--paper); font-weight:600; white-space:nowrap; }
+  .index-table td.class{
+    color: var(--steel-dim);
+    letter-spacing: 0.03em;
+  }
+  .class-chip{
+    display:inline-block;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    padding: 2px 7px;
+    border: 1px solid var(--line-strong);
+    color: var(--steel-dim);
+  }
+
+  .table-note{
+    margin-top: 16px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--steel-dim);
+    letter-spacing: 0.03em;
+  }
+  .table-note b{ color: var(--safety); }
+
+  /* ---- SEC-04 DEPLOYMENT ---- */
+  .deploy-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line-strong);
+    border: 1px solid var(--line-strong);
+  }
+  @media (max-width: 760px){ .deploy-grid{ grid-template-columns: 1fr; } }
+  .deploy-cell{
+    background: var(--concrete);
+    padding: 26px 22px;
+  }
+  .deploy-cell .num{
+    font-family: var(--mono);
+    color: var(--safety);
+    font-size: 12px;
+    font-weight:700;
+    letter-spacing: 0.1em;
+  }
+  .deploy-cell h3{
+    font-size: 17px; margin-top: 10px; text-transform: uppercase;
+    letter-spacing: 0.01em;
+  }
+  .deploy-cell p{
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--steel-dim);
+    line-height: 1.6;
+    margin-top: 10px;
+  }
+
+  .deploy-photo-row{
+    margin-top: 34px;
+    display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  }
+  @media (max-width: 760px){ .deploy-photo-row{ grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 480px){ .deploy-photo-row{ grid-template-columns: 1fr; } }
+  .thumb{
+    position: relative;
+    border: 1px solid var(--line-strong);
+    padding: 6px;
+    background: var(--concrete-2);
+  }
+  .thumb img{
+    width:100%; aspect-ratio: 1/1; object-fit: cover;
+    filter: grayscale(0.5) saturate(0.86) contrast(1.08) brightness(1) hue-rotate(14deg);
+  }
+  .thumb .frame-id{
+    position:absolute; bottom:0; right:0;
+    background: var(--ink); color: var(--steel-dim);
+    font-family: var(--mono); font-size: 9px; letter-spacing:0.06em;
+    padding: 3px 7px;
+  }
+  .thumb .frame-cap{
+    font-family: var(--mono); font-size: 10px; color: var(--steel-dim);
+    letter-spacing: 0.04em; padding: 8px 2px 2px;
+  }
+
+  /* ---- SEC-05 CONTACT ---- */
+  .contact-panel{
+    border: 1px solid var(--line-strong);
+    padding: 44px 40px;
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 40px;
+    align-items:center;
+    position:relative;
+  }
+  @media (max-width: 760px){ .contact-panel{ grid-template-columns:1fr; padding: 32px 22px; } }
+  .contact-panel::before{
+    content:"";
+    position:absolute; inset:8px;
+    border: 1px dashed var(--line-strong);
+    pointer-events:none;
+  }
+  .contact-copy h2{ font-size: clamp(24px,3.4vw,34px); text-transform:uppercase; line-height:1.1; }
+  .contact-copy p{ font-family: var(--sans); color: var(--steel); font-size:15px; margin-top:14px; line-height:1.6; max-width:42ch; }
+
+  .contact-fields{ display:grid; gap: 14px; }
+  .contact-field{
+    border: 1px solid var(--line-strong);
+    padding: 14px 16px;
+  }
+  .contact-field .fk{
+    font-family: var(--mono); font-size: 10px; letter-spacing:0.14em;
+    color: var(--steel-dim); text-transform:uppercase;
+  }
+  .contact-field .fv{
+    font-family: var(--mono); font-size: 15px; color: var(--paper); margin-top:6px; font-weight:600;
+  }
+  .contact-field a{ color: var(--paper); text-decoration:none; }
+  .contact-field a:hover{ color: var(--safety); }
+
+  /* ---- FOOTER ---- */
+  footer{
+    border-top: 1px solid var(--line);
+    padding: 26px 0 90px;
+  }
+  .footer-row{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;
+    font-family: var(--mono); font-size: 10.5px; color: var(--steel-dim); letter-spacing:0.06em;
+  }
+  .footer-row b{ color: var(--steel); }
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible{
+    outline: 2px solid var(--safety);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="grid-overlay" aria-hidden="true"></div>
+<div class="corner-marks" aria-hidden="true">
+  <span class="cm-tl">K-9 · CA</span>
+  <span class="cm-tr">REV 2003&thinsp;&middot;&thinsp;2026</span>
+  <span class="cm-bl">FIELD MANUAL</span>
+  <span class="cm-br">DOC KKT-03</span>
+</div>
+
+<header class="top">
+  <div class="sheet top-row">
+    <div class="callsign">KIERRA'S K9 TRAINING <small>/// FIELD MANUAL ED.</small></div>
+    <nav class="top-nav">
+      <a href="#subject">Sec-01 Subject</a>
+      <a href="#method">Sec-02 Method</a>
+      <a href="#services">Sec-03 Services</a>
+      <a href="#deployment">Sec-04 Deploy</a>
+      <a href="#contact">Sec-05 Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" style="border-top:none; padding-top:52px;" id="top">
+    <div class="sheet">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Doc No. KKT&#8209;03 &middot; Behavior Division</div>
+          <h1>Science&#8209;Based<br>Dog Training,<br>Read Like&nbsp;<em>Field&nbsp;Notes</em></h1>
+          <p class="hero-sub">Personalized, positive-reinforcement training built on an understanding of dog psychology, body language, and learning history — not commands memorized by rote. Every session is documented, every behavior read before it's addressed.</p>
+          <div class="hero-meta">
+            <span><b>Est.</b>&nbsp;2003 &middot; Kierra's K9 Care&thinsp;&rarr;&thinsp;K9 Training</span>
+            <span><b>Cert.</b>&nbsp;CCPDT &middot; AKC CGC</span>
+            <span><b>Base</b>&nbsp;California, in-home + field</span>
+          </div>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="#contact">Request Intake &rarr;</a>
+            <a class="btn btn-ghost" href="#services">View Index / SEC-03</a>
+          </div>
+        </div>
+
+        <div class="annot-frame">
+          <span class="frame-label">SUBJECT SCAN — FIG.01</span>
+          <span class="frame-id">FILE IMG_9926 &middot; ANNOTATED</span>
+          <div class="photo-box" style="aspect-ratio:3/4;">
+            <img src="../assets/IMG_9926.png" alt="Kierra kneeling beside a relaxed golden retriever in a garden, both facing camera" width="450" height="600">
+            <svg viewBox="0 0 450 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+              <defs>
+                <marker id="dot" markerWidth="8" markerHeight="8" refX="4" refY="4">
+                  <circle cx="4" cy="4" r="3.4" fill="#F5C518" />
+                </marker>
+              </defs>
+
+              <!-- 01 EARS : right stack, top -->
+              <circle cx="322" cy="278" r="15" fill="none" stroke="#F5C518" stroke-width="1.6"/>
+              <polyline points="322,264 240,264 240,71 288,71" fill="none" stroke="#F5C518" stroke-width="1.2" marker-end="url(#dot)"/>
+              <g transform="translate(288,54)">
+                <rect x="0" y="0" width="150" height="34" fill="#101010" stroke="#F5C518" stroke-width="1"/>
+                <text x="8" y="14" class="callout-text callout-tag" fill="#F5C518">01 &middot; EARS</text>
+                <text x="8" y="26" class="callout-text callout-sub" fill="#D6D3CB">relaxed &middot; forward set</text>
+              </g>
+
+              <!-- 02 EYE : right stack, mid -->
+              <circle cx="350" cy="296" r="9" fill="none" stroke="#F5C518" stroke-width="1.6"/>
+              <polyline points="341,296 270,296 270,227 288,227" fill="none" stroke="#F5C518" stroke-width="1.2" marker-end="url(#dot)"/>
+              <g transform="translate(288,210)">
+                <rect x="0" y="0" width="150" height="34" fill="#101010" stroke="#F5C518" stroke-width="1"/>
+                <text x="8" y="14" class="callout-text callout-tag" fill="#F5C518">02 &middot; EYE</text>
+                <text x="8" y="26" class="callout-text callout-sub" fill="#D6D3CB">soft &middot; no whale eye</text>
+              </g>
+
+              <!-- 03 MOUTH : right stack, lower -->
+              <ellipse cx="333" cy="340" rx="18" ry="13" fill="none" stroke="#F5C518" stroke-width="1.6"/>
+              <polyline points="315,340 250,340 250,385 288,385" fill="none" stroke="#F5C518" stroke-width="1.2" marker-end="url(#dot)"/>
+              <g transform="translate(288,368)">
+                <rect x="0" y="0" width="150" height="34" fill="#101010" stroke="#F5C518" stroke-width="1"/>
+                <text x="8" y="14" class="callout-text callout-tag" fill="#F5C518">03 &middot; MOUTH</text>
+                <text x="8" y="26" class="callout-text callout-sub" fill="#D6D3CB">open, loose &middot; neutral</text>
+              </g>
+
+              <!-- 04 WEIGHT / STANCE : left stack, lower -->
+              <ellipse cx="326" cy="478" rx="58" ry="26" fill="none" stroke="#F5C518" stroke-width="1.4" stroke-dasharray="4 3"/>
+              <line x1="270" y1="484" x2="162" y2="487" stroke="#F5C518" stroke-width="1.2" marker-end="url(#dot)"/>
+              <g transform="translate(12,470)">
+                <rect x="0" y="0" width="150" height="34" fill="#101010" stroke="#F5C518" stroke-width="1"/>
+                <text x="8" y="14" class="callout-text callout-tag" fill="#F5C518">04 &middot; STANCE</text>
+                <text x="8" y="26" class="callout-text callout-sub" fill="#D6D3CB">weight even &middot; balanced sit</text>
+              </g>
+
+              <!-- 05 HANDLER CONTACT : left stack, upper -->
+              <circle cx="266" cy="352" r="13" fill="none" stroke="#F5C518" stroke-width="1.6"/>
+              <line x1="254" y1="348" x2="162" y2="340" stroke="#F5C518" stroke-width="1.2" marker-end="url(#dot)"/>
+              <g transform="translate(12,322)">
+                <rect x="0" y="0" width="150" height="34" fill="#101010" stroke="#F5C518" stroke-width="1"/>
+                <text x="8" y="14" class="callout-text callout-tag" fill="#F5C518">05 &middot; CONTACT PT</text>
+                <text x="8" y="26" class="callout-text callout-sub" fill="#D6D3CB">handler hand &middot; light touch</text>
+              </g>
+
+              <!-- bounding frame corner ticks -->
+              <g stroke="#F5C518" stroke-width="1.2">
+                <path d="M8,8 L8,26 M8,8 L26,8" fill="none"/>
+                <path d="M442,8 L442,26 M442,8 L424,8" fill="none"/>
+                <path d="M8,592 L8,574 M8,592 L26,592" fill="none"/>
+                <path d="M442,592 L442,574 M442,592 L424,592" fill="none"/>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SEC-01 SUBJECT ================= -->
+  <section id="subject">
+    <div class="sheet">
+      <div class="sec-head">
+        <span class="sec-tag">SEC-01</span>
+        <h2>Subject</h2>
+        <span class="sec-index">P.01 / TRAINER PROFILE</span>
+      </div>
+
+      <div class="subject-grid">
+        <div class="subject-photo">
+          <img src="../assets/IMG_5205.png" alt="Kierra sitting on a porch step with a golden retriever, both smiling" width="450" height="600">
+          <span class="frame-id">FILE IMG_5205</span>
+        </div>
+
+        <div class="subject-copy">
+          <p><b style="color:var(--paper); font-family:var(--mono);">Kierra</b> — science-based dog trainer specializing in behavior. Training doesn't start with commands; it starts with understanding <em style="color:var(--safety); font-style:normal;">why</em> a behavior is happening — psychology, emotion, body language, environment, and learning history, read together.</p>
+          <p>Every plan is built for the individual dog and the individual family in front of her, not a fixed curriculum. Training happens on both ends of the leash: dogs learn the skill, humans learn to read it.</p>
+
+          <div class="cred-row">
+            <div class="cred-badge">
+              <svg class="badge-icon" width="30" height="30" viewBox="0 0 30 30" aria-hidden="true">
+                <circle cx="15" cy="15" r="13" fill="none" stroke="#F5C518" stroke-width="1.4"/>
+                <circle cx="15" cy="15" r="8.6" fill="none" stroke="#D6D3CB" stroke-width="1"/>
+                <text x="15" y="19" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#F5C518" font-weight="700">CCPDT</text>
+              </svg>
+              <span class="badge-text"><b>CCPDT</b><small>Certified Professional Dog Trainer</small></span>
+            </div>
+            <div class="cred-badge">
+              <svg class="badge-icon" width="30" height="30" viewBox="0 0 30 30" aria-hidden="true">
+                <polygon points="15,2 27,8 27,17 15,28 3,17 3,8" fill="none" stroke="#F5C518" stroke-width="1.4"/>
+                <text x="15" y="14" text-anchor="middle" font-family="JetBrains Mono" font-size="6.4" fill="#F5C518" font-weight="700">AKC</text>
+                <text x="15" y="22" text-anchor="middle" font-family="JetBrains Mono" font-size="5.6" fill="#D6D3CB" font-weight="700">CGC</text>
+              </svg>
+              <span class="badge-text"><b>AKC CGC</b><small>Canine Good Citizen Evaluator-track</small></span>
+            </div>
+          </div>
+
+          <div class="timestamp-block">
+            <b>T+0000</b> — 2003. Business founded as "Kierra's K9 Care," Southern California.<br>
+            <b>T+ongoing</b> — Continuing education: hands-on casework, professional courses, conferences, behavior science.<br>
+            <b>T+now</b> — Operating as "Kierra's K9 Training." Same dog, expanded scope.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SEC-02 METHOD ================= -->
+  <section id="method">
+    <div class="sheet">
+      <div class="sec-head">
+        <span class="sec-tag">SEC-02</span>
+        <h2>Method</h2>
+        <span class="sec-index">P.02 / TRAINING PROTOCOL</span>
+      </div>
+
+      <div class="method-grid">
+        <div>
+          <div class="method-photo">
+            <span class="frame-label">PROTOCOL IN PROGRESS — FIG.02</span>
+            <img src="../assets/IMG_5337.png" alt="Kierra running a training cue with a dog in a kitchen, treat pouch on hip" width="600" height="450">
+            <svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+              <circle cx="330" cy="222" r="13" fill="none" stroke="#F5C518" stroke-width="1.6"/>
+              <line x1="342" y1="216" x2="392" y2="192" stroke="#F5C518" stroke-width="1.2"/>
+              <g transform="translate(388,174)">
+                <rect x="0" y="0" width="150" height="32" fill="#101010" stroke="#F5C518" stroke-width="1"/>
+                <text x="8" y="13" class="callout-text callout-tag" fill="#F5C518">06 &middot; MARKER</text>
+                <text x="8" y="25" class="callout-text callout-sub" fill="#D6D3CB">clicker cue window</text>
+              </g>
+
+              <circle cx="318" cy="178" r="10" fill="none" stroke="#F5C518" stroke-width="1.6"/>
+              <line x1="308" y1="182" x2="250" y2="150" stroke="#F5C518" stroke-width="1.2"/>
+              <g transform="translate(58,132)">
+                <rect x="0" y="0" width="150" height="32" fill="#101010" stroke="#F5C518" stroke-width="1"/>
+                <text x="8" y="13" class="callout-text callout-tag" fill="#F5C518">07 &middot; REWARD</text>
+                <text x="8" y="25" class="callout-text callout-sub" fill="#D6D3CB">treat pouch, hip-mounted</text>
+              </g>
+
+              <ellipse cx="358" cy="330" rx="60" ry="26" fill="none" stroke="#F5C518" stroke-width="1.4" stroke-dasharray="4 3"/>
+              <line x1="304" y1="336" x2="250" y2="360" stroke="#F5C518" stroke-width="1.2"/>
+              <g transform="translate(56,352)">
+                <rect x="0" y="0" width="150" height="32" fill="#101010" stroke="#F5C518" stroke-width="1"/>
+                <text x="8" y="13" class="callout-text callout-tag" fill="#F5C518">08 &middot; FOCUS</text>
+                <text x="8" y="25" class="callout-text callout-sub" fill="#D6D3CB">eye contact, engaged sit</text>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <div>
+          <ul class="method-list">
+            <li><span class="num">01</span><div><b>Positive Reinforcement</b>Food rewards, toys, praise, and play — matched to what motivates the individual dog, not a default script.</div></li>
+            <li><span class="num">02</span><div><b>Clicker Training</b>A precise marker signals the exact moment a desired behavior happens, so the dog understands exactly what earned the reward.</div></li>
+            <li><span class="num">03</span><div><b>Behavior Literacy</b>Reading posture, facial expression, and movement to know when a dog is comfortable, worried, overstimulated, or asking for space — before training the response.</div></li>
+            <li><span class="num">04</span><div><b>Two-Ends-of-the-Leash</b>Owners are trained alongside dogs: clear communication, body-language recognition, and how to keep practicing at home.</div></li>
+          </ul>
+
+          <div class="warning-block">
+            <div class="warning-head">
+              <svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 1 L15 14 L1 14 Z" fill="none" stroke="#101010" stroke-width="1.4"/><line x1="8" y1="6" x2="8" y2="10" stroke="#101010" stroke-width="1.4"/><circle cx="8" cy="12" r="0.9" fill="#101010"/></svg>
+              WARNING — EXCLUDED METHODS
+            </div>
+            <div class="warning-body">
+              <p>Kierra's K9 Training does not use, under any protocol:</p>
+              <ul class="exclusion-list">
+                <li>Shock / e-collars</li>
+                <li>Choke collars</li>
+                <li>Prong collars</li>
+                <li>Fear or pain</li>
+                <li>Force</li>
+                <li>Intimidation</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SEC-03 SERVICES ================= -->
+  <section id="services">
+    <div class="sheet">
+      <div class="sec-head">
+        <span class="sec-tag">SEC-03</span>
+        <h2>Services</h2>
+        <span class="sec-index">P.03 / BEHAVIOR INDEX — 18 ENTRIES</span>
+      </div>
+
+      <div class="table-wrap">
+        <table class="index-table">
+          <thead>
+            <tr>
+              <th style="width:88px;">Code</th>
+              <th>Behavior</th>
+              <th>Intervention Class</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="code">BH-01</td><td class="behavior">Anxiety / Fear / Confidence</td><td class="class"><span class="class-chip">Emotional / Foundational</span></td></tr>
+            <tr><td class="code">BH-02</td><td class="behavior">Reactivity (dogs, people, environment)</td><td class="class"><span class="class-chip">Behavior Modification</span></td></tr>
+            <tr><td class="code">BH-03</td><td class="behavior">Barking, Lunging, Leash Frustration</td><td class="class"><span class="class-chip">Behavior Modification</span></td></tr>
+            <tr><td class="code">BH-04</td><td class="behavior">Leash Pulling</td><td class="class"><span class="class-chip">Skill Building</span></td></tr>
+            <tr><td class="code">BH-05</td><td class="behavior">Jumping / Overexcitement</td><td class="class"><span class="class-chip">Skill Building</span></td></tr>
+            <tr><td class="code">BH-06</td><td class="behavior">Impulse Control</td><td class="class"><span class="class-chip">Skill Building</span></td></tr>
+            <tr><td class="code">BH-07</td><td class="behavior">Socialization</td><td class="class"><span class="class-chip">Emotional / Foundational</span></td></tr>
+            <tr><td class="code">BH-08</td><td class="behavior">Resource Guarding</td><td class="class"><span class="class-chip">Behavior Modification</span></td></tr>
+            <tr><td class="code">BH-09</td><td class="behavior">Destructive Behavior</td><td class="class"><span class="class-chip">Behavior Modification</span></td></tr>
+            <tr><td class="code">BH-10</td><td class="behavior">Potty Training</td><td class="class"><span class="class-chip">Foundational</span></td></tr>
+            <tr><td class="code">BH-11</td><td class="behavior">Puppy Biting / Chewing</td><td class="class"><span class="class-chip">Foundational / Puppy</span></td></tr>
+            <tr><td class="code">BH-12</td><td class="behavior">Adolescent-Dog Behavior</td><td class="class"><span class="class-chip">Behavior Modification</span></td></tr>
+            <tr><td class="code">BH-13</td><td class="behavior">Manners (home + public)</td><td class="class"><span class="class-chip">Skill Building</span></td></tr>
+            <tr><td class="code">BH-14</td><td class="behavior">Focus Around Distractions</td><td class="class"><span class="class-chip">Skill Building</span></td></tr>
+            <tr><td class="code">BH-15</td><td class="behavior">Service-Dog Training</td><td class="class"><span class="class-chip">Advanced / Task Work</span></td></tr>
+            <tr><td class="code">BH-16</td><td class="behavior">Basic Obedience</td><td class="class"><span class="class-chip">Foundational</span></td></tr>
+            <tr><td class="code">BH-17</td><td class="behavior">Advanced Obedience</td><td class="class"><span class="class-chip">Advanced / Task Work</span></td></tr>
+            <tr><td class="code">BH-18</td><td class="behavior">Confidence & Bond Building</td><td class="class"><span class="class-chip">Emotional / Foundational</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">Index non-exhaustive — <b>if it isn't listed, ask.</b> Every plan is written per-dog, per-family.</p>
+    </div>
+  </section>
+
+  <!-- ================= SEC-04 DEPLOYMENT ================= -->
+  <section id="deployment">
+    <div class="sheet">
+      <div class="sec-head">
+        <span class="sec-tag">SEC-04</span>
+        <h2>Deployment</h2>
+        <span class="sec-index">P.04 / SESSION CONDITIONS</span>
+      </div>
+
+      <div class="deploy-grid">
+        <div class="deploy-cell">
+          <div class="num">COND. A</div>
+          <h3>In-Home</h3>
+          <p>Sessions run inside the environment the dog actually lives in — the conditions where habits form and where they need to change.</p>
+        </div>
+        <div class="deploy-cell">
+          <div class="num">COND. B</div>
+          <h3>Real-World</h3>
+          <p>Training moves to the sidewalks, parks, and doorways where the dog actually struggles — not a sterile substitute for it.</p>
+        </div>
+        <div class="deploy-cell">
+          <div class="num">COND. C</div>
+          <h3>Owner Optional</h3>
+          <p>Owners may participate directly and learn the handling in real time, or sessions can run solo while they're at work.</p>
+        </div>
+      </div>
+
+      <div class="deploy-photo-row">
+        <div class="thumb">
+          <img src="../assets/IMG_4683.png" alt="Group walk session with multiple dogs and handlers on a sidewalk" width="450" height="600">
+          <span class="frame-id">IMG_4683</span>
+          <div class="frame-cap">FIG.03 &middot; GROUP / SOCIALIZATION</div>
+        </div>
+        <div class="thumb">
+          <img src="../assets/IMG_5206.png" alt="Kierra with a golden retriever on a front porch" width="450" height="600">
+          <span class="frame-id">IMG_5206</span>
+          <div class="frame-cap">FIG.04 &middot; RESIDENTIAL SITE</div>
+        </div>
+        <div class="thumb">
+          <img src="../assets/IMG_5207.png" alt="Kierra with a dog outside a front door entryway" width="450" height="600">
+          <span class="frame-id">IMG_5207</span>
+          <div class="frame-cap">FIG.05 &middot; ENTRY / THRESHOLD</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SEC-05 CONTACT ================= -->
+  <section id="contact">
+    <div class="sheet">
+      <div class="sec-head">
+        <span class="sec-tag">SEC-05</span>
+        <h2>Contact</h2>
+        <span class="sec-index">P.05 / INTAKE</span>
+      </div>
+
+      <div class="contact-panel">
+        <div class="contact-copy">
+          <h2>Open an<br>Intake File.</h2>
+          <p>Tell us about the dog, the household, and what's happening. Plans are written per-dog — the first step is always a conversation, not a template.</p>
+          <div class="hero-ctas" style="margin-top:24px;">
+            <a class="btn btn-primary" href="mailto:hello@kierrask9.example">Email Intake &rarr;</a>
+          </div>
+        </div>
+        <div class="contact-fields">
+          <div class="contact-field">
+            <div class="fk">Email</div>
+            <div class="fv"><a href="mailto:hello@kierrask9.example">hello@kierrask9.example</a></div>
+          </div>
+          <div class="contact-field">
+            <div class="fk">Service Area</div>
+            <div class="fv">California &middot; In-Home / Field</div>
+          </div>
+          <div class="contact-field">
+            <div class="fk">Response Window</div>
+            <div class="fv">1&ndash;2 business days</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="sheet footer-row">
+    <span><b>Kierra's K9 Training</b> &middot; est. 2003 &middot; California</span>
+    <span>DOC KKT-03 &middot; REV 2026 &middot; POSITIVE REINFORCEMENT ONLY</span>
+  </div>
+</footer>
+
+</body>
+</html>
