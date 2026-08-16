@@ -1,0 +1,741 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kierra's K9 Training — Science-Based Dog Training, California</title>
+<meta name="description" content="Personalized, science-based, positive-reinforcement dog training. In-home or real-world sessions. Est. 2003." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBFAF7;
+    --ink:#111111;
+    --muted:#6a675b;
+    --ochre:#C68A2E;
+    --hairline: rgba(17,17,17,0.14);
+    --col-gap: 20px;
+    --side: 40px;
+    --fs-12: 12px;
+    --fs-14: 14px;
+    --fs-16: 16px;
+    --fs-22: 22px;
+    --fs-36: 36px;
+    --fs-72: 72px;
+    --pad-section: 96px;
+  }
+
+  *{box-sizing:border-box;}
+  html{background:var(--paper);}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Inter Tight", "Helvetica Neue", Arial, sans-serif;
+    font-weight:400;
+    font-size:var(--fs-16);
+    line-height:1.5;
+    letter-spacing:0;
+    font-feature-settings:"tnum" 1, "lnum" 1;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: no-preference){
+    html{scroll-behavior:smooth;}
+    a, .navlink{transition: color .15s ease, opacity .15s ease;}
+  }
+
+  img{max-width:100%; display:block;}
+
+  a{color:inherit; text-decoration:none;}
+
+  :focus-visible{
+    outline:none;
+    text-decoration: underline solid var(--ochre) 2px;
+    text-underline-offset:3px;
+  }
+
+  .num{font-feature-settings:"tnum" 1;}
+
+  /* ---------- grid ---------- */
+  .wrap{
+    max-width:1280px;
+    margin:0 auto;
+    padding:0 var(--side);
+  }
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(12, 1fr);
+    column-gap:var(--col-gap);
+  }
+  .hairline{
+    border-top:1px solid var(--hairline);
+  }
+
+  /* ---------- header ---------- */
+  header.top{
+    padding-top:28px;
+    padding-bottom:28px;
+  }
+  .k9mark{
+    grid-column: 1 / 3;
+    font-size:var(--fs-22);
+    font-weight:600;
+    color:var(--ochre);
+    letter-spacing:-0.01em;
+    line-height:1;
+    align-self:start;
+  }
+  .k9mark sup{
+    font-size:10px;
+    font-weight:500;
+    letter-spacing:0.06em;
+    color:var(--muted);
+    display:block;
+    margin-top:6px;
+    text-transform:uppercase;
+  }
+
+  nav.index{
+    grid-column: 3 / 13;
+    display:grid;
+    grid-template-columns:repeat(10, 1fr);
+    column-gap:var(--col-gap);
+  }
+  nav.index a{
+    grid-column: span 2;
+    font-size:var(--fs-12);
+    letter-spacing:0.02em;
+    color:var(--muted);
+    font-weight:500;
+    padding-bottom:6px;
+    border-bottom:1px solid transparent;
+    display:flex;
+    align-items:baseline;
+    gap:6px;
+    white-space:nowrap;
+    overflow:hidden;
+  }
+  nav.index a .n{
+    font-feature-settings:"tnum" 1;
+    color:var(--muted);
+  }
+  nav.index a.active{color:var(--ink);}
+  nav.index a.active .n{color:var(--ink);}
+  nav.index a.active .dot{
+    width:4px;height:4px;border-radius:50%;
+    background:var(--ochre);
+    display:inline-block;
+    flex:none;
+  }
+  nav.index a .dot{
+    width:4px;height:4px;border-radius:50%;
+    background:transparent;
+    display:inline-block;
+    flex:none;
+  }
+
+  /* ---------- grid-count aside ---------- */
+  .gridnote{
+    position:fixed;
+    right:14px;
+    top:50%;
+    transform:translateY(-50%) rotate(180deg);
+    writing-mode:vertical-rl;
+    font-size:var(--fs-12);
+    letter-spacing:0.12em;
+    color:var(--muted);
+    font-feature-settings:"tnum" 1;
+    z-index:5;
+    pointer-events:none;
+    display:flex;
+    gap:14px;
+    align-items:center;
+  }
+  .gridnote span{opacity:0.7;}
+
+  @media (max-width: 980px){
+    .gridnote{display:none;}
+  }
+
+  /* ---------- sections ---------- */
+  section{
+    padding-top:var(--pad-section);
+    padding-bottom:var(--pad-section);
+  }
+  .eyebrow{
+    grid-column:1 / 13;
+    font-size:var(--fs-12);
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--muted);
+    font-weight:500;
+    margin:0 0 18px 0;
+  }
+  .section-label{
+    grid-column: 1 / 3;
+    font-size:var(--fs-12);
+    color:var(--muted);
+    font-weight:500;
+    font-feature-settings:"tnum" 1;
+    letter-spacing:0.02em;
+  }
+
+  /* ---------- hero ---------- */
+  section.hero{padding-top:56px;}
+  .hero h1{
+    grid-column:1 / 13;
+    font-size:var(--fs-72);
+    line-height:0.98;
+    font-weight:600;
+    letter-spacing:-0.03em;
+    margin:0 0 28px 0;
+  }
+  .hero .pitch{
+    grid-column:1 / 8;
+    font-size:var(--fs-22);
+    line-height:1.35;
+    font-weight:400;
+    color:var(--ink);
+    margin:0 0 36px 0;
+    letter-spacing:-0.005em;
+  }
+  .hero .hr{
+    grid-column:1 / 13;
+    border-top:1px solid var(--hairline);
+    margin-bottom:40px;
+  }
+  .hero .meta{
+    grid-column:1 / 7;
+    display:flex;
+    gap:56px;
+  }
+  .hero .meta div p{
+    margin:0 0 4px 0;
+    font-size:var(--fs-12);
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+  }
+  .hero .meta div strong{
+    font-size:var(--fs-16);
+    font-weight:500;
+    letter-spacing:0;
+  }
+  .hero .photo{
+    grid-column:8 / 13;
+    align-self:end;
+  }
+  .hero .photo img{
+    width:100%;
+    height:210px;
+    object-fit:cover;
+    filter:grayscale(1) contrast(1.05) brightness(1.02);
+  }
+  .hero .photo figcaption{
+    margin-top:10px;
+    font-size:var(--fs-12);
+    color:var(--muted);
+  }
+
+  /* ---------- about ---------- */
+  .about-body{
+    grid-column:3 / 10;
+  }
+  .about-body p{
+    margin:0 0 20px 0;
+    font-size:var(--fs-16);
+    max-width:62ch;
+  }
+  .about-body p:last-child{margin-bottom:0;}
+
+  .badges{
+    grid-column:10 / 13;
+    display:flex;
+    flex-direction:column;
+    gap:28px;
+    align-items:flex-start;
+  }
+  .badge{
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .badge svg{flex:none;}
+  .badge .label{
+    font-size:var(--fs-12);
+    color:var(--muted);
+    line-height:1.4;
+    max-width:14ch;
+  }
+  .badge .label strong{
+    display:block;
+    color:var(--ink);
+    font-weight:500;
+    font-size:var(--fs-14);
+  }
+
+  /* ---------- method ---------- */
+  .method-intro{
+    grid-column:3 / 8;
+  }
+  .method-intro p{
+    font-size:var(--fs-16);
+    margin:0 0 20px 0;
+    max-width:56ch;
+  }
+  .method-intro p:last-child{margin-bottom:0;}
+
+  .clicker{
+    grid-column:3 / 8;
+    margin-top:32px;
+    padding-top:24px;
+    border-top:1px solid var(--hairline);
+  }
+  .clicker p{
+    font-size:var(--fs-14);
+    color:var(--muted);
+    margin:0;
+    max-width:52ch;
+  }
+  .clicker .term{
+    font-size:var(--fs-12);
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--ink);
+    font-weight:500;
+    display:block;
+    margin-bottom:8px;
+  }
+
+  .never{
+    grid-column:9 / 13;
+  }
+  .never h3{
+    font-size:var(--fs-12);
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    font-weight:600;
+    margin:0 0 18px 0;
+    color:var(--ink);
+  }
+  .never ol{
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  .never li{
+    display:flex;
+    gap:12px;
+    padding:12px 0;
+    border-top:1px solid var(--hairline);
+    font-size:var(--fs-14);
+  }
+  .never li:last-child{border-bottom:1px solid var(--hairline);}
+  .never li .n{
+    color:var(--muted);
+    font-feature-settings:"tnum" 1;
+    flex:none;
+    width:1.4em;
+  }
+
+  /* ---------- services ---------- */
+  .services-index{
+    grid-column:1 / 13;
+    columns:2;
+    column-gap:calc(var(--col-gap) * 3 + 100px);
+  }
+  .services-index ol{
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  .services-index li{
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+    padding:14px 0;
+    border-top:1px solid var(--hairline);
+    break-inside:avoid;
+    font-size:var(--fs-16);
+  }
+  .services-index li:last-child{
+    border-bottom:1px solid var(--hairline);
+  }
+  .services-index li .n{
+    font-size:var(--fs-12);
+    color:var(--muted);
+    font-feature-settings:"tnum" 1;
+    flex:none;
+    width:1.6em;
+  }
+  .services-index li .leader{
+    flex:1;
+    border-bottom:1px dotted var(--hairline);
+    height:0;
+    margin-bottom:5px;
+  }
+  .services-index li .tag{
+    font-size:var(--fs-12);
+    color:var(--muted);
+    flex:none;
+  }
+
+  /* ---------- format ---------- */
+  .format-copy{
+    grid-column:3 / 8;
+  }
+  .format-copy p{
+    font-size:var(--fs-16);
+    margin:0 0 20px 0;
+    max-width:56ch;
+  }
+  .format-copy p:last-child{margin-bottom:0;}
+
+  .format-photos{
+    grid-column:8 / 13;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:var(--col-gap);
+  }
+  .format-photos figure{margin:0;}
+  .format-photos img{
+    width:100%;
+    height:170px;
+    object-fit:cover;
+    filter:grayscale(1) contrast(1.05) brightness(1.02);
+  }
+  .format-photos figcaption{
+    margin-top:10px;
+    font-size:var(--fs-12);
+    color:var(--muted);
+  }
+
+  /* ---------- contact ---------- */
+  .contact-main{
+    grid-column:1 / 8;
+  }
+  .contact-main h2{
+    font-size:var(--fs-36);
+    font-weight:600;
+    letter-spacing:-0.015em;
+    margin:0 0 24px 0;
+    line-height:1.05;
+  }
+  .cta{
+    display:inline-block;
+    font-size:var(--fs-22);
+    font-weight:500;
+    color:var(--ink);
+    border-bottom:2px solid var(--ochre);
+    padding-bottom:4px;
+    letter-spacing:-0.005em;
+  }
+  .contact-meta{
+    grid-column:9 / 13;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+  }
+  .contact-meta p{margin:0;}
+  .contact-meta .k{
+    display:block;
+    font-size:var(--fs-12);
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--muted);
+    margin-bottom:4px;
+  }
+  .contact-meta .v{
+    display:block;
+    font-size:var(--fs-14);
+    color:var(--ink);
+  }
+
+  /* ---------- footer ---------- */
+  footer{
+    padding-top:40px;
+    padding-bottom:56px;
+  }
+  footer .colophon{
+    grid-column:1 / 8;
+    font-size:var(--fs-12);
+    color:var(--muted);
+    line-height:1.6;
+    max-width:60ch;
+  }
+  footer .back{
+    grid-column:9 / 13;
+    text-align:right;
+    font-size:var(--fs-12);
+    color:var(--muted);
+    align-self:end;
+  }
+  footer .back .n{color:var(--muted); font-weight:500;}
+
+  h2.section-title{
+    grid-column:3 / 9;
+    font-size:var(--fs-36);
+    font-weight:600;
+    letter-spacing:-0.015em;
+    line-height:1.05;
+    margin:0 0 40px 0;
+  }
+
+  /* ============ mobile ============ */
+  @media (max-width: 760px){
+    :root{
+      --side:20px;
+      --pad-section:64px;
+    }
+    .wrap{padding:0 var(--side);}
+    .grid{
+      grid-template-columns:repeat(4, 1fr);
+      column-gap:14px;
+    }
+    header.top{padding-top:20px; padding-bottom:20px;}
+    .k9mark{grid-column:1 / 3;}
+    nav.index{
+      grid-column:1 / 5;
+      grid-template-columns:repeat(2, 1fr);
+      row-gap:10px;
+      margin-top:20px;
+    }
+    nav.index a{grid-column:span 1;}
+
+    .hero h1{grid-column:1/5; font-size:var(--fs-72); line-height:0.96;}
+    .lg-only{display:none;}
+    .hero .pitch{grid-column:1/5; font-size:var(--fs-16);}
+    .hero .hr{grid-column:1/5;}
+    .hero .meta{grid-column:1/5; flex-wrap:wrap; gap:28px; margin-bottom:32px;}
+    .hero .photo{grid-column:1/5;}
+    .hero .photo img{height:220px;}
+
+    .about-body{grid-column:1/5;}
+    .badges{grid-column:1/5; flex-direction:row; flex-wrap:wrap; margin-top:32px;}
+
+    .method-intro{grid-column:1/5;}
+    .clicker{grid-column:1/5;}
+    .never{grid-column:1/5; margin-top:40px;}
+
+    .services-index{grid-column:1/5; columns:1;}
+
+    .format-copy{grid-column:1/5;}
+    .format-photos{grid-column:1/5; margin-top:28px;}
+
+    .contact-main{grid-column:1/5;}
+    .contact-meta{grid-column:1/5; margin-top:32px; flex-direction:row; flex-wrap:wrap; gap:32px;}
+
+    h2.section-title{grid-column:1/5;}
+    .section-label{grid-column:1/5; margin-bottom:12px;}
+
+    footer .colophon{grid-column:1/5;}
+    footer .back{grid-column:1/5; text-align:left; margin-top:16px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="gridnote" aria-hidden="true"><span class="num">12</span><span>COL</span><span class="num">1280</span><span>MAX</span></div>
+
+<header class="top wrap">
+  <div class="grid">
+    <div class="k9mark">K9<sup>Kierra's</sup></div>
+    <nav class="index" aria-label="Section index">
+      <a href="#hero" data-idx="0"><span class="dot"></span><span class="n num">00</span> Hero</a>
+      <a href="#about" data-idx="1"><span class="dot"></span><span class="n num">01</span> About</a>
+      <a href="#method" data-idx="2"><span class="dot"></span><span class="n num">02</span> Method</a>
+      <a href="#services" data-idx="3"><span class="dot"></span><span class="n num">03</span> Services</a>
+      <a href="#format" data-idx="4"><span class="dot"></span><span class="n num">04</span> Format</a>
+      <a href="#contact" data-idx="5"><span class="dot"></span><span class="n num">05</span> Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero wrap" id="hero">
+    <div class="grid">
+      <h1>Kierra&rsquo;s K9<br class="lg-only"> Training</h1>
+      <p class="pitch">Science-based, positive-reinforcement dog training that starts with why the behavior is happening&nbsp;&mdash; not just what to fix.</p>
+      <div class="hr"></div>
+      <div class="meta">
+        <div>
+          <p>Practicing since</p>
+          <strong class="num">2003</strong>
+        </div>
+        <div>
+          <p>Based in</p>
+          <strong>California</strong>
+        </div>
+        <div>
+          <p>Certified</p>
+          <strong>CCPDT &middot; AKC CGC</strong>
+        </div>
+      </div>
+      <figure class="photo">
+        <img src="../assets/IMG_9926.png" alt="Kierra kneeling in a garden beside a golden retriever, both smiling." />
+        <figcaption>Kierra, on site with a client.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="hairline"></div></div>
+
+  <section class="wrap" id="about">
+    <div class="grid">
+      <p class="section-label num">01 &mdash; About</p>
+      <h2 class="section-title">Started in 2003. Still hands-on.</h2>
+      <div class="about-body">
+        <p>The practice began under the name Kierra&rsquo;s K9 Care. As the work grew&nbsp;&mdash; more dogs, more families, more behavior cases&nbsp;&mdash; the name became what it is today, Kierra&rsquo;s K9 Training. The approach hasn&rsquo;t changed: understand the dog before asking it to change.</p>
+        <p>Every plan is built from the animal up &mdash; psychology, body language, environment, and learning history &mdash; then taught to both ends of the leash. Owners learn to read posture and expression, not just issue cues.</p>
+      </div>
+      <div class="badges">
+        <div class="badge">
+          <svg width="52" height="52" viewBox="0 0 52 52" aria-hidden="true">
+            <circle cx="26" cy="26" r="24.5" fill="none" stroke="#111111" stroke-width="1" />
+            <circle cx="26" cy="26" r="19.5" fill="none" stroke="#111111" stroke-width="1" />
+            <text x="26" y="30" text-anchor="middle" font-family="Inter Tight, sans-serif" font-size="10" font-weight="600" fill="#111111" letter-spacing="0.5">CCPDT</text>
+          </svg>
+          <div class="label"><strong>CCPDT</strong>Certified Professional Dog Trainer</div>
+        </div>
+        <div class="badge">
+          <svg width="52" height="52" viewBox="0 0 52 52" aria-hidden="true">
+            <circle cx="26" cy="26" r="24.5" fill="none" stroke="#111111" stroke-width="1" />
+            <circle cx="26" cy="26" r="19.5" fill="none" stroke="#111111" stroke-width="1" />
+            <text x="26" y="24" text-anchor="middle" font-family="Inter Tight, sans-serif" font-size="9" font-weight="600" fill="#111111" letter-spacing="0.5">AKC</text>
+            <text x="26" y="35" text-anchor="middle" font-family="Inter Tight, sans-serif" font-size="9" font-weight="600" fill="#111111" letter-spacing="0.5">CGC</text>
+          </svg>
+          <div class="label"><strong>AKC CGC</strong>Canine Good Citizen Evaluator</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="hairline"></div></div>
+
+  <section class="wrap" id="method">
+    <div class="grid">
+      <p class="section-label num">02 &mdash; Method</p>
+      <h2 class="section-title">Positive reinforcement, precisely applied.</h2>
+      <div class="method-intro">
+        <p>Training is built on modern learning science, clear communication, and trust &mdash; food, toys, praise, and play, matched to what motivates each individual dog.</p>
+      </div>
+      <div class="clicker">
+        <span class="term">Clicker training</span>
+        <p>A click marks the exact instant a dog gets it right. That precision speeds up learning and keeps every session feeling like a game worth playing.</p>
+      </div>
+      <div class="never">
+        <h3>Never used</h3>
+        <ol>
+          <li><span class="n num">01</span>Shock or electronic collars</li>
+          <li><span class="n num">02</span>Choke collars</li>
+          <li><span class="n num">03</span>Prong collars</li>
+          <li><span class="n num">04</span>Fear, pain, force, or intimidation</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="hairline"></div></div>
+
+  <section class="wrap" id="services">
+    <div class="grid">
+      <p class="section-label num">03 &mdash; Services</p>
+      <h2 class="section-title">Further than sit, stay, come.</h2>
+      <div class="services-index">
+        <ol>
+          <li><span class="n num">01</span>Anxiety &amp; fear<span class="leader"></span></li>
+          <li><span class="n num">02</span>Reactivity<span class="leader"></span></li>
+          <li><span class="n num">03</span>Leash pulling<span class="leader"></span></li>
+          <li><span class="n num">04</span>Jumping &amp; overexcitement<span class="leader"></span></li>
+          <li><span class="n num">05</span>Impulse control<span class="leader"></span></li>
+          <li><span class="n num">06</span>Socialization<span class="leader"></span></li>
+          <li><span class="n num">07</span>Resource guarding<span class="leader"></span></li>
+          <li><span class="n num">08</span>Destructive behavior<span class="leader"></span></li>
+          <li><span class="n num">09</span>Potty training<span class="leader"></span></li>
+          <li><span class="n num">10</span>Puppy behaviors<span class="leader"></span></li>
+          <li><span class="n num">11</span>Adolescent behavior<span class="leader"></span></li>
+          <li><span class="n num">12</span>Manners, home &amp; public<span class="leader"></span></li>
+          <li><span class="n num">13</span>Focus &amp; distraction<span class="leader"></span></li>
+          <li><span class="n num">14</span>Service-dog training<span class="leader"></span></li>
+          <li><span class="n num">15</span>Basic obedience<span class="leader"></span></li>
+          <li><span class="n num">16</span>Advanced obedience<span class="leader"></span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="hairline"></div></div>
+
+  <section class="wrap" id="format">
+    <div class="grid">
+      <p class="section-label num">04 &mdash; Format</p>
+      <h2 class="section-title">Wherever the behavior shows up.</h2>
+      <div class="format-copy">
+        <p>Sessions happen in the home or in the real-world environments where a dog actually struggles &mdash; a doorway, a sidewalk, a busy trailhead. Owners are welcome to join every session, or the work can happen while they&rsquo;re at work.</p>
+        <p>Since 2003, the practice has kept expanding through hands-on cases, coursework, and continuing education &mdash; so the plan in front of your dog reflects current behavior science, not habit.</p>
+      </div>
+      <div class="format-photos">
+        <figure>
+          <img src="../assets/IMG_5337.png" alt="Training session in a home kitchen, dog sitting for a cue." />
+          <figcaption>In-home</figcaption>
+        </figure>
+        <figure>
+          <img src="../assets/IMG_4683.png" alt="Training session outdoors on a neighborhood sidewalk with two dogs." />
+          <figcaption>Real-world</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="hairline"></div></div>
+
+  <section class="wrap" id="contact">
+    <div class="grid">
+      <p class="section-label num">05 &mdash; Contact</p>
+      <div class="contact-main">
+        <h2>Tell me about your dog.</h2>
+        <a class="cta" href="mailto:hello@kierrask9.example">hello@kierrask9.example</a>
+      </div>
+      <div class="contact-meta">
+        <p><span class="k">Service area</span><span class="v">California &mdash; in-home &amp; on location</span></p>
+        <p><span class="k">Response time</span><span class="v">Within one business day</span></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div class="wrap"><div class="hairline"></div></div>
+
+<footer class="wrap">
+  <div class="grid">
+    <p class="colophon">Set in Inter Tight, weights 400 / 500 / 600, tabular figures throughout. Laid out on a twelve-column grid, 1280px canvas. Kierra&rsquo;s K9 Training, est. 2003, California. Design study &mdash; direction 04, minimal / swiss precision.</p>
+    <p class="back"><a href="#hero"><span class="n num">00</span> Back to top</a></p>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var links = Array.prototype.slice.call(document.querySelectorAll('nav.index a'));
+    var sections = links.map(function(l){ return document.querySelector(l.getAttribute('href')); });
+    if(!('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        var idx = sections.indexOf(entry.target);
+        if(idx === -1) return;
+        if(entry.isIntersecting){
+          links.forEach(function(l){ l.classList.remove('active'); });
+          links[idx].classList.add('active');
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    sections.forEach(function(s){ if(s) io.observe(s); });
+    links[0].classList.add('active');
+  })();
+</script>
+
+</body>
+</html>
