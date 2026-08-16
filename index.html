@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kierra's K9 Training · Ten design directions</title>
+<meta name="description" content="Ten wildly different design proposals for Kierra's K9 Training." />
+<style>
+  :root {
+    --ink: #16150F;
+    --paper: #F6F1E7;
+    --rule: #2b2a22;
+    --muted: #6a675b;
+    --accent: #B7411F;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--paper); color: var(--ink); font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; }
+  body { padding: 56px clamp(20px, 6vw, 96px); max-width: 1240px; margin: 0 auto; }
+  header { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end; border-bottom: 2px solid var(--ink); padding-bottom: 24px; margin-bottom: 40px; }
+  h1 { font-size: clamp(44px, 8vw, 96px); line-height: 0.9; letter-spacing: -0.025em; margin: 0; font-weight: 400; font-style: italic; }
+  .eyebrow { font-family: ui-monospace, "SF Mono", Menlo, monospace; text-transform: uppercase; letter-spacing: 0.14em; font-size: 11px; color: var(--muted); margin-bottom: 12px; }
+  .meta { text-align: right; font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 12px; color: var(--muted); line-height: 1.6; }
+  .lede { max-width: 62ch; font-size: 19px; line-height: 1.55; margin: 0 0 32px; }
+  .lede a { color: var(--accent); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0; border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); }
+  .card { position: relative; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 24px 20px 20px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 8px; min-height: 200px; transition: background 120ms ease, color 120ms ease; }
+  .card:hover, .card:focus-visible { background: var(--ink); color: var(--paper); outline: none; }
+  .card:hover .num, .card:focus-visible .num, .card:hover .tag, .card:focus-visible .tag { color: rgba(246,241,231,0.6); }
+  .num { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 11.5px; letter-spacing: 0.12em; color: var(--muted); }
+  .card h3 { font-size: 28px; font-weight: 400; letter-spacing: -0.01em; margin: 6px 0 4px; line-height: 1.05; }
+  .tag { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+  .card .arrow { position: absolute; right: 16px; bottom: 14px; font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 14px; opacity: 0.6; }
+  footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--rule); font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 11.5px; color: var(--muted); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  footer a { color: inherit; }
+  @media (max-width: 640px) { header { grid-template-columns: 1fr; } .meta { text-align: left; } }
+</style>
+</head>
+<body>
+  <header>
+    <div>
+      <div class="eyebrow">Design study · 10 directions · v1</div>
+      <h1>Kierra's K9 Training —<br/>ten ways to look like herself.</h1>
+    </div>
+    <div class="meta">
+      Est. 2003 · California<br/>
+      CCPDT · AKC CGC certified<br/>
+      Positive, science-based
+    </div>
+  </header>
+
+  <p class="lede">Ten committed visual identities for the same small dog-training practice. Same content, wildly different worlds. Read the <a href="plan.html">design plan</a> for the reasoning behind each.</p>
+
+  <nav class="grid" aria-label="Design directions">
+    <a class="card" href="design_1/"><span class="num">01 / SLEEK</span><h3>Editorial elegance</h3><span class="tag">Fashion-magazine</span><span class="arrow">→</span></a>
+    <a class="card" href="design_2/"><span class="num">02 / NEOBRUTALIST</span><h3>Sit. Stay. Shout.</h3><span class="tag">Punk poster</span><span class="arrow">→</span></a>
+    <a class="card" href="design_3/"><span class="num">03 / INDUSTRIAL</span><h3>Field manual</h3><span class="tag">Blueprint · technical</span><span class="arrow">→</span></a>
+    <a class="card" href="design_4/"><span class="num">04 / MINIMAL</span><h3>Swiss precision</h3><span class="tag">Grid · hairline</span><span class="arrow">→</span></a>
+    <a class="card" href="design_5/"><span class="num">05 / NATURAL</span><h3>Earth &amp; hand</h3><span class="tag">Textured · grounded</span><span class="arrow">→</span></a>
+    <a class="card" href="design_6/"><span class="num">06 / BOTANICAL</span><h3>Naturistic garden</h3><span class="tag">Watercolor · airy</span><span class="arrow">→</span></a>
+    <a class="card" href="design_7/"><span class="num">07 / FLOWING</span><h3>Liquid motion</h3><span class="tag">Gradient · animated</span><span class="arrow">→</span></a>
+    <a class="card" href="design_8/"><span class="num">08 / SOFT</span><h3>Cozy &amp; cream</h3><span class="tag">Warm · tactile</span><span class="arrow">→</span></a>
+    <a class="card" href="design_9/"><span class="num">09 / BUBBLY</span><h3>Playful pastel</h3><span class="tag">Rounded · bouncy</span><span class="arrow">→</span></a>
+    <a class="card" href="design_10/"><span class="num">10 / TERMINAL</span><h3>Science-based, literally</h3><span class="tag">Mono · data</span><span class="arrow">→</span></a>
+  </nav>
+
+  <footer>
+    <span>Kierra's K9 Training · design study</span>
+    <span><a href="plan.html">Read the design plan →</a></span>
+  </footer>
+</body>
+</html>

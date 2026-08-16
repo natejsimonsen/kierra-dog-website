@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kierra's K9 Training · 10 Design Directions</title>
+<style>
+  :root {
+    --ink: #16150F;
+    --paper: #F6F1E7;
+    --rule: #2b2a22;
+    --accent: #B7411F;
+    --moss: #3d5031;
+    --tag: #d4a017;
+    --muted: #6a675b;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--paper); color: var(--ink); font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif; }
+  body { padding: 48px clamp(20px, 6vw, 96px); max-width: 1200px; margin: 0 auto; }
+  header { border-bottom: 2px solid var(--ink); padding-bottom: 20px; margin-bottom: 40px; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end; }
+  h1 { font-size: clamp(40px, 7vw, 84px); line-height: 0.95; letter-spacing: -0.02em; margin: 0; font-weight: 400; font-style: italic; }
+  .eyebrow { font-family: ui-monospace, "SF Mono", Menlo, monospace; text-transform: uppercase; letter-spacing: 0.14em; font-size: 11px; color: var(--muted); margin-bottom: 10px; }
+  .lede { max-width: 60ch; font-size: 18px; line-height: 1.55; margin: 0 0 12px; }
+  .meta { text-align: right; font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 12px; color: var(--muted); }
+  h2 { font-size: 22px; margin: 48px 0 8px; letter-spacing: -0.01em; text-transform: uppercase; font-family: "Iowan Old Style", Georgia, serif; }
+  .brief { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 40px; margin: 24px 0 48px; }
+  .brief p { margin: 0; font-size: 15.5px; line-height: 1.6; }
+  .brief b { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--muted); font-weight: 500; display: block; margin-bottom: 6px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 0; border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); }
+  .card { border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 24px; display: flex; flex-direction: column; gap: 12px; background: var(--paper); }
+  .card .num { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 12px; color: var(--muted); letter-spacing: 0.1em; }
+  .card h3 { font-size: 26px; margin: 0; letter-spacing: -0.01em; font-weight: 400; }
+  .card .tag { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); }
+  .card p { font-size: 14.5px; line-height: 1.55; margin: 0; }
+  .card .row { display: grid; grid-template-columns: 90px 1fr; gap: 8px 12px; font-size: 13px; line-height: 1.5; }
+  .card .row b { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); font-weight: 500; align-self: start; padding-top: 3px; }
+  .swatch { display: inline-flex; align-items: center; gap: 6px; font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 11px; margin-right: 8px; }
+  .swatch i { display: inline-block; width: 12px; height: 12px; border-radius: 2px; border: 1px solid rgba(0,0,0,0.15); }
+  footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--rule); font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 11.5px; color: var(--muted); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  a { color: inherit; }
+  @media (max-width: 640px) {
+    header { grid-template-columns: 1fr; }
+    .meta { text-align: left; }
+    .brief { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <div>
+      <div class="eyebrow">Design Plan · v1 · 2026-08-16</div>
+      <h1>Kierra's K9 Training —<br/>ten directions, one dog trainer.</h1>
+    </div>
+    <div class="meta">
+      Client: Kierra's K9 Training<br/>
+      Est. 2003 · California<br/>
+      Content: positive, science-based
+    </div>
+  </header>
+
+  <p class="lede">Kierra runs a small, personal dog-training practice built on positive reinforcement, clicker training, and reading canine body language. The brand has no house style yet. This plan proposes ten wildly different visual identities so the client can react to real work rather than mood boards — each one is a committed take on who the brand could be.</p>
+
+  <h2>The brief in one paragraph</h2>
+  <div class="brief">
+    <p><b>Subject</b>Kierra, a science-based dog trainer working primarily with golden retrievers and family dogs in California. Certified with CCPDT and AKC CGC. In business as "Kierra's K9 Care" since 2003, now "Kierra's K9 Training."</p>
+    <p><b>Audience</b>Dog owners looking for behavioral help (reactivity, anxiety, leash pulling, resource guarding, puppy chaos) — not just basic obedience. They want a trainer who reads their specific dog, not a franchise class.</p>
+    <p><b>Voice</b>Warm, competent, curious. Never harsh, never gimmicky. "Understand why the behavior is happening" is the operating principle.</p>
+    <p><b>Assets</b>Nine documentary photos: hero portrait with a golden retriever, in-home training moments, sidewalk walks, multi-dog handling, plus certification badges (CCPDT, CGC).</p>
+    <p><b>Non-negotiables</b>No shock/prong/choke collar imagery. No dominance-theory language. Photos are honest, not stock.</p>
+    <p><b>Goal of this exercise</b>Ten committed, executable design proposals. Each renders as <code>design_N/index.html</code> under one GitHub Pages site.</p>
+  </div>
+
+  <h2>The ten directions</h2>
+  <div class="grid">
+    <div class="card">
+      <div class="num">01 / SLEEK</div>
+      <h3>Editorial elegance</h3>
+      <span class="tag">Fashion-magazine · full-bleed</span>
+      <p>A hero portrait treated like a Kinfolk cover. Big italic serif over full-bleed photography, generous negative space, tiny caption furniture. Sells the trainer as a person first.</p>
+      <div class="row">
+        <b>Palette</b><span><span class="swatch"><i style="background:#F4EFE6"></i>ivory</span><span class="swatch"><i style="background:#111"></i>ink</span><span class="swatch"><i style="background:#8A5A3B"></i>tobacco</span></span>
+        <b>Type</b><span>Fraunces italic display · Inter body · caption mono</span>
+        <b>Signature</b><span>Oversized italic pull-quotes threaded through image columns.</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="num">02 / NEOBRUTALIST</div>
+      <h3>Sit. Stay. Shout.</h3>
+      <span class="tag">Punk · high-contrast · chunky</span>
+      <p>Safety-orange and jet black, zero gradients, thick 4px black borders, hard offset shadows, no border-radius. Type as protest poster: SIT. STAY. THRIVE.</p>
+      <div class="row">
+        <b>Palette</b><span><span class="swatch"><i style="background:#FF5B1F"></i>orange</span><span class="swatch"><i style="background:#000"></i>black</span><span class="swatch"><i style="background:#FFF7E8"></i>bone</span></span>
+        <b>Type</b><span>Archivo Black display · Space Mono body</span>
+        <b>Signature</b><span>Marquee scroller of behavior verbs. Buttons that slam.</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="num">03 / INDUSTRIAL</div>
+      <h3>Field manual</h3>
+      <span class="tag">Blueprint · technical · monospace</span>
+      <p>Concrete-gray palette with a single safety-yellow accent. Grid overlays, rule numbers, technical callouts on every photo. Reads like the K9 unit manual for a working facility.</p>
+      <div class="row">
+        <b>Palette</b><span><span class="swatch"><i style="background:#2B2B2B"></i>concrete</span><span class="swatch"><i style="background:#F5C518"></i>safety</span><span class="swatch"><i style="background:#D6D3CB"></i>steel</span></span>
+        <b>Type</b><span>JetBrains Mono headings · Söhne / Inter body</span>
+        <b>Signature</b><span>Blueprint diagrams annotating dog body language.</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="num">04 / MINIMAL</div>
+      <h3>Swiss precision</h3>
+      <span class="tag">Grid · hairline · restraint</span>
+      <p>Twelve-column baseline grid, off-white paper, near-black ink, one ochre accent used exactly three times. Nothing shouts. Confidence through restraint.</p>
+      <div class="row">
+        <b>Palette</b><span><span class="swatch"><i style="background:#FBFAF7"></i>paper</span><span class="swatch"><i style="background:#111"></i>ink</span><span class="swatch"><i style="background:#C68A2E"></i>ochre</span></span>
+        <b>Type</b><span>Neue Haas Grotesk · everything, one family</span>
+        <b>Signature</b><span>K9 corner mark. Numbered index rather than nav.</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="num">05 / NATURAL</div>
+      <h3>Earth &amp; hand</h3>
+      <span class="tag">Textured · warm · grounded</span>
+      <p>Moss, ochre, stone, cream. Photos treated warm and analog. Rounded organic containers, hand-drawn line motifs of leaves and paw prints woven into headings.</p>
+      <div class="row">
+        <b>Palette</b><span><span class="swatch"><i style="background:#4A5D3A"></i>moss</span><span class="swatch"><i style="background:#C69B47"></i>ochre</span><span class="swatch"><i style="background:#EFE5D2"></i>cream</span></span>
+        <b>Type</b><span>Fraunces soft · Inter body · italic captions</span>
+        <b>Signature</b><span>Grainy paper texture. Hand-drawn arrows.</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="num">06 / BOTANICAL</div>
+      <h3>Naturistic garden</h3>
+      <span class="tag">Watercolor · flora · airy</span>
+      <p>Botanical-illustration mood. Sage, apricot, dusty rose. Big scalloped shapes, soft washes behind photos, leaf ornaments. Everything breathes.</p>
+      <div class="row">
+        <b>Palette</b><span><span class="swatch"><i style="background:#A9BE9B"></i>sage</span><span class="swatch"><i style="background:#F3B58C"></i>apricot</span><span class="swatch"><i style="background:#DFA9A2"></i>rose</span></span>
+        <b>Type</b><span>DM Serif Display · Instrument Serif body</span>
+        <b>Signature</b><span>SVG leaf frames around photos. Scalloped section edges.</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="num">07 / FLOWING</div>
+      <h3>Liquid motion</h3>
+      <span class="tag">Gradient · animated · smooth</span>
+      <p>Animated SVG waves and mesh gradients (teal → coral → dusk). Italic display serif floats over motion. Scroll-linked reveals. Feels like a calm afternoon walk.</p>
+      <div class="row">
+        <b>Palette</b><span><span class="swatch"><i style="background:#0F5F5F"></i>teal</span><span class="swatch"><i style="background:#F26A57"></i>coral</span><span class="swatch"><i style="background:#F7EEDC"></i>dusk</span></span>
+        <b>Type</b><span>Playfair italic · Inter Tight body</span>
+        <b>Signature</b><span>Continuous scroll-linked gradient. Cursor-following blob.</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="num">08 / SOFT</div>
+      <h3>Cozy &amp; cream</h3>
+      <span class="tag">Warm · tactile · gentle</span>
+      <p>Café-latte palette, tall rounded cards, sunlight highlights, soft drop shadows. Feels like a Sunday morning. Warmth without cuteness.</p>
+      <div class="row">
+        <b>Palette</b><span><span class="swatch"><i style="background:#F1E7D6"></i>latte</span><span class="swatch"><i style="background:#7A4B2A"></i>walnut</span><span class="swatch"><i style="background:#E8BA76"></i>honey</span></span>
+        <b>Type</b><span>PP Editorial New · Söhne body</span>
+        <b>Signature</b><span>Soft sun-glare highlights on photo corners.</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="num">09 / BUBBLY</div>
+      <h3>Playful pastel</h3>
+      <span class="tag">Rounded · pastel · bouncy</span>
+      <p>Peach, sky, buttercream. Everything rounded, soft gooey blob shapes behind headings, bouncy hover states. Feels like a good boy.</p>
+      <div class="row">
+        <b>Palette</b><span><span class="swatch"><i style="background:#FFD5C2"></i>peach</span><span class="swatch"><i style="background:#C8E7FF"></i>sky</span><span class="swatch"><i style="background:#FFF4D6"></i>butter</span></span>
+        <b>Type</b><span>Nunito rounded · Quicksand accents</span>
+        <b>Signature</b><span>SVG blob backgrounds. Wag animation on hover.</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="num">10 / TERMINAL</div>
+      <h3>Science-based, literally</h3>
+      <span class="tag">Mono · dark · data</span>
+      <p>Take "science-based training" seriously. Dark terminal background, phosphor green + amber, monospace tables mapping behaviors → interventions. Command-line nav.</p>
+      <div class="row">
+        <b>Palette</b><span><span class="swatch"><i style="background:#0B0F0B"></i>console</span><span class="swatch"><i style="background:#5CFF8F"></i>phosphor</span><span class="swatch"><i style="background:#FFB13B"></i>amber</span></span>
+        <b>Type</b><span>Berkeley Mono / JetBrains Mono only</span>
+        <b>Signature</b><span>Blinking cursor. `sit --clicker` command output.</span>
+      </div>
+    </div>
+  </div>
+
+  <h2>Quality bar &amp; process</h2>
+  <div class="brief">
+    <p><b>Iteration</b>Each design is built to a floor of 10/10 on a brutal self-review, using Playwright screenshots at desktop and mobile widths, with keyboard focus and reduced-motion respected.</p>
+    <p><b>Assets</b>All designs share <code>/assets/IMG_*.png</code>. Each design owns its own <code>design_N/index.html</code>. No frameworks, no build step — plain HTML/CSS, minimal JS where the direction earns it.</p>
+    <p><b>Deploy</b>GitHub Actions publishes the root to GitHub Pages on every push to <code>main</code>. Landing page at <code>/</code> indexes all ten.</p>
+    <p><b>What "done" means</b>A stranger can open any of the ten and understand who Kierra is and how to reach her in under 15 seconds — the design just happens to look unmistakably different in each case.</p>
+  </div>
+
+  <footer>
+    <span>Plan · Kierra's K9 Training · 10 designs</span>
+    <span>Est. 2003 · California</span>
+  </footer>
+</body>
+</html>
