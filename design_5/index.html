@@ -1,0 +1,696 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kierra's K9 Training — Positive, Science-Based Dog Training</title>
+<meta name="description" content="Personalized, science-based dog training in California since 2003. Positive reinforcement, clicker training, no fear or force.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340..900;1,9..144,340..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --moss:#4A5D3A;
+    --moss-dark:#39492C;
+    --ochre:#C69B47;
+    --ochre-dark:#A87F35;
+    --stone:#B8B0A0;
+    --cream:#EFE5D2;
+    --cream-hi:#F7F1E4;
+    --ink:#1F2419;
+    --ink-soft:#33392A;
+    --gutter: 56px;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+
+  body{
+    margin:0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family:'Inter', system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0 0 .5em;
+    letter-spacing: -0.01em;
+  }
+
+  a{ color: inherit; }
+
+  em{
+    font-family:'Fraunces', serif;
+    font-style: italic;
+    font-weight: 480;
+    color: var(--moss-dark);
+  }
+
+  .eyebrow{
+    font-family:'Inter', sans-serif;
+    font-weight: 600;
+    font-size: .78rem;
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    color: var(--moss-dark);
+    margin: 0 0 .9rem;
+    display:flex;
+    align-items:center;
+    gap:.5em;
+  }
+  .eyebrow::before{
+    content:"";
+    width: 22px; height: 1px;
+    background: var(--ochre-dark);
+    display:inline-block;
+  }
+
+  /* grain overlay */
+  body::after{
+    content:"";
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: .075;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 220px 220px;
+  }
+
+  :focus-visible{
+    outline: 3px solid var(--moss);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* ---------- shell / spine ---------- */
+  .spine-wrap{
+    position: relative;
+  }
+  .spine-svg{
+    position:absolute;
+    top:0; left:0;
+    width: var(--gutter);
+    height: 100%;
+    z-index: 1;
+  }
+  .spine-svg path{
+    fill:none;
+    stroke: var(--ink);
+    stroke-width: 2.6;
+    stroke-linecap: round;
+    opacity: .62;
+  }
+  @media (prefers-reduced-motion: no-preference){
+    .spine-svg path{
+      stroke-dasharray: 4200;
+      stroke-dashoffset: 4200;
+      animation: draw-leash 3.4s 0.2s cubic-bezier(.4,0,.2,1) forwards;
+    }
+  }
+  @keyframes draw-leash{ to{ stroke-dashoffset:0; } }
+
+  section, header.hero, footer.site-footer{
+    position: relative;
+    z-index: 2;
+    padding-left: var(--gutter);
+  }
+
+  .wrap{
+    max-width: 720px;
+    margin: 0 auto;
+    padding-left: 28px;
+    padding-right: 28px;
+  }
+
+  /* ---------- nav ---------- */
+  .topnav{
+    position: relative;
+    z-index: 3;
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    padding: 22px 28px 22px calc(var(--gutter) + 28px);
+    max-width: 776px;
+    margin: 0 auto;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:.6em;
+    font-family:'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+    text-decoration:none;
+    color: var(--ink);
+  }
+  .brand svg{ width: 30px; height: 30px; flex-shrink:0; }
+  .nav-cta{
+    font-family:'Inter', sans-serif;
+    font-weight: 600;
+    font-size: .85rem;
+    letter-spacing: .03em;
+    text-decoration: none;
+    color: var(--ink);
+    border: 1.6px solid var(--ink);
+    padding: .55em 1.2em;
+    border-radius: 22px 8px 22px 8px;
+    transition: background .2s ease, color .2s ease;
+    white-space: nowrap;
+  }
+  .nav-cta:hover{ background: var(--ink); color: var(--cream-hi); }
+
+  /* ---------- hero ---------- */
+  .hero{ padding-top: 6px; }
+  .hero-figure{
+    margin: 0 0 2.6rem;
+    position: relative;
+  }
+  .hero-mask{
+    width: 100%;
+    aspect-ratio: 16 / 11;
+    overflow: hidden;
+    border-radius: 62% 38% 0 0 / 15% 8% 0 0;
+    position: relative;
+    background: var(--stone);
+  }
+  .hero-mask img{
+    width:100%; height:100%;
+    object-fit: cover;
+    object-position: 50% 18%;
+    filter: sepia(.28) saturate(1.18) contrast(1.03) brightness(1.03) hue-rotate(-6deg);
+  }
+  .hero-mask::after{
+    content:"";
+    position:absolute; inset:0;
+    background: linear-gradient(160deg, rgba(198,155,71,.22), rgba(74,93,58,.30));
+    mix-blend-mode: multiply;
+  }
+  .hero-copy{ padding: 0 4px; }
+  .hero h1{
+    font-size: clamp(2.3rem, 6.4vw, 3.6rem);
+    line-height: 1.06;
+    max-width: 12ch;
+  }
+  .underline-wrap{ position: relative; display:inline-block; }
+  .underline-wrap svg{
+    position:absolute;
+    left: -2%;
+    bottom: -.14em;
+    width: 104%;
+    height: .32em;
+    overflow: visible;
+  }
+  .underline-wrap svg path{
+    fill:none;
+    stroke: var(--ochre-dark);
+    stroke-width: 6;
+    stroke-linecap: round;
+  }
+  .hero-sub{
+    font-size: 1.14rem;
+    max-width: 46ch;
+    color: var(--ink-soft);
+    margin: 1.1rem 0 1.7rem;
+  }
+  .hero-sub strong{ color: var(--ink); }
+
+  .btn-primary{
+    display:inline-flex;
+    align-items:center;
+    gap:.55em;
+    background: var(--moss);
+    color: var(--cream-hi);
+    text-decoration:none;
+    font-family:'Inter', sans-serif;
+    font-weight: 600;
+    font-size: .95rem;
+    padding: .85em 1.5em;
+    border-radius: 30px 10px 30px 10px;
+    box-shadow: 3px 4px 0 var(--ink);
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-primary:hover{ transform: translate(-2px,-2px); box-shadow: 5px 6px 0 var(--ink); }
+  .btn-primary svg{ width: 18px; height: 18px; }
+
+  /* ---------- section marker ---------- */
+  .marker{
+    position:absolute;
+    left: calc(var(--gutter) / 2 - 18px);
+    top: 0;
+    width: 36px; height: 36px;
+    background: var(--cream-hi);
+    border: 1.6px solid var(--ink);
+    border-radius: 60% 40% 55% 45% / 45% 55% 45% 55%;
+    display:flex; align-items:center; justify-content:center;
+    z-index: 2;
+    box-shadow: 0 0 0 5px var(--cream);
+  }
+  .marker svg{ width: 20px; height: 20px; }
+
+  /* ---------- generic section ---------- */
+  section{ padding: 4.6rem 0 0; }
+  section .wrap{ position: relative; }
+
+  .divider{ width:100%; margin: 4.4rem 0 0; display:block; }
+  .divider svg{ width:100%; height:22px; display:block; }
+  .divider path{ fill:none; stroke: var(--ink); stroke-width: 1.8; opacity:.42; }
+
+  p{ margin: 0 0 1.1em; color: var(--ink-soft); }
+  p:last-child{ margin-bottom:0; }
+
+  .lede{ font-size: 1.05rem; }
+
+  blockquote.pull{
+    font-family:'Fraunces', serif;
+    font-style: italic;
+    font-weight: 460;
+    font-size: 1.4rem;
+    line-height: 1.4;
+    color: var(--moss-dark);
+    margin: 1.6rem 0;
+    padding-left: 1.1rem;
+    border-left: 3px solid var(--ochre);
+  }
+
+  .two-col{
+    display:grid;
+    grid-template-columns: 1.1fr .9fr;
+    gap: 2.4rem;
+    align-items: center;
+  }
+  .two-col .figure{ order:2; }
+  .figure img{
+    width:100%;
+    aspect-ratio: 3/4;
+    object-fit:cover;
+    border-radius: 4px 26px 4px 26px;
+    filter: sepia(.24) saturate(1.12) contrast(1.02) brightness(1.02) hue-rotate(-4deg);
+    display:block;
+  }
+  .figure{ position:relative; }
+  .figure::after{
+    content:"";
+    position:absolute; inset:0;
+    border-radius: 4px 26px 4px 26px;
+    background: linear-gradient(150deg, rgba(198,155,71,.20), rgba(74,93,58,.26));
+    mix-blend-mode: multiply;
+  }
+  .figure figcaption{
+    font-size: .82rem;
+    color: var(--ink-soft);
+    margin-top: .6rem;
+    font-style: italic;
+    font-family:'Fraunces', serif;
+  }
+
+  /* ---------- method / exclusion card ---------- */
+  .no-card{
+    background: var(--cream-hi);
+    border: 1.6px solid var(--ink);
+    border-radius: 4px 30px 4px 30px;
+    padding: 1.8rem 1.9rem;
+    margin-top: 2.2rem;
+    transform: rotate(-.6deg);
+    position: relative;
+  }
+  .no-card::before{
+    content:"";
+    position:absolute;
+    top:-14px; left: 38px;
+    width: 46px; height: 22px;
+    background: var(--ochre);
+    opacity:.75;
+    border-radius: 3px;
+    transform: rotate(-4deg);
+    box-shadow: 0 2px 3px rgba(31,36,25,.25);
+  }
+  .no-card h3{
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+  }
+  .no-list{
+    list-style:none;
+    margin:0; padding:0;
+    display:grid;
+    gap: .65rem;
+  }
+  .no-list li{
+    display:flex;
+    align-items:flex-start;
+    gap:.65em;
+    font-size: .98rem;
+    color: var(--ink);
+  }
+  .no-list svg{ width:20px; height:20px; flex-shrink:0; margin-top:.1em; }
+  .no-list svg path{ stroke: var(--ochre-dark); stroke-width: 3; fill:none; stroke-linecap:round; }
+
+  /* ---------- chips ---------- */
+  .chips{
+    display:flex;
+    flex-wrap: wrap;
+    gap: .6rem;
+    margin-top: 1.8rem;
+  }
+  .chip{
+    font-family:'Inter', sans-serif;
+    font-weight: 500;
+    font-size: .88rem;
+    padding: .58em 1.15em;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+  .chip:nth-child(4n+1){ background: var(--moss); color: var(--cream-hi); }
+  .chip:nth-child(4n+2){ background: var(--ochre); color: var(--ink); }
+  .chip:nth-child(4n+3){ background: transparent; color: var(--ink); border: 1.5px solid var(--ink); }
+  .chip:nth-child(4n){ background: var(--stone); color: var(--ink); }
+  .chip:nth-child(7n+1){ border-radius: 20px 6px 20px 6px; }
+  .chip:nth-child(7n+2){ border-radius: 6px 20px 6px 20px; }
+  .chip:nth-child(7n+3){ border-radius: 16px 16px 4px 16px; }
+  .chip:nth-child(7n+4){ border-radius: 4px 16px 16px 16px; }
+  .chip:nth-child(7n+5){ border-radius: 22px 22px 22px 4px; }
+  .chip:nth-child(7n+6){ border-radius: 8px 24px 8px 24px; }
+  .chip:nth-child(7n){ border-radius: 18px 4px 24px 10px; }
+
+  /* ---------- format ---------- */
+  .format-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.4rem;
+    margin-top: 2rem;
+  }
+  .format-card{
+    background: var(--cream-hi);
+    border-radius: 26px 6px 26px 6px;
+    padding: 1.6rem 1.5rem;
+    border: 1px solid rgba(31,36,25,.12);
+  }
+  .format-card h3{ font-size: 1.1rem; display:flex; align-items:center; gap:.5em; }
+  .format-card h3 svg{ width:22px; height:22px; }
+  .format-card p{ font-size: .95rem; }
+
+  .format-figure{ margin-top: 2rem; }
+  .format-figure img{
+    width:100%;
+    aspect-ratio: 16/8;
+    object-fit:cover;
+    object-position: 50% 30%;
+    border-radius: 4px 34px 4px 34px;
+    filter: sepia(.26) saturate(1.1) contrast(1.02) brightness(1.02) hue-rotate(-5deg);
+    display:block;
+  }
+  .format-figure{ position:relative; }
+  .format-figure::after{
+    content:"";
+    position:absolute; inset:0;
+    border-radius: 4px 34px 4px 34px;
+    background: linear-gradient(150deg, rgba(198,155,71,.20), rgba(74,93,58,.26));
+    mix-blend-mode: multiply;
+  }
+
+  /* ---------- certifications ---------- */
+  .cert-row{
+    display:flex;
+    gap: 1.6rem;
+    align-items:center;
+    margin-top: 1.8rem;
+    flex-wrap: wrap;
+  }
+  .badge{ width: 108px; height: 108px; flex-shrink:0; }
+  .cert-note{ font-size: .92rem; max-width: 34ch; font-style: italic; font-family:'Fraunces', serif; color: var(--moss-dark); }
+
+  /* ---------- contact ---------- */
+  .contact-section{ padding-bottom: 4rem; }
+  .contact-card{
+    background: var(--ink);
+    color: var(--cream-hi);
+    border-radius: 40px 8px 40px 8px;
+    padding: 3rem 2rem;
+    text-align:center;
+    margin-top: 2rem;
+  }
+  .contact-card h2{ color: var(--cream-hi); }
+  .contact-card p{ color: var(--stone); max-width: 40ch; margin-left:auto; margin-right:auto; }
+  .mail-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:.6em;
+    margin-top: 1.4rem;
+    background: var(--ochre);
+    color: var(--ink);
+    text-decoration:none;
+    font-weight:600;
+    font-size: 1rem;
+    padding: .9em 1.7em;
+    border-radius: 30px 10px 30px 10px;
+    box-shadow: 3px 4px 0 var(--cream-hi);
+  }
+  .mail-btn:hover{ background: var(--ochre-dark); }
+
+  .site-footer{
+    text-align:center;
+    padding: 2.4rem 28px 3rem calc(var(--gutter) + 28px);
+    font-size: .82rem;
+    color: var(--ink-soft);
+  }
+  .site-footer svg{ width:22px; height:22px; display:block; margin: 0 auto .6rem; }
+
+  @media (max-width: 760px){
+    .two-col{ grid-template-columns: 1fr; gap: 1.4rem; }
+    .two-col .figure{ order: -1; max-width: 260px; margin: 0 auto; }
+    .format-grid{ grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 560px){
+    :root{ --gutter: 34px; }
+    .wrap{ padding-left: 14px; padding-right: 18px; }
+    .topnav{ padding-left: calc(var(--gutter) + 14px); padding-right: 18px; }
+    section{ padding-top: 3.4rem; }
+    .marker{ width:24px; height:24px; left: calc(var(--gutter) / 2 - 12px); }
+    .marker svg{ width:14px; height:14px; }
+    .hero h1{ max-width: none; }
+    .no-card{ padding: 1.4rem 1.3rem; }
+    .contact-card{ padding: 2.4rem 1.3rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <a class="brand" href="#top">
+    <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M13,24 C10,20 11,14 15,13 C19,12 21,17 20,21" fill="none" stroke="#1F2419" stroke-width="2.6" stroke-linecap="round"/><ellipse cx="10" cy="15" rx="2.6" ry="3.4" fill="#1F2419" transform="rotate(-18 10 15)"/><ellipse cx="15.5" cy="10.5" rx="2.6" ry="3.4" fill="#1F2419" transform="rotate(-6 15.5 10.5)"/><ellipse cx="21.5" cy="10" rx="2.6" ry="3.4" fill="#1F2419" transform="rotate(6 21.5 10)"/><ellipse cx="26.5" cy="14" rx="2.6" ry="3.4" fill="#1F2419" transform="rotate(18 26.5 14)"/><path d="M14,27 C16,25 24,25 27,28 C29,30 28,33 25,33 C21,33 15,32 13,30 C11.5,28.5 12.5,28.2 14,27 Z" fill="none" stroke="#1F2419" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Kierra's K9 Training
+  </a>
+  <a class="nav-cta" href="#contact">Say hello</a>
+</div>
+
+<div class="spine-wrap">
+  <svg class="spine-svg" viewBox="0 0 56 3200" preserveAspectRatio="none" aria-hidden="true">
+    <ellipse cx="28" cy="24" rx="9" ry="10" fill="none" stroke="#1F2419" stroke-width="2.6" opacity=".62" transform="rotate(-8 28 24)"/>
+    <path d="M28,60
+      C40,140 14,190 26,270
+      C36,340 16,380 24,460
+      C32,520 40,560 22,640
+      C10,700 34,740 28,820
+      C22,890 40,920 26,1000
+      C14,1060 32,1110 24,1190
+      C18,1250 38,1290 28,1370
+      C20,1430 12,1470 26,1540
+      C38,1600 18,1650 24,1730
+      C30,1790 40,1830 22,1900
+      C10,1960 30,2000 28,2080
+      C26,2140 14,2180 26,2260
+      C36,2320 18,2360 24,2440
+      C30,2500 40,2540 22,2620
+      C10,2680 32,2720 28,2800
+      C24,2860 14,2900 26,2980
+      C36,3040 20,3080 24,3160
+      C28,3200 28,3200 28,3200" />
+  </svg>
+
+  <header class="hero" id="top">
+    <div class="wrap">
+      <div class="hero-figure">
+        <div class="hero-mask">
+          <img src="../assets/IMG_9926.png" alt="Kierra kneeling in a garden beside a smiling golden retriever, both relaxed in warm afternoon light">
+        </div>
+      </div>
+      <div class="hero-copy">
+        <p class="eyebrow">Positive, science-based training &middot; California &middot; est. 2003</p>
+        <h1>Training built on <span class="underline-wrap">trust<svg viewBox="0 0 140 14" aria-hidden="true"><path d="M2,10 C24,1 46,13 69,6 C94,0 114,13 138,5"/></svg></span>, not fear.</h1>
+        <p class="hero-sub">I'm Kierra — a <strong>CCPDT- and AKC CGC&#8209;certified</strong> trainer who teaches both ends of the leash, working with dogs and their people in the home and out in the real world.</p>
+        <a class="btn-primary" href="#contact">
+          Start with a conversation
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5,12 C10,7 14,17 19,12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M15,8 L19,12 L15,16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ORIGIN -->
+  <section id="origin">
+    <div class="wrap">
+      <div class="marker">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12,4 C7,4 5,9 6,13 C6.6,15.4 4,16 4,19 C4,21.5 8,22 12,20 C16,22 20,21.5 20,19 C20,16 17.4,15.4 18,13 C19,9 17,4 12,4 Z M12,4 C12,2 12,1 12,0.5" fill="none" stroke="#1F2419" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <p class="eyebrow">Since 2003</p>
+      <h2>It started as Kierra's K9 Care.</h2>
+      <div class="two-col">
+        <div class="copy">
+          <p class="lede">My journey began in 2003, working under the name Kierra's K9 Care. As my experience and services grew, the business became what it is today — Kierra's K9 Training, offering personalized, science-based training designed to strengthen the relationship between dogs and their families.</p>
+          <blockquote class="pull">Successful dog training involves both ends of the leash.</blockquote>
+          <p>I teach dogs the skills they need, while also teaching their people how to communicate clearly, read body language, and keep practicing at home — long after I've packed up the treat pouch.</p>
+        </div>
+        <figure class="figure">
+          <img src="../assets/IMG_5205.png" alt="Kierra sitting on a front porch step with a golden retriever leaning happily against her">
+        </figure>
+      </div>
+    </div>
+    <div class="divider"><svg viewBox="0 0 700 22" preserveAspectRatio="none" aria-hidden="true"><path d="M0,11 C60,4 100,18 160,10 C220,2 260,16 340,9 C410,3 460,17 540,10 C600,4 650,15 700,9"/></svg></div>
+  </section>
+
+  <!-- METHOD -->
+  <section id="method">
+    <div class="wrap">
+      <div class="marker">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="8" cy="9" rx="2" ry="2.6" fill="#1F2419" transform="rotate(-16 8 9)"/><ellipse cx="12.5" cy="6.5" rx="2" ry="2.6" fill="#1F2419"/><ellipse cx="17" cy="9" rx="2" ry="2.6" fill="#1F2419" transform="rotate(16 17 9)"/><ellipse cx="12.5" cy="15" rx="4.6" ry="3.6" fill="#1F2419"/></svg>
+      </div>
+      <p class="eyebrow">How I teach</p>
+      <h2>I want to know <em>why</em>, not just stop what.</h2>
+      <div class="two-col">
+        <div class="copy">
+          <p class="lede">I don't just teach commands — I work to understand why a behavior is happening. By reading dog psychology, emotions, body language, environment, and learning history, I build an individual plan for each dog and family, not a one-size-fits-all script.</p>
+          <p>My methods rest on modern learning science, clear communication, and trust. I use food, toys, praise, and <strong>clicker training</strong> to mark the exact moment a dog gets it right — precise feedback that makes learning feel like a game worth playing.</p>
+        </div>
+        <figure class="figure">
+          <img src="../assets/IMG_4683.png" alt="A dog sitting attentively, watching Kierra for a cue during a training session in a kitchen">
+        </figure>
+      </div>
+
+      <div class="no-card">
+        <h3>Kierra's K9 Training does not use:</h3>
+        <ul class="no-list">
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5,5 L19,19 M19,5 L5,19"/></svg> Shock or electronic collars</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5,5 L19,19 M19,5 L5,19"/></svg> Choke collars</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5,5 L19,19 M19,5 L5,19"/></svg> Prong collars</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5,5 L19,19 M19,5 L5,19"/></svg> Fear, pain, force, or intimidation</li>
+        </ul>
+      </div>
+    </div>
+    <div class="divider"><svg viewBox="0 0 700 22" preserveAspectRatio="none" aria-hidden="true"><path d="M0,9 C60,16 100,2 160,10 C220,18 260,4 340,11 C410,17 460,3 540,10 C600,16 650,5 700,11"/></svg></div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <div class="marker">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="8" cy="9" rx="2" ry="2.6" fill="#1F2419" transform="rotate(-16 8 9)"/><ellipse cx="12.5" cy="6.5" rx="2" ry="2.6" fill="#1F2419"/><ellipse cx="17" cy="9" rx="2" ry="2.6" fill="#1F2419" transform="rotate(16 17 9)"/><ellipse cx="12.5" cy="15" rx="4.6" ry="3.6" fill="#1F2419"/></svg>
+      </div>
+      <p class="eyebrow">Where I can help</p>
+      <h2>More than sit, stay, and heel.</h2>
+      <p class="lede">Many trainers stop at obedience. My work goes further, into the behavior underneath it.</p>
+      <div class="chips">
+        <span class="chip">Anxiety &amp; confidence</span>
+        <span class="chip">Reactivity</span>
+        <span class="chip">Barking &amp; lunging</span>
+        <span class="chip">Leash pulling</span>
+        <span class="chip">Jumping &amp; overexcitement</span>
+        <span class="chip">Impulse control</span>
+        <span class="chip">Socialization</span>
+        <span class="chip">Resource guarding</span>
+        <span class="chip">Destructive behavior</span>
+        <span class="chip">Potty training</span>
+        <span class="chip">Puppy behaviors</span>
+        <span class="chip">Adolescent dogs</span>
+        <span class="chip">Household manners</span>
+        <span class="chip">Focus &amp; distractions</span>
+        <span class="chip">Service-dog training</span>
+        <span class="chip">Basic &amp; advanced obedience</span>
+      </div>
+    </div>
+    <div class="divider"><svg viewBox="0 0 700 22" preserveAspectRatio="none" aria-hidden="true"><path d="M0,11 C60,4 100,18 160,10 C220,2 260,16 340,9 C410,3 460,17 540,10 C600,4 650,15 700,9"/></svg></div>
+  </section>
+
+  <!-- FORMAT -->
+  <section id="format">
+    <div class="wrap">
+      <div class="marker">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12,4 C7,4 5,9 6,13 C6.6,15.4 4,16 4,19 C4,21.5 8,22 12,20 C16,22 20,21.5 20,19 C20,16 17.4,15.4 18,13 C19,9 17,4 12,4 Z" fill="none" stroke="#1F2419" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <p class="eyebrow">How sessions work</p>
+      <h2>In your home, or out where it matters.</h2>
+      <p class="lede">Training happens in your home or in the real-world places your dog needs help most — the sidewalk, the park, the front step where the mail carrier walks by.</p>
+
+      <div class="format-grid">
+        <div class="format-card">
+          <h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4,12 L12,5 L20,12 M6,11 L6,20 L18,20 L18,11" fill="none" stroke="#4A5D3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> In-home</h3>
+          <p>One-on-one sessions where your dog actually lives — the kitchen, the yard, the front door. Owners are welcome to join in, or training can happen while you're at work.</p>
+        </div>
+        <div class="format-card">
+          <h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4,20 C7,10 17,10 20,20 M8,20 C9,15 15,15 16,20" fill="none" stroke="#C69B47" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="7" r="3" fill="none" stroke="#C69B47" stroke-width="2"/></svg> Real-world</h3>
+          <p>Out in the environments where reactivity, distraction, or leash pulling actually show up, so new skills hold up outside a quiet living room.</p>
+        </div>
+      </div>
+
+      <figure class="format-figure">
+        <img src="../assets/IMG_5337.png" alt="Kierra kneeling on a sidewalk working with two dogs and their owners on leash manners in a neighborhood setting">
+      </figure>
+
+      <div class="cert-row">
+        <svg class="badge" viewBox="0 0 120 120" aria-hidden="true">
+          <path d="M60,6 C82,4 112,20 114,52 C116,84 92,114 60,112 C28,110 6,86 8,54 C10,22 38,8 60,6 Z" fill="none" stroke="#4A5D3A" stroke-width="2.4"/>
+          <path d="M60,14 C80,12 106,26 108,53 C110,80 89,106 60,104" fill="none" stroke="#4A5D3A" stroke-width="1" opacity=".5"/>
+          <text x="60" y="55" text-anchor="middle" font-family="Fraunces, serif" font-weight="600" font-size="17" fill="#1F2419">CCPDT</text>
+          <text x="60" y="72" text-anchor="middle" font-family="Inter, sans-serif" font-size="8.5" letter-spacing="1" fill="#33392A">CERTIFIED</text>
+          <text x="60" y="83" text-anchor="middle" font-family="Inter, sans-serif" font-size="8.5" letter-spacing="1" fill="#33392A">TRAINER</text>
+        </svg>
+        <svg class="badge" viewBox="0 0 120 120" aria-hidden="true">
+          <path d="M60,7 C85,9 113,24 112,55 C111,86 86,111 59,113 C32,115 7,92 7,58 C7,26 36,5 60,7 Z" fill="none" stroke="#C69B47" stroke-width="2.4"/>
+          <path d="M60,15 C81,17 105,29 104,55" fill="none" stroke="#C69B47" stroke-width="1" opacity=".5"/>
+          <text x="60" y="50" text-anchor="middle" font-family="Fraunces, serif" font-weight="600" font-size="15" fill="#1F2419">AKC</text>
+          <text x="60" y="68" text-anchor="middle" font-family="Fraunces, serif" font-weight="600" font-size="14" fill="#1F2419">CGC</text>
+          <text x="60" y="85" text-anchor="middle" font-family="Inter, sans-serif" font-size="8" letter-spacing="1" fill="#33392A">GOOD CITIZEN</text>
+        </svg>
+        <p class="cert-note">Continuing education never really stops — hands-on work, classes, and conferences on dog behavior, year after year.</p>
+      </div>
+    </div>
+    <div class="divider"><svg viewBox="0 0 700 22" preserveAspectRatio="none" aria-hidden="true"><path d="M0,9 C60,16 100,2 160,10 C220,18 260,4 340,11 C410,17 460,3 540,10 C600,16 650,5 700,11"/></svg></div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section">
+    <div class="wrap">
+      <div class="marker">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="8" cy="9" rx="2" ry="2.6" fill="#1F2419" transform="rotate(-16 8 9)"/><ellipse cx="12.5" cy="6.5" rx="2" ry="2.6" fill="#1F2419"/><ellipse cx="17" cy="9" rx="2" ry="2.6" fill="#1F2419" transform="rotate(16 17 9)"/><ellipse cx="12.5" cy="15" rx="4.6" ry="3.6" fill="#1F2419"/></svg>
+      </div>
+      <div class="contact-card">
+        <h2>Let's start with a conversation.</h2>
+        <p>Tell me about your dog — what's working, what isn't, and what a good day together looks like. We'll go from there.</p>
+        <a class="mail-btn" href="mailto:hello@kierrask9.example">
+          <svg viewBox="0 0 24 24" aria-hidden="true" width="18" height="18"><path d="M4,6 L20,6 L20,18 L4,18 Z M4,6 L12,13 L20,6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          hello@kierrask9.example
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12,4 C7,4 5,9 6,13 C6.6,15.4 4,16 4,19 C4,21.5 8,22 12,20 C16,22 20,21.5 20,19 C20,16 17.4,15.4 18,13 C19,9 17,4 12,4 Z" fill="none" stroke="#33392A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Kierra's K9 Training &middot; est. 2003 &middot; California
+  </footer>
+</div>
+
+</body>
+</html>
