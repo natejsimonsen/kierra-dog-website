@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kierra&rsquo;s K9 Training &mdash; Positive, Science-Based Dog Training</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sage:#A9BE9B;
+    --sage-deep:#748766;
+    --sage-ink:#5A6E4E;
+    --apricot:#F3B58C;
+    --apricot-deep:#DE8E52;
+    --rose:#DFA9A2;
+    --rose-deep:#A15A51;
+    --cream:#FBF5EB;
+    --cream-warm:#F5EBDA;
+    --ink:#2E2A26;
+    --ink-soft:#5B564C;
+    --paper-shadow: 0 18px 40px -20px rgba(60,50,30,0.35);
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.15rem;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{ max-width:100%; display:block; }
+  h1,h2,h3{
+    font-family:'DM Serif Display', serif;
+    font-weight:400;
+    margin:0;
+    color:var(--ink);
+  }
+  em{ font-style:italic; color:var(--sage-ink); }
+  a{ color:inherit; }
+  a:focus-visible, button:focus-visible, .cta:focus-visible{
+    outline:2.5px solid var(--sage-ink);
+    outline-offset:4px;
+    border-radius:2px;
+  }
+  section{ scroll-margin-top:76px; }
+
+  .eyebrow{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:1.02rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--rose-deep);
+    margin:0 0 0.6em;
+    display:flex;
+    align-items:center;
+    gap:0.5em;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px; height:1px;
+    background:var(--rose-deep);
+    display:inline-block;
+  }
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    position:sticky; top:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:1rem clamp(1.2rem,4vw,3rem);
+    background:rgba(251,245,235,0.88);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(46,42,38,0.08);
+  }
+  .brand{
+    font-family:'DM Serif Display', serif;
+    font-size:1.28rem;
+    letter-spacing:0.01em;
+    display:flex; align-items:center; gap:0.5rem;
+  }
+  .brand svg{ width:26px; height:26px; flex:none; }
+  .topnav{ display:flex; gap:clamp(0.9rem,2vw,1.8rem); list-style:none; margin:0; padding:0; }
+  .topnav a{
+    text-decoration:none;
+    font-size:0.98rem;
+    letter-spacing:0.03em;
+    color:var(--ink-soft);
+    padding-bottom:2px;
+    border-bottom:1px solid transparent;
+    transition:border-color .25s ease, color .25s ease;
+  }
+  .topnav a:hover{ color:var(--sage-ink); border-color:var(--sage); }
+  .nav-toggle{ display:none; }
+
+  /* ---------- watercolor wash blobs ---------- */
+  .wash{
+    position:absolute;
+    pointer-events:none;
+    z-index:0;
+    opacity:0.85;
+  }
+
+  /* ---------- scallop dividers ---------- */
+  .scallop{ display:block; width:100%; height:34px; position:relative; z-index:2; }
+  .scallop svg{ display:block; width:100%; height:100%; }
+  .scallop--down{ margin-bottom:-1px; }
+  .scallop--up{ transform:rotate(180deg); margin-top:-1px; }
+
+  /* ---------- section shell ---------- */
+  .section{ position:relative; padding:5.5rem clamp(1.3rem,5vw,5rem); overflow:hidden; }
+  .section-inner{ position:relative; z-index:1; max-width:1180px; margin:0 auto; }
+  .section--tint-sage{ background:linear-gradient(180deg, var(--cream-warm), var(--cream)); }
+  .section--tint-rose{ background:var(--cream); }
+
+  .section h2{ font-size:clamp(2rem,3.6vw,2.9rem); }
+  .section-lede{ max-width:640px; color:var(--ink-soft); }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    padding:clamp(3rem,7vw,5.5rem) clamp(1.3rem,5vw,5rem) 0;
+    overflow:hidden;
+    background:var(--cream);
+  }
+  .hero-grid{
+    position:relative; z-index:1;
+    max-width:1180px; margin:0 auto;
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:clamp(2rem,4vw,4rem);
+    align-items:center;
+  }
+  .hero-text h1{
+    font-size:clamp(2.9rem,6.2vw,5.2rem);
+    line-height:1.02;
+    margin-bottom:0.5rem;
+  }
+  .hero-text .lede{
+    font-size:clamp(1.15rem,1.6vw,1.4rem);
+    color:var(--ink-soft);
+    max-width:34ch;
+    margin:1.1rem 0 2.1rem;
+  }
+  .hero-photo-wrap{ position:relative; }
+
+  .cta{
+    display:inline-flex;
+    align-items:center;
+    gap:0.6rem;
+    font-family:'DM Serif Display', serif;
+    font-size:1.05rem;
+    letter-spacing:0.02em;
+    color:var(--ink);
+    text-decoration:none;
+    background:var(--apricot);
+    padding:0.85rem 1.7rem;
+    border-radius:3px 16px 3px 16px;
+    box-shadow:0 10px 22px -12px rgba(180,110,50,0.55);
+    transition:background .3s ease, transform .3s ease, box-shadow .3s ease;
+    border:1px solid rgba(46,42,38,0.12);
+  }
+  .cta:hover{ background:var(--apricot-deep); transform:translateY(-2px); box-shadow:0 14px 26px -12px rgba(180,110,50,0.6); }
+  .cta svg{ width:16px; height:16px; }
+
+  /* ---------- photo frames ---------- */
+  .frame{
+    position:relative;
+    background:#fff;
+    padding:14px;
+    box-shadow:var(--paper-shadow);
+    border:1px solid rgba(46,42,38,0.06);
+  }
+  .frame img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .frame .vine{
+    position:absolute;
+    pointer-events:none;
+    overflow:visible;
+    z-index:3;
+  }
+  .frame--portrait{ aspect-ratio:3/4; }
+  .frame--portrait img{ aspect-ratio:3/4; }
+  .frame--landscape{ aspect-ratio:4/2.6; }
+  .frame--landscape img{ aspect-ratio:4/2.6; }
+
+  @media (prefers-reduced-motion:no-preference){
+    .sway{ animation:sway 7s ease-in-out infinite; transform-origin:bottom center; }
+    .sway-slow{ animation:sway 9.5s ease-in-out infinite; transform-origin:bottom center; }
+    @keyframes sway{
+      0%,100%{ transform:rotate(-0.6deg); }
+      50%{ transform:rotate(0.6deg); }
+    }
+  }
+
+  /* ---------- origin ---------- */
+  .origin-grid{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:clamp(2rem,5vw,4.5rem);
+    align-items:center;
+  }
+  .origin-photo{ max-width:360px; margin:0 auto; }
+  .origin-text p + p{ margin-top:1.1em; }
+  .origin-text p{ color:var(--ink-soft); }
+
+  /* ---------- method ---------- */
+  .method-grid{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:clamp(2rem,5vw,4.5rem);
+    align-items:center;
+    margin-bottom:3.5rem;
+  }
+  .method-photo{ max-width:340px; }
+  .method-text p{ color:var(--ink-soft); }
+  .method-text p + p{ margin-top:1.1em; }
+
+  .not-garden{
+    position:relative;
+    max-width:760px;
+    margin:0 auto;
+    background:var(--cream);
+    border:1.5px solid rgba(93,110,78,0.35);
+    padding:2.6rem clamp(1.6rem,4vw,3.2rem);
+    box-shadow:0 20px 40px -26px rgba(46,42,38,0.3);
+  }
+  .not-garden::before,
+  .not-garden::after{
+    content:"";
+    position:absolute; left:14px; right:14px; height:10px;
+    background-image:radial-gradient(circle at 8px 0, transparent 6px, var(--rose) 6.6px);
+    background-size:16px 10px;
+    background-repeat:repeat-x;
+    opacity:0.65;
+  }
+  .not-garden::before{ top:-9px; }
+  .not-garden::after{ bottom:-9px; transform:scaleY(-1); }
+  .not-garden h3{
+    font-size:1.9rem;
+    text-align:center;
+    margin-bottom:1.5rem;
+  }
+  .not-garden ul{
+    list-style:none; margin:0; padding:0;
+    display:grid; grid-template-columns:1fr 1fr; gap:0.9rem 2rem;
+  }
+  .not-garden li{
+    display:flex; align-items:center; gap:0.7rem;
+    color:var(--ink-soft);
+    font-size:1.08rem;
+  }
+  .not-garden li svg{ width:20px; height:20px; flex:none; color:var(--rose-deep); }
+
+  /* ---------- field guide ---------- */
+  .field-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:clamp(1.6rem,4vw,3rem);
+    flex-wrap:wrap;
+  }
+  .field-head-text{ flex:1 1 380px; }
+  .field-photo{ flex:none; width:min(180px, 40vw); }
+  .field-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(210px,1fr));
+    gap:1.1rem;
+    margin-top:2.6rem;
+  }
+  .field-item{
+    display:flex; align-items:center; gap:0.85rem;
+    background:rgba(255,255,255,0.55);
+    border:1px solid rgba(93,110,78,0.22);
+    border-radius:3px 12px 3px 12px;
+    padding:0.9rem 1.1rem;
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+  }
+  .field-item:hover{
+    background:#fff;
+    transform:translateY(-3px);
+    box-shadow:0 14px 24px -16px rgba(46,42,38,0.35);
+  }
+  .field-item svg{ width:27px; height:27px; flex:none; }
+  .field-item span{ font-size:1.05rem; color:var(--ink); line-height:1.3; }
+
+  /* ---------- format ---------- */
+  .format-banner{ margin:0 auto 3.5rem; max-width:760px; }
+  .format-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1.8rem;
+    max-width:900px;
+    margin:0 auto;
+  }
+  .format-card{
+    background:rgba(255,255,255,0.6);
+    border:1px solid rgba(93,110,78,0.22);
+    padding:2rem 1.8rem;
+    text-align:center;
+  }
+  .format-card h3{ font-size:1.5rem; margin-bottom:0.6rem; }
+  .format-card p{ color:var(--ink-soft); font-size:1.02rem; }
+  .format-card svg{ width:36px; height:36px; margin-bottom:0.9rem; color:var(--sage-ink); }
+
+  .badges{
+    display:flex; justify-content:center; gap:clamp(1.5rem,4vw,3rem);
+    margin-top:3.5rem; flex-wrap:wrap;
+  }
+  .badge-wrap{ text-align:center; }
+  .badge-wrap svg{ width:132px; height:132px; }
+  .badge-wrap p{ margin:0.5rem 0 0; font-style:italic; color:var(--ink-soft); font-size:0.98rem; }
+
+  /* ---------- contact ---------- */
+  .contact{ text-align:center; }
+  .contact .section-inner{ display:flex; flex-direction:column; align-items:center; }
+  .contact-photo{ width:180px; margin:0 auto 2rem; }
+  .contact h2{ margin-bottom:0.8rem; }
+  .contact p.lede2{ color:var(--ink-soft); max-width:46ch; margin:0 auto 1.8rem; font-size:1.15rem; }
+  .contact-email{
+    font-family:'DM Serif Display', serif;
+    font-size:clamp(1.4rem,3vw,1.9rem);
+    font-style:italic;
+    color:var(--sage-ink);
+    text-decoration:none;
+    border-bottom:1px solid var(--sage);
+    padding-bottom:2px;
+  }
+  .contact .cta{ margin-top:2.2rem; }
+
+  footer{
+    padding:2.5rem 1.5rem 3rem;
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:0.95rem;
+    background:var(--cream-warm);
+  }
+  footer .fvine{ width:130px; height:22px; margin:0 auto 1rem; display:block; color:var(--sage-ink); }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:920px){
+    .hero-grid{ grid-template-columns:1fr; }
+    .hero-photo-wrap{ max-width:340px; margin:0 auto; }
+    .origin-grid{ grid-template-columns:1fr; }
+    .origin-photo{ order:-1; }
+    .method-grid{ grid-template-columns:1fr; }
+    .method-photo{ margin:0 auto; }
+    .not-garden ul{ grid-template-columns:1fr; }
+    .topnav{ display:none; }
+  }
+  @media (max-width:520px){
+    .section{ padding:4rem 1.1rem; }
+    .format-grid{ grid-template-columns:1fr; }
+    body{ font-size:1.06rem; }
+    .not-garden{ padding:2rem 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ shared SVG defs: gradients, blur, leaf/bud symbols, blob paths ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <radialGradient id="g-sage" cx="35%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#A9BE9B" stop-opacity="0.65"/>
+      <stop offset="100%" stop-color="#A9BE9B" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g-apricot" cx="45%" cy="35%" r="75%">
+      <stop offset="0%" stop-color="#F3B58C" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#F3B58C" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g-rose" cx="40%" cy="40%" r="75%">
+      <stop offset="0%" stop-color="#DFA9A2" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#DFA9A2" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="wash-blur" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="22"/>
+    </filter>
+
+    <path id="blob-1" d="M300,42 C410,18 512,96 536,204 C560,314 486,418 368,442 C246,466 104,414 62,304 C22,196 92,92 190,60 C228,47 262,52 300,42 Z"/>
+    <path id="blob-2" d="M250,10 C348,-6 430,58 440,150 C452,252 392,336 300,356 C202,378 96,332 74,236 C54,148 108,60 190,28 C210,20 230,14 250,10 Z"/>
+
+  </defs>
+</svg>
+
+<!-- ============ icon sprite ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.2C12 20.2 3.6 14.9 3.6 8.9C3.6 5.9 6 4 8.4 4C10 4 11.3 4.8 12 6.1C12.7 4.8 14 4 15.6 4C18 4 20.4 5.9 20.4 8.9C20.4 14.9 12 20.2 12 20.2Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></symbol>
+  <symbol id="i-burst" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.4" fill="none" stroke="currentColor" stroke-width="1.4"/><g stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><line x1="12" y1="2.5" x2="12" y2="5.6"/><line x1="12" y1="18.4" x2="12" y2="21.5"/><line x1="2.5" y1="12" x2="5.6" y2="12"/><line x1="18.4" y1="12" x2="21.5" y2="12"/><line x1="5.3" y1="5.3" x2="7.4" y2="7.4"/><line x1="16.6" y1="16.6" x2="18.7" y2="18.7"/><line x1="18.7" y1="5.3" x2="16.6" y2="7.4"/><line x1="7.4" y1="16.6" x2="5.3" y2="18.7"/></g></symbol>
+  <symbol id="i-leash" viewBox="0 0 24 24"><circle cx="4.6" cy="18.5" r="2.1" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6.6 17.3C10 15.5 12.5 12.5 13.6 9C14.5 6.2 16.6 4.6 19 4.9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="19.3" cy="5" r="1.3" fill="currentColor"/></symbol>
+  <symbol id="i-paw-jump" viewBox="0 0 24 24"><ellipse cx="12" cy="16.5" rx="4.6" ry="3.6" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="7.4" cy="11" r="1.6" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="11.2" cy="8.6" r="1.6" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="15.3" cy="9" r="1.6" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M17.5 5.4C18.2 4.6 19.2 4.3 20 4.6" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M19 3C19.9 2.6 20.9 2.7 21.5 3.3" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.6" fill="none" stroke="currentColor" stroke-width="1.4"/><line x1="9.8" y1="8.4" x2="9.8" y2="15.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="14.2" y1="8.4" x2="14.2" y2="15.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+  <symbol id="i-friends" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.3"><ellipse cx="8.5" cy="14.5" rx="3.6" ry="2.9"/><circle cx="5.6" cy="9.3" r="1.2"/><circle cx="8.5" cy="8" r="1.2"/><circle cx="11.4" cy="9.3" r="1.2"/></g><g fill="none" stroke="currentColor" stroke-width="1.3" opacity="0.55"><ellipse cx="16" cy="16.5" rx="3.6" ry="2.9"/><circle cx="13.1" cy="11.3" r="1.2"/><circle cx="16" cy="10" r="1.2"/><circle cx="18.9" cy="11.3" r="1.2"/></g></symbol>
+  <symbol id="i-bone" viewBox="0 0 24 24"><path d="M6.2 12C4.9 12 3.9 10.9 4 9.6C4.1 8.3 5.3 7.4 6.5 7.6C7.1 6.7 8.2 6.3 9.2 6.7C10.1 7 10.6 7.9 10.4 8.8L13.6 12L10.4 15.2C10.6 16.1 10.1 17 9.2 17.3C8.2 17.7 7.1 17.3 6.5 16.4C5.3 16.6 4.1 15.7 4 14.4C3.9 13.1 4.9 12 6.2 12Z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M17.8 12C19.1 12 20.1 10.9 20 9.6C19.9 8.3 18.7 7.4 17.5 7.6C16.9 6.7 15.8 6.3 14.8 6.7C13.9 7 13.4 7.9 13.6 8.8" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></symbol>
+  <symbol id="i-torn-leaf" viewBox="0 0 24 24"><path d="M12 3C16.5 4.5 19 8 18.4 12.4C18.1 14.6 16.9 16.3 15.2 17.4L16.4 18.6L14.8 18.2L15.2 19.8L13.6 19L13 20.6C9 19.6 6 16.3 6 12C6 7.5 8.5 4.3 12 3Z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><line x1="12" y1="4.6" x2="12.6" y2="19" stroke="currentColor" stroke-width="0.9"/></symbol>
+  <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3.5C12 3.5 17.5 10.4 17.5 14.6C17.5 17.9 15 20.3 12 20.3C9 20.3 6.5 17.9 6.5 14.6C6.5 10.4 12 3.5 12 3.5Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></symbol>
+  <symbol id="i-sprout" viewBox="0 0 24 24"><line x1="12" y1="21" x2="12" y2="12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M12 13C12 13 6.5 12.6 5.5 7.5C10.8 7.1 12 13 12 13Z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M12 11C12 11 12.8 6 18 5C18.2 10.2 12 11 12 11Z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></symbol>
+  <symbol id="i-sapling" viewBox="0 0 24 24"><line x1="12" y1="21" x2="12" y2="9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><path d="M12 11C12 11 7 10.6 6.2 6.3C10.8 6 12 11 12 11Z" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M12 9C12 9 17 8.6 17.8 4.3C13.2 4 12 9 12 9Z" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M12 15C12 15 8 14.7 7.3 11.4C10.9 11.1 12 15 12 15Z" fill="none" stroke="currentColor" stroke-width="1.2"/></symbol>
+  <symbol id="i-house" viewBox="0 0 24 24"><path d="M4.5 11.5L12 4.5L19.5 11.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.5 10V19.5H17.5V10" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M10.2 19.5V14.5H13.8V19.5" fill="none" stroke="currentColor" stroke-width="1.3"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></symbol>
+  <symbol id="i-vest" viewBox="0 0 24 24"><path d="M8 5L12 7L16 5L18 8.5V19H6V8.5L8 5Z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><line x1="9.5" y1="11" x2="14.5" y2="11" stroke="currentColor" stroke-width="1.2"/><circle cx="12" cy="11" r="0.9" fill="currentColor"/></symbol>
+  <symbol id="i-check-paw" viewBox="0 0 24 24"><ellipse cx="10.5" cy="15.5" rx="4" ry="3.2" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="6.6" cy="10.4" r="1.4" fill="none" stroke="currentColor" stroke-width="1.2"/><circle cx="10.2" cy="8.6" r="1.4" fill="none" stroke="currentColor" stroke-width="1.2"/><circle cx="14" cy="10.4" r="1.4" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M15.5 16.2L17.4 18.2L21 13.6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-prohibit" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.4" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="6.4" y1="17.6" x2="17.6" y2="6.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+  </defs>
+</svg>
+
+<header class="topbar">
+  <div class="brand">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><g style="color:var(--sage-ink)" transform="translate(12,20) scale(0.7)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/></g></svg>
+    Kierra&rsquo;s K9 Training
+  </div>
+  <nav>
+    <ul class="topnav">
+      <li><a href="#origin">Origin</a></li>
+      <li><a href="#method">Method</a></li>
+      <li><a href="#field-guide">Field Guide</a></li>
+      <li><a href="#format">Format</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
+  <svg class="wash" viewBox="0 0 600 500" style="top:-8%;left:-12%;width:56%;height:60%;">
+    <use href="#blob-1" fill="url(#g-sage)" filter="url(#wash-blur)"/>
+  </svg>
+  <svg class="wash" viewBox="0 0 600 500" style="top:15%;right:-14%;width:48%;height:52%;">
+    <use href="#blob-2" fill="url(#g-apricot)" filter="url(#wash-blur)"/>
+  </svg>
+
+  <div class="hero-grid">
+    <div class="hero-text">
+      <p class="eyebrow">Est. 2003 &middot; Gilroy, California</p>
+      <h1>Kierra&rsquo;s<br>K9 Training</h1>
+      <p class="lede">Positive, science-based dog training that grows a lasting bond &mdash; <em>rooted in trust, not force.</em></p>
+      <a class="cta" href="#contact">
+        Begin Together
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+    <div class="hero-photo-wrap">
+      <div class="frame frame--portrait">
+        <img src="../assets/IMG_9926.png" alt="Kierra crouched beside a calm, attentive dog outdoors">
+        <svg class="vine sway-slow" viewBox="0 0 300 400" preserveAspectRatio="none" style="left:-14%;top:-9%;width:128%;height:128%;">
+          <path d="M18,-14 C -14,42 -8,124 24,172 C 46,206 18,254 42,296 C 56,320 34,350 50,378" fill="none" stroke="var(--sage-ink)" stroke-width="2.2" stroke-linecap="round" opacity="0.85"/>
+          <g transform="translate(6,8) rotate(-24) scale(1.15)" style="color:var(--sage)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/><path d="M0,-2 C-1,-12 0,-22 0,-30" fill="none" stroke="rgba(46,42,38,0.3)" stroke-width="0.6"/></g>
+          <g transform="translate(-9,58) rotate(18) scale(0.9)" style="color:var(--rose)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/><path d="M0,-2 C-1,-12 0,-22 0,-30" fill="none" stroke="rgba(46,42,38,0.3)" stroke-width="0.6"/></g>
+          <g transform="translate(18,108) rotate(-38) scale(1.05)" style="color:var(--sage)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/><path d="M0,-2 C-1,-12 0,-22 0,-30" fill="none" stroke="rgba(46,42,38,0.3)" stroke-width="0.6"/></g>
+          <g transform="translate(-2,158) rotate(22) scale(0.85)" style="color:var(--sage)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/><path d="M0,-2 C-1,-12 0,-22 0,-30" fill="none" stroke="rgba(46,42,38,0.3)" stroke-width="0.6"/></g>
+          <g transform="translate(30,204) rotate(-14) scale(1.05)" style="color:var(--rose)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/><path d="M0,-2 C-1,-12 0,-22 0,-30" fill="none" stroke="rgba(46,42,38,0.3)" stroke-width="0.6"/></g>
+          <g transform="translate(20,252) rotate(24) scale(0.9)" style="color:var(--sage)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/><path d="M0,-2 C-1,-12 0,-22 0,-30" fill="none" stroke="rgba(46,42,38,0.3)" stroke-width="0.6"/></g>
+          <g transform="translate(46,292) rotate(-18) scale(0.8)" style="color:var(--sage)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/><path d="M0,-2 C-1,-12 0,-22 0,-30" fill="none" stroke="rgba(46,42,38,0.3)" stroke-width="0.6"/></g>
+          <circle cx="0" cy="0" r="4.6" transform="translate(34,138)" style="color:var(--apricot);fill:currentColor"/>
+          <circle cx="0" cy="0" r="4.6" transform="translate(10,228)" style="color:var(--rose);fill:currentColor"/>
+          <g transform="translate(52,372) scale(0.8)" style="color:var(--rose)"><g fill="currentColor" opacity="0.92"><ellipse cx="0" cy="-8" rx="5" ry="8"/><ellipse cx="0" cy="-8" rx="5" ry="8" transform="rotate(72)"/><ellipse cx="0" cy="-8" rx="5" ry="8" transform="rotate(144)"/><ellipse cx="0" cy="-8" rx="5" ry="8" transform="rotate(216)"/><ellipse cx="0" cy="-8" rx="5" ry="8" transform="rotate(288)"/></g><circle cx="0" cy="0" r="3.4" fill="#F3B58C"/></g>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="scallop scallop--down">
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path fill="var(--cream-warm)" d="M0,30 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 L1200,60 L0,60 Z"/></svg>
+  </div>
+</section>
+
+<!-- ============ ORIGIN ============ -->
+<section class="section section--tint-sage" id="origin">
+  <svg class="wash" viewBox="0 0 600 500" style="top:10%;left:58%;width:42%;height:60%;">
+    <use href="#blob-2" fill="url(#g-sage)" filter="url(#wash-blur)"/>
+  </svg>
+  <div class="section-inner origin-grid">
+    <div class="origin-text">
+      <p class="eyebrow">Since 2003</p>
+      <h2>Planted in 2003</h2>
+      <p>My journey began in 2003 when I started my business under the name <em>Kierra&rsquo;s K9 Care</em>. As my experience and services continued to grow, the business developed into what is now Kierra&rsquo;s K9 Training &mdash; personalized, science-based dog training designed to strengthen the relationship between dogs and their families.</p>
+      <p>I don&rsquo;t just teach commands &mdash; I work to understand <em>why</em> a behavior is happening. By reading dog psychology, emotions, body language, environment, and learning history, I build an individualized plan for each dog and family.</p>
+    </div>
+    <div class="origin-photo frame frame--portrait">
+      <img src="../assets/IMG_5206.png" alt="Kierra training a dog in a garden setting">
+      <svg class="vine sway" viewBox="0 0 300 400" preserveAspectRatio="none" style="right:-15%;bottom:-9%;left:auto;top:auto;width:66%;height:66%;">
+        <path d="M282,412 C 306,368 272,336 292,296 C 302,272 284,250 296,224" fill="none" stroke="var(--apricot-deep)" stroke-width="2" stroke-linecap="round" opacity="0.85"/>
+        <g transform="translate(296,398) rotate(160) scale(0.85)" style="color:var(--sage-ink)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/><path d="M0,-2 C-1,-12 0,-22 0,-30" fill="none" stroke="rgba(46,42,38,0.3)" stroke-width="0.6"/></g>
+        <g transform="translate(272,352) rotate(140) scale(0.95)" style="color:var(--apricot)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/><path d="M0,-2 C-1,-12 0,-22 0,-30" fill="none" stroke="rgba(46,42,38,0.3)" stroke-width="0.6"/></g>
+        <g transform="translate(298,314) rotate(172) scale(0.75)" style="color:var(--apricot)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/><path d="M0,-2 C-1,-12 0,-22 0,-30" fill="none" stroke="rgba(46,42,38,0.3)" stroke-width="0.6"/></g>
+        <g transform="translate(280,262) rotate(150) scale(0.85)" style="color:var(--sage)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/><path d="M0,-2 C-1,-12 0,-22 0,-30" fill="none" stroke="rgba(46,42,38,0.3)" stroke-width="0.6"/></g>
+        <circle cx="0" cy="0" r="4.6" transform="translate(287,332)" style="color:var(--rose);fill:currentColor"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ METHOD ============ -->
+<section class="section section--tint-rose" id="method">
+  <div class="scallop scallop--up" style="margin-top:-5.5rem;">
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path fill="var(--cream-warm)" d="M0,30 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 L1200,60 L0,60 Z"/></svg>
+  </div>
+  <svg class="wash" viewBox="0 0 600 500" style="top:0%;left:-10%;width:46%;height:56%;">
+    <use href="#blob-1" fill="url(#g-rose)" filter="url(#wash-blur)"/>
+  </svg>
+
+  <div class="section-inner">
+    <div class="method-grid">
+      <div class="method-photo frame frame--portrait">
+        <img src="../assets/IMG_5205.png" alt="Dog focused and engaged during a training session">
+        <svg class="vine sway" viewBox="0 0 300 400" preserveAspectRatio="none" style="right:-20%;top:-6%;left:auto;width:46%;height:112%;">
+          <path d="M18,-10 C 44,80 4,160 28,240 C 40,296 6,356 30,406" fill="none" stroke="var(--rose-deep)" stroke-width="2" stroke-linecap="round" opacity="0.85"/>
+          <g transform="translate(4,18) rotate(-100) scale(0.95)" style="color:var(--rose)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/><path d="M0,-2 C-1,-12 0,-22 0,-30" fill="none" stroke="rgba(46,42,38,0.3)" stroke-width="0.6"/></g>
+          <g transform="translate(34,88) rotate(80) scale(0.85)" style="color:var(--sage)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/><path d="M0,-2 C-1,-12 0,-22 0,-30" fill="none" stroke="rgba(46,42,38,0.3)" stroke-width="0.6"/></g>
+          <g transform="translate(-2,168) rotate(-110) scale(1) " style="color:var(--rose)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/><path d="M0,-2 C-1,-12 0,-22 0,-30" fill="none" stroke="rgba(46,42,38,0.3)" stroke-width="0.6"/></g>
+          <g transform="translate(34,258) rotate(75) scale(0.9)" style="color:var(--rose)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/><path d="M0,-2 C-1,-12 0,-22 0,-30" fill="none" stroke="rgba(46,42,38,0.3)" stroke-width="0.6"/></g>
+          <g transform="translate(0,338) rotate(-95) scale(0.85)" style="color:var(--sage)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/><path d="M0,-2 C-1,-12 0,-22 0,-30" fill="none" stroke="rgba(46,42,38,0.3)" stroke-width="0.6"/></g>
+          <circle cx="0" cy="0" r="4.6" transform="translate(20,118)" style="color:var(--apricot);fill:currentColor"/>
+          <g transform="translate(24,392) scale(0.75)" style="color:var(--rose)"><g fill="currentColor" opacity="0.92"><ellipse cx="0" cy="-8" rx="5" ry="8"/><ellipse cx="0" cy="-8" rx="5" ry="8" transform="rotate(72)"/><ellipse cx="0" cy="-8" rx="5" ry="8" transform="rotate(144)"/><ellipse cx="0" cy="-8" rx="5" ry="8" transform="rotate(216)"/><ellipse cx="0" cy="-8" rx="5" ry="8" transform="rotate(288)"/></g><circle cx="0" cy="0" r="3.4" fill="#F3B58C"/></g>
+        </svg>
+      </div>
+      <div class="method-text">
+        <p class="eyebrow">Positive &amp; Science-Based</p>
+        <h2>Growing with Positive Reinforcement</h2>
+        <p>My methods are rooted in modern learning science, clear communication, and trust. I use food, toys, praise, and <em>clicker training</em> &mdash; marking the exact moment a dog performs a desired behavior so they understand precisely what earned the reward.</p>
+        <p>Training should feel like a rewarding game between you and your dog. When dogs enjoy participating, they become more engaged, confident, and eager to learn &mdash; and that shared time strengthens the bond you carry home.</p>
+      </div>
+    </div>
+
+    <div class="not-garden">
+      <h3><em>Not</em> in This Garden</h3>
+      <ul>
+        <li><svg viewBox="0 0 24 24"><use href="#i-prohibit"/></svg> Shock or electronic collars</li>
+        <li><svg viewBox="0 0 24 24"><use href="#i-prohibit"/></svg> Choke collars</li>
+        <li><svg viewBox="0 0 24 24"><use href="#i-prohibit"/></svg> Prong collars</li>
+        <li><svg viewBox="0 0 24 24"><use href="#i-prohibit"/></svg> Fear, pain, force, or intimidation</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="scallop scallop--down">
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path fill="var(--cream)" d="M0,30 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 L1200,60 L0,60 Z"/></svg>
+  </div>
+</section>
+
+<!-- ============ FIELD GUIDE (services) ============ -->
+<section class="section section--tint-rose" id="field-guide">
+  <svg class="wash" viewBox="0 0 600 500" style="bottom:-6%;right:-10%;width:44%;height:52%;">
+    <use href="#blob-1" fill="url(#g-apricot)" filter="url(#wash-blur)"/>
+  </svg>
+  <div class="section-inner">
+    <div class="field-head">
+      <div class="field-head-text">
+        <p class="eyebrow">Specialties</p>
+        <h2>A Field Guide to Behavior</h2>
+        <p class="section-lede">Many trainers focus only on obedience. My training goes much further &mdash; every entry below is a behavior I help dogs and families work through, together.</p>
+      </div>
+      <div class="field-photo frame frame--portrait">
+        <img src="../assets/IMG_5207.png" alt="Dog practicing focus and attention during a session">
+        <svg class="vine sway" viewBox="0 0 300 400" preserveAspectRatio="none" style="right:-22%;top:-16%;left:auto;width:56%;height:44%;">
+          <path d="M284,-18 C 306,14 274,42 292,78" fill="none" stroke="var(--sage-ink)" stroke-width="2" stroke-linecap="round" opacity="0.85"/>
+          <g transform="translate(268,4) rotate(-155) scale(0.8)" style="color:var(--sage)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/><path d="M0,-2 C-1,-12 0,-22 0,-30" fill="none" stroke="rgba(46,42,38,0.3)" stroke-width="0.6"/></g>
+          <g transform="translate(300,40) rotate(150) scale(0.7)" style="color:var(--rose)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/><path d="M0,-2 C-1,-12 0,-22 0,-30" fill="none" stroke="rgba(46,42,38,0.3)" stroke-width="0.6"/></g>
+          <g transform="translate(278,66) scale(0.6)" style="color:var(--rose)"><g fill="currentColor" opacity="0.92"><ellipse cx="0" cy="-8" rx="5" ry="8"/><ellipse cx="0" cy="-8" rx="5" ry="8" transform="rotate(72)"/><ellipse cx="0" cy="-8" rx="5" ry="8" transform="rotate(144)"/><ellipse cx="0" cy="-8" rx="5" ry="8" transform="rotate(216)"/><ellipse cx="0" cy="-8" rx="5" ry="8" transform="rotate(288)"/></g><circle cx="0" cy="0" r="3.4" fill="#F3B58C"/></g>
+        </svg>
+      </div>
+    </div>
+
+    <div class="field-grid">
+      <div class="field-item"><svg style="color:var(--rose-deep)"><use href="#i-heart"/></svg><span>Anxiety &amp; Fear</span></div>
+      <div class="field-item"><svg style="color:var(--apricot-deep)"><use href="#i-burst"/></svg><span>Reactivity</span></div>
+      <div class="field-item"><svg style="color:var(--sage-ink)"><use href="#i-leash"/></svg><span>Leash Pulling</span></div>
+      <div class="field-item"><svg style="color:var(--rose-deep)"><use href="#i-paw-jump"/></svg><span>Jumping &amp; Overexcitement</span></div>
+      <div class="field-item"><svg style="color:var(--sage-ink)"><use href="#i-pause"/></svg><span>Impulse Control</span></div>
+      <div class="field-item"><svg style="color:var(--apricot-deep)"><use href="#i-friends"/></svg><span>Socialization</span></div>
+      <div class="field-item"><svg style="color:var(--sage-ink)"><use href="#i-bone"/></svg><span>Resource Guarding</span></div>
+      <div class="field-item"><svg style="color:var(--rose-deep)"><use href="#i-torn-leaf"/></svg><span>Destructive Behavior</span></div>
+      <div class="field-item"><svg style="color:var(--sage-ink)"><use href="#i-drop"/></svg><span>Potty Training</span></div>
+      <div class="field-item"><svg style="color:var(--apricot-deep)"><use href="#i-sprout"/></svg><span>Puppy Behaviors</span></div>
+      <div class="field-item"><svg style="color:var(--sage-ink)"><use href="#i-sapling"/></svg><span>Adolescent Behavior</span></div>
+      <div class="field-item"><svg style="color:var(--rose-deep)"><use href="#i-house"/></svg><span>Manners</span></div>
+      <div class="field-item"><svg style="color:var(--sage-ink)"><use href="#i-target"/></svg><span>Focus &amp; Distraction</span></div>
+      <div class="field-item"><svg style="color:var(--apricot-deep)"><use href="#i-vest"/></svg><span>Service-Dog Training</span></div>
+      <div class="field-item"><svg style="color:var(--sage-ink)"><use href="#i-check-paw"/></svg><span>Obedience</span></div>
+    </div>
+  </div>
+
+  <div class="scallop scallop--down">
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path fill="var(--rose)" d="M0,30 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 L1200,60 L0,60 Z" opacity="0.55"/></svg>
+  </div>
+</section>
+
+<!-- ============ FORMAT ============ -->
+<section class="section" id="format" style="background:var(--rose); background:linear-gradient(180deg, rgba(223,169,162,0.35), var(--cream) 60%);">
+  <div class="section-inner">
+    <p class="eyebrow" style="justify-content:center;">Personalized &amp; Hands-On</p>
+    <h2 style="text-align:center;margin-bottom:2.6rem;">Where We Train</h2>
+
+    <div class="format-banner frame frame--landscape">
+      <img src="../assets/IMG_5337.png" alt="Training session taking place in a real-world outdoor environment">
+      <svg class="vine sway-slow" viewBox="0 0 500 300" preserveAspectRatio="none" style="left:-4%;bottom:-14%;top:auto;width:108%;height:46%;">
+        <path d="M-10,300 C 60,262 118,292 178,262 C 238,234 296,272 358,252 C 408,236 458,262 512,242" fill="none" stroke="var(--apricot-deep)" stroke-width="2" stroke-linecap="round" opacity="0.85"/>
+        <g transform="translate(30,280) rotate(190) scale(0.9)" style="color:var(--sage)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/><path d="M0,-2 C-1,-12 0,-22 0,-30" fill="none" stroke="rgba(46,42,38,0.3)" stroke-width="0.6"/></g>
+        <g transform="translate(100,268) rotate(150) scale(0.8)" style="color:var(--apricot)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/><path d="M0,-2 C-1,-12 0,-22 0,-30" fill="none" stroke="rgba(46,42,38,0.3)" stroke-width="0.6"/></g>
+        <g transform="translate(178,248) rotate(200) scale(0.95)" style="color:var(--sage)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/><path d="M0,-2 C-1,-12 0,-22 0,-30" fill="none" stroke="rgba(46,42,38,0.3)" stroke-width="0.6"/></g>
+        <g transform="translate(258,262) rotate(160) scale(0.8)" style="color:var(--apricot)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/><path d="M0,-2 C-1,-12 0,-22 0,-30" fill="none" stroke="rgba(46,42,38,0.3)" stroke-width="0.6"/></g>
+        <g transform="translate(330,238) rotate(195) scale(0.9)" style="color:var(--sage)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/><path d="M0,-2 C-1,-12 0,-22 0,-30" fill="none" stroke="rgba(46,42,38,0.3)" stroke-width="0.6"/></g>
+        <g transform="translate(400,250) rotate(155) scale(0.8)" style="color:var(--apricot)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/><path d="M0,-2 C-1,-12 0,-22 0,-30" fill="none" stroke="rgba(46,42,38,0.3)" stroke-width="0.6"/></g>
+        <g transform="translate(470,228) rotate(190) scale(0.85)" style="color:var(--sage)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/><path d="M0,-2 C-1,-12 0,-22 0,-30" fill="none" stroke="rgba(46,42,38,0.3)" stroke-width="0.6"/></g>
+        <circle cx="0" cy="0" r="4.6" transform="translate(220,270)" style="color:var(--rose);fill:currentColor"/>
+        <circle cx="0" cy="0" r="4.6" transform="translate(360,268)" style="color:var(--rose);fill:currentColor"/>
+      </svg>
+    </div>
+
+    <div class="format-grid">
+      <div class="format-card">
+        <svg viewBox="0 0 24 24"><use href="#i-house"/></svg>
+        <h3>In-Home</h3>
+        <p>Training in the environment your dog knows best, with everyday distractions built right in.</p>
+      </div>
+      <div class="format-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 19L9 6L13 15L16 9L20 19" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Real-World</h3>
+        <p>Sessions out in the world, wherever your dog needs support most. Owners may join in &mdash; or training can happen while you&rsquo;re at work.</p>
+      </div>
+    </div>
+
+    <div class="badges">
+      <div class="badge-wrap">
+        <svg viewBox="0 0 160 160" role="img" aria-label="CCPDT Certified badge">
+          <circle cx="80" cy="80" r="72" fill="var(--cream)" stroke="var(--sage-ink)" stroke-width="2"/>
+          <circle cx="80" cy="80" r="62" fill="none" stroke="var(--sage-ink)" stroke-width="1" stroke-dasharray="1.5 4.5"/>
+          <g style="color:var(--sage)">
+            <g transform="translate(24,110) rotate(-40) scale(0.7)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/></g>
+            <g transform="translate(20,90) rotate(-15) scale(0.6)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/></g>
+            <g transform="translate(136,110) rotate(40) scale(0.7)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/></g>
+            <g transform="translate(140,90) rotate(15) scale(0.6)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/></g>
+          </g>
+          <text x="80" y="72" text-anchor="middle" font-family="DM Serif Display, serif" font-size="21" fill="var(--ink)">CCPDT</text>
+          <text x="80" y="93" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="12.5" fill="var(--ink-soft)">Certified Trainer</text>
+        </svg>
+        <p>Certification Council for<br>Professional Dog Trainers</p>
+      </div>
+      <div class="badge-wrap">
+        <svg viewBox="0 0 160 160" role="img" aria-label="AKC CGC Certified badge">
+          <circle cx="80" cy="80" r="72" fill="var(--cream)" stroke="var(--rose-deep)" stroke-width="2"/>
+          <circle cx="80" cy="80" r="62" fill="none" stroke="var(--rose-deep)" stroke-width="1" stroke-dasharray="1.5 4.5"/>
+          <g style="color:var(--rose)">
+            <g transform="translate(24,110) rotate(-40) scale(0.7)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/></g>
+            <g transform="translate(20,90) rotate(-15) scale(0.6)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/></g>
+            <g transform="translate(136,110) rotate(40) scale(0.7)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/></g>
+            <g transform="translate(140,90) rotate(15) scale(0.6)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/></g>
+          </g>
+          <text x="80" y="68" text-anchor="middle" font-family="DM Serif Display, serif" font-size="19" fill="var(--ink)">AKC CGC</text>
+          <text x="80" y="87" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="11.5" fill="var(--ink-soft)">Canine Good</text>
+          <text x="80" y="100" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="11.5" fill="var(--ink-soft)">Citizen</text>
+        </svg>
+        <p>American Kennel Club<br>Good Citizen Program</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="scallop scallop--down">
+    <svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path fill="var(--cream-warm)" d="M0,30 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 a30,30 0 0 1 60,0 L1200,60 L0,60 Z"/></svg>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section contact section--tint-sage" id="contact">
+  <svg class="wash" viewBox="0 0 600 500" style="top:0%;left:30%;width:44%;height:70%;">
+    <use href="#blob-1" fill="url(#g-sage)" filter="url(#wash-blur)"/>
+  </svg>
+  <div class="section-inner">
+    <div class="contact-photo frame frame--portrait" style="max-width:190px;margin-left:auto;margin-right:auto;">
+      <img src="../assets/IMG_4683.png" alt="Kierra with a relaxed, happy dog">
+      <svg class="vine sway" viewBox="0 0 300 400" preserveAspectRatio="none" style="left:-24%;bottom:-8%;top:auto;width:76%;height:76%;">
+        <path d="M-8,410 C -20,352 8,308 -4,252 C -12,208 14,172 2,128" fill="none" stroke="var(--sage-ink)" stroke-width="2" stroke-linecap="round" opacity="0.85"/>
+        <g transform="translate(4,392) rotate(20) scale(0.8)" style="color:var(--sage)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/><path d="M0,-2 C-1,-12 0,-22 0,-30" fill="none" stroke="rgba(46,42,38,0.3)" stroke-width="0.6"/></g>
+        <g transform="translate(-12,336) rotate(-12) scale(0.7)" style="color:var(--sage)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/><path d="M0,-2 C-1,-12 0,-22 0,-30" fill="none" stroke="rgba(46,42,38,0.3)" stroke-width="0.6"/></g>
+        <g transform="translate(14,284) rotate(24) scale(0.85)" style="color:var(--rose)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/><path d="M0,-2 C-1,-12 0,-22 0,-30" fill="none" stroke="rgba(46,42,38,0.3)" stroke-width="0.6"/></g>
+        <g transform="translate(-6,228) rotate(-16) scale(0.7)" style="color:var(--sage)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/><path d="M0,-2 C-1,-12 0,-22 0,-30" fill="none" stroke="rgba(46,42,38,0.3)" stroke-width="0.6"/></g>
+        <circle cx="0" cy="0" r="4.6" transform="translate(0,352)" style="color:var(--rose);fill:currentColor"/>
+        <circle cx="0" cy="0" r="4.6" transform="translate(6,204)" style="color:var(--apricot);fill:currentColor"/>
+      </svg>
+    </div>
+    <p class="eyebrow" style="justify-content:center;">Let&rsquo;s Grow Together</p>
+    <h2>Ready When You Are</h2>
+    <p class="lede2">Reach out to talk through your dog&rsquo;s story &mdash; what&rsquo;s blooming well, and what still needs a little tending.</p>
+    <a class="contact-email" href="mailto:hello@kierrask9.example">hello@kierrask9.example</a>
+    <a class="cta" href="mailto:hello@kierrask9.example">
+      Say Hello
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <svg class="fvine" viewBox="0 0 300 40" aria-hidden="true">
+    <path d="M0,20 C 60,4 100,36 150,20 C 200,4 240,36 300,20" fill="none" stroke="var(--sage-ink)" stroke-width="1.4" opacity="0.6"/>
+    <g transform="translate(60,12) rotate(-90) scale(0.55)" style="color:var(--sage)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/><path d="M0,-2 C-1,-12 0,-22 0,-30" fill="none" stroke="rgba(46,42,38,0.3)" stroke-width="0.6"/></g>
+    <g transform="translate(150,20) rotate(90) scale(0.55)" style="color:var(--rose)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/><path d="M0,-2 C-1,-12 0,-22 0,-30" fill="none" stroke="rgba(46,42,38,0.3)" stroke-width="0.6"/></g>
+    <g transform="translate(240,12) rotate(-90) scale(0.55)" style="color:var(--sage)"><path d="M0,0 C-11,-3 -13,-15 -4,-24 C-2,-27 -1,-29 0,-32 C1,-28 3,-25 6,-21 C13,-12 10,-3 0,0 Z" fill="currentColor"/><path d="M0,-2 C-1,-12 0,-22 0,-30" fill="none" stroke="rgba(46,42,38,0.3)" stroke-width="0.6"/></g>
+  </svg>
+  <p>Kierra&rsquo;s K9 Training &middot; Serving families since 2003 &middot; CCPDT &amp; AKC CGC Certified</p>
+</footer>
+
+</body>
+</html>
